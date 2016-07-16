@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Jokengine::CircleCollider" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAACAAAAAAAAAAAAAAAgAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>CircleCollider.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::GameObject" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAIAAQAAICAJBAgAAAEAAAEAAAAIIIAAAA=</HashCode>
+      <FileName>GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::Component" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAIAAgAAAAACAAAAAAAABAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::Game" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAgAQAQAQAAAAAAAigACAAAFACAAAAgIA=</HashCode>
+      <FileName>Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::GameRoom" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAQAAAAAAABAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>GameRoom.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::InputReader" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEBAAKCQAAAQQQYAABAEBACAAABCAAiBAAAAA=</HashCode>
+      <FileName>InputReader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::JObject" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAQAQAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::ResourceManager" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEBAACAAAAAABAAACAEAAAAAAAAAAAAABAAAhAAAA=</HashCode>
+      <FileName>Resource_Manager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::Shader" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAYBAAAAAAghAAAAAAAAAAAAAEAAAAIAAAAAAIAEA=</HashCode>
+      <FileName>Shader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::SpriteDrawable" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAABAAAAiAAAAAAAAAAAA=</HashCode>
+      <FileName>SpriteDrawable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::SpriteRenderer" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAEAAAAAAAAAAAAABAAAIAAAAAAAAAEAAIAA=</HashCode>
+      <FileName>SpriteRenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::SpriteRenderingService" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SpriteRenderingService.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::Texture2D" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAERBBAgAAAAAAAAEAAAAAAAAAAAIAAAEAAACA=</HashCode>
+      <FileName>Texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jokengine::TimeService" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>TimeService.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Jokengine::E_JTAG" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAAAAQAAEAA=</HashCode>
+      <FileName>GameObject.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Jokengine::E_KEYSTATE" Collapsed="true">
+    <Position X="9.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAABAAAEAAAAAAAABAAA=</HashCode>
+      <FileName>InputReader.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
