@@ -3,19 +3,23 @@
 #include "Box2D\Dynamics\b2Body.h"
 namespace Jokengine
 {
-	PhysicBody::PhysicBody()
+	PhysicBody::PhysicBody(std::weak_ptr<GameObject> gameObject)
 		:velocity(glm::vec2(0, 0)), velocityModifier(glm::vec2(1, 1)), freezeRotation(false), kinematic(false)
-		, centerOfMass(glm::vec2(0, 0)), drag(1), angularDrag(0.5f), gravity(true), interpolate(false), mass(1), angularVelocity(0,0), rBody(nullptr)
+		, centerOfMass(glm::vec2(0, 0)), drag(1), angularDrag(0.5f), gravity(true), interpolate(false), mass(1), angularVelocity(0,0), rBody(nullptr),Component(gameObject)
+	{
+		b2BodyDef bodyDef;		bodyDef.position.Set(GetOwner()->position.x, GetOwner()->position.y);		bodyDef.type = b2_dynamicBody;		bodyDef.angle = GetOwner()->rotation;		rBody = Game::GetPhysicsService().RegisterBody(bodyDef,mass);
+	}
+	void PhysicBody::InitBody()
 	{
 
-		//b2BodyDef* bodyDef = new b2BodyDef();		//bodyDef->position.Set(owner->position.x, owner->position.y);		//bodyDef.type = b2_dynamicBody;		//bodyDef.angle = owner->rotation;		rBody=Game::GetPhysicsService().RegisterBody(b2BodyDef());
+
 	}
 	void PhysicBody::FixedUpdate()
 	{
-		lastRot = owner->rotation;
-		lastPos = owner->position;
-		owner->position = glm::vec2(rBody->GetPosition().x,rBody->GetPosition().y);
-		owner->rotation = rBody->GetAngle();
+		lastRot = GetOwner()->rotation;
+		lastPos = GetOwner()->position;
+		GetOwner()->position = glm::vec2(rBody->GetPosition().x,rBody->GetPosition().y);
+		GetOwner()->rotation = glm::degrees(rBody->GetAngle());
 		//glm::vec2 force = ComputeForce();
 		//glm::vec2 acceleration = force/mass;
 		//velocity += acceleration  * Game::GetInstance().fixedRefreshTime;

@@ -1,4 +1,5 @@
 #include "SpriteRenderer.h"
+#include "Game.h"
 namespace Jokengine
 {
 	SpriteRenderer::SpriteRenderer(Shader &shader)
@@ -40,6 +41,7 @@ namespace Jokengine
 	}
 	void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec2 size, GLfloat rotate, glm::vec3 color)
 	{
+		size /= 2;
 		this->shader.Use();
 		glm::mat4 model;
 		model = glm::translate(model, glm::vec3(position, 0.0f));

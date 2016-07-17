@@ -9,7 +9,7 @@ namespace Jokengine
 	class PhysicBody : public Component
 	{
 	public:
-		PhysicBody();
+		PhysicBody(std::weak_ptr<GameObject> gameObject);
 		glm::vec2 velocity;
 		glm::vec2 angularVelocity;
 		glm::vec2 velocityModifier;
@@ -27,6 +27,7 @@ namespace Jokengine
 		virtual glm::vec2 PhysicBody::ComputeForce();
 	private:
 		b2Body* rBody;
+		void InitBody();
 
 	};
 }

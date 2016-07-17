@@ -11,12 +11,15 @@ namespace Jokengine
 		Physics();
 		glm::vec2 GetGravity();
 		void SetGravity(glm::vec2 gravity);
-		b2Body* RegisterBody(b2BodyDef bodyDef);
+		b2Body* RegisterBody(b2BodyDef bodyDef, GLint mass);
+		b2Fixture* RegisterFixtureBox(b2Body *body, glm::vec2 size = glm::vec2(1, 1), glm::vec2 offset = glm::vec2(0, 0));
+		b2Fixture* RegisterFixtureCircle(b2Body *body, GLfloat radius = 1, glm::vec2 offset = glm::vec2(0, 0));
 		void FixedUpdate();
 	private:
-		const int velocityIteration=7;
-		const int positionIteration=3;
+		const int velocityIteration;
+		const int positionIteration;
 		b2World* physicWorld;
+
 
 
 	};

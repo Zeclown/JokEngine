@@ -8,12 +8,14 @@ namespace Jokengine
 	class Camera : public Component
 	{
 	public:
-		Camera();
+		Camera(std::weak_ptr<GameObject> gameObject);
 		GLfloat zoom;
 		glm::vec2 frustum;
 		GLfloat farPlane;
 		GLfloat nearPlane;
 		glm::mat4 GetViewMatrix();
+
+
 
 
 	};

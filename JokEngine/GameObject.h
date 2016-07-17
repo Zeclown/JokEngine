@@ -18,6 +18,7 @@ namespace Jokengine
 	//Base class representing all entities
 	class GameObject : public JObject
 	{
+		friend class GameRoom;
 	public:
 		// Object state
 		std::string name;
@@ -34,22 +35,21 @@ namespace Jokengine
 		template<typename T>
 		std::weak_ptr<T>  AddComponent()
 		{
-			auto newComp = std::make_shared<T>();
-			newComp->Register(*this);
+			auto newComp = std::make_shared<T>(Game::GetInstance().FindByID(objectID));
 			components.push_back(newComp);
 			std::weak_ptr<T> ptr = newComp;
 			return ptr;
 		}
-		//Add the specified component to the GameObject. Return a reference to the component
-		template<typename T>
-		std::weak_ptr<T> AddComponent(T &component)
-		{
-			auto newComp = make_shared<T>(component&);
-			newComp->Register(*this);
-			components.push_back(newComp);
-			std::weak_ptr<T> ptr = newComp;
-			return ptr;
-		}
+		////Add the specified component to the GameObject. Return a reference to the component
+		//template<typename T>
+		//std::weak_ptr<T> AddComponent(T &component)
+		//{
+		//	auto newComp = make_shared<T>(component&);
+		//	newComp->Register(*this);
+		//	components.push_back(newComp);
+		//	std::weak_ptr<T> ptr = newComp;
+		//	return ptr;
+		//}
 		//Remove the first occurence of a component of type <T> on the GameObject. Should use Component.Unregister() instead.
 		template<typename T>
 		std::shared_ptr<Component> RemoveComponent()
@@ -118,11 +118,12 @@ namespace Jokengine
 		glm::vec2 getWorldPosition(GLboolean dirty=false);
 		//dirty flag that check if world position needs to be recalculated
 		GLboolean flagWorldPos;
-	private:
+	protected:
 		//All the components owned by the object
 		std::vector<std::shared_ptr<Component>> components;
 		std::vector<std::shared_ptr<GameObject>> children;
 		GLboolean    active;
+		GLint objectID;
 	};
 }
 

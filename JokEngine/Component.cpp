@@ -2,23 +2,20 @@
 #include "GameObject.h"
 namespace Jokengine
 {
-	void Component::Register(GameObject& gameObject)
+	Component::Component(std::weak_ptr<GameObject> gameObject)
+		:owner(gameObject)
 	{
-		Component::Unregister();	
-		owner.reset(&gameObject);
 	}
-	void Component::Unregister()
+	GameObject* Component::GetOwner()
 	{
-		if (owner)
+		if (auto ptr = owner.lock())
 		{
-			owner->RemoveComponent(this);
-			owner.reset();
+			return ptr.get();
 		}
-	}
-	std::weak_ptr<GameObject> Component::GetOwner()
-	{
-		std::weak_ptr<GameObject> toReturn = owner;
-		return toReturn;
+		else
+		{
+			return nullptr;
+		}
 	}
 	Component::~Component() {}
 }

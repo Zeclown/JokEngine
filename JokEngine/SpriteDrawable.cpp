@@ -3,13 +3,13 @@
 namespace Jokengine
 {
 
-	SpriteDrawable::SpriteDrawable(Texture2D sprite,glm::vec3 color)
-		:sprite(sprite),color(color)
+	SpriteDrawable::SpriteDrawable(std::weak_ptr<GameObject> gameObject)
+		:Component(gameObject)
 	{
 
 	}
 	void SpriteDrawable::Draw(SpriteRenderingService &renderer, glm::vec2 intrapolation)
 	{
-		renderer.DrawSprite(sprite,owner->position- intrapolation,owner->size,owner->rotation,color);
+		renderer.DrawSprite(sprite,GetOwner()->position- intrapolation, GetOwner()->size, GetOwner()->rotation,color);
 	}
 }

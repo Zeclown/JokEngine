@@ -11,11 +11,8 @@ namespace Jokengine
 	public:
 		//Radius of the collider
 		GLfloat Radius;
-
-
 		// Constructor(s)
-		CircleCollider();
-		CircleCollider(GLfloat radius, glm::vec2 localPosition, GLboolean isSolid);
+		CircleCollider(std::weak_ptr<GameObject> gameObject,GLfloat radius, glm::vec2 localPosition, GLboolean isSolid);
 
 	};
 }

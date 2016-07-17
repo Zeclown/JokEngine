@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include "GameObject.h"
+#include <map>
 namespace Jokengine
 {
 
@@ -22,10 +23,12 @@ namespace Jokengine
 		}
 		std::weak_ptr<GameObject> Instantiate(GameObject &toInstantiate);
 		//all the objects in the GameRoom
-		std::vector<std::shared_ptr<GameObject>> RoomObjects;
+		std::map<GLint,std::shared_ptr<GameObject>> RoomObjects;
+		std::weak_ptr<GameObject> FindByID(GLint id);
 	private:
 		static GameRoom *instance_;
-		GameRoom() { }
+		int idCount;
+		GameRoom();
 
 	};
 

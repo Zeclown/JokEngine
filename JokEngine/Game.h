@@ -23,7 +23,7 @@ namespace Jokengine
 		GLuint	   width, height;
 		GLfloat fixedRefreshTime;
 		std::string gameName;
-
+		static GLfloat const PTM;
 		//Destructor
 		~Game();
 		static Game& GetInstance()
@@ -46,6 +46,7 @@ namespace Jokengine
 		static void RegisterTimeService(TimeService *service);
 		static void RegisterPhysicsService(PhysicsService *service);
 
+		std::weak_ptr<GameObject> FindByID(GLint objectID);
 		static SpriteRenderingService& GetSpriteRendererService();
 		static CameraService& GetCameraService();
 		static TimeService& GetTimeService();
@@ -57,7 +58,8 @@ namespace Jokengine
 
 
 	private:
-		Game(GLuint width=960, GLuint height=540, const std::string &gameName="JokEngine");
+		Game(GLuint width=1280, GLuint height=720, const std::string &gameName="JokEngine");
+
 		static Game *instance;
 		GameRoom gameroom;
 		GLFWwindow * window;

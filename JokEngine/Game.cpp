@@ -15,6 +15,7 @@ namespace Jokengine
 	CameraService *Game::cameras;
 	TimeService *Game::time;
 	PhysicsService *Game::physics;
+	GLfloat const Game::PTM=0.005;
 	boost::signals2::signal<void()> Game::initSignal;
 	boost::signals2::signal<void()> Game::updateSignal;
 	boost::signals2::signal<void()> Game::fixedSignal;
@@ -51,6 +52,10 @@ namespace Jokengine
 	{
 		return gameroom.Instantiate(toInstantiate);
 	}
+	std::weak_ptr<GameObject> Game::FindByID(GLint objectID)
+	{
+		return gameroom.FindByID(objectID);
+	}
 	void Game::Init()
 	{
 
@@ -69,9 +74,9 @@ namespace Jokengine
 
 		CameraHandler *cameraService = new CameraHandler();
 		Game::RegisterCameraService(cameraService);
-		GameObject *mainCam = new GameObject("CameraMain");
+		GameObject *mainCam =  Instantiate(GameObject("CameraMain")).lock().get();
 		std::shared_ptr<Camera> mainCamComp=mainCam->AddComponent<Camera>().lock();
-		mainCamComp->frustum=glm::vec2(width,height);
+		mainCamComp->frustum=glm::vec2(1250,720);
 		Instantiate(*mainCam);
 		cameras->RegisterCamera(*mainCamComp);
 
@@ -112,23 +117,27 @@ namespace Jokengine
 	}
 	void Game::RegisterSpriteRendererService(SpriteRenderingService *service)
 	{
-		delete Game::renderer;
-		Game::renderer = service;
+		if(renderer)
+			delete renderer;
+		renderer = service;
 	}
 	void Game::RegisterPhysicsService(PhysicsService *service)
 	{
-		delete Game::physics;
-		Game::physics = service;
+		if (physics)
+			delete physics;
+		physics = service;
 	}
 	void Game::RegisterTimeService(TimeService *service)
 	{
-		delete Game::time;
-		Game::time = service;
+		if (time)
+			delete time;
+		time = service;
 	}
 	void Game::RegisterCameraService(CameraService *service)
 	{
-		delete Game::cameras;
-		Game::cameras = service;
+		if (cameras)
+			delete cameras;
+		cameras = service;
 	}
 	SpriteRenderingService& Game::GetSpriteRendererService()
 	{
@@ -156,17 +165,17 @@ namespace Jokengine
 	}
 	void Game::Render()
 	{
-		for (int i = 0; i < gameroom.RoomObjects.size(); i++)
+		for (auto &iter : gameroom.RoomObjects)
 		{
-			auto drawPtr = gameroom.RoomObjects[i]->GetComponent<SpriteDrawable>().lock();
+			auto drawPtr = iter.second->GetComponent<SpriteDrawable>().lock();
 			if (drawPtr)
 			{
 				glm::vec2 extrapolationMod = glm::vec2(0, 0);
-				auto physicPtr = gameroom.RoomObjects[i]->GetComponent<PhysicBody>().lock();
+				auto physicPtr = iter.second->GetComponent<PhysicBody>().lock();
 				if (physicPtr && physicPtr->interpolate)
 				{
 					GLfloat alpha = fixedUpdateTimer / fixedRefreshTime;
-					extrapolationMod = gameroom.RoomObjects[i]->position- (gameroom.RoomObjects[i]->position * alpha + physicPtr->lastPos*(1-alpha));
+					extrapolationMod = iter.second->position- (iter.second->position * alpha + physicPtr->lastPos*(1-alpha));
 				}
 				drawPtr->Draw(*renderer, extrapolationMod);
 			}
@@ -175,9 +184,9 @@ namespace Jokengine
 	void Game::FixedUpdate()
 	{
 		physics->FixedUpdate();
-		for (int i = 0; i < gameroom.RoomObjects.size(); i++)
+		for (auto &iter : gameroom.RoomObjects)
 		{
-			auto physPtr = gameroom.RoomObjects[i]->GetComponent<PhysicBody>().lock();
+			auto physPtr = iter.second->GetComponent<PhysicBody>().lock();
 			if (physPtr)
 			{
 				physPtr->FixedUpdate();

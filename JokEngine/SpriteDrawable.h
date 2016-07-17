@@ -14,8 +14,7 @@ namespace Jokengine
 	//  go.sprite=ResourceManager::GetTexture("goblin");
 	class SpriteDrawable :public Component {
 	public:
-		SpriteDrawable() {};
-		SpriteDrawable(Texture2D sprite, glm::vec3 color = glm::vec3(0, 0, 0));
+		SpriteDrawable(std::weak_ptr<GameObject> gameObject);
 		Texture2D sprite;
 		glm::vec3   color;
 		// Draw sprite
