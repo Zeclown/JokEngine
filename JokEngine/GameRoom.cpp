@@ -1,24 +1,29 @@
 #include"GameRoom.h"
+#include"Game.h"
+#include <boost/signals2/signal.hpp>
 namespace Jokengine
 {
+
 	GameRoom *GameRoom::instance_ = 0;
 	GameRoom::GameRoom()
 		:idCount(0)
 	{
 
 	}
-	std::weak_ptr<GameObject> GameRoom::Instantiate(GameObject &toInstantiate) {
-		toInstantiate.objectID = ++idCount;
+
+	GameObject* GameRoom::Instantiate(GameObject &toInstantiate) {
+		
 		std::shared_ptr<GameObject> objPtr = std::make_shared<GameObject>(toInstantiate);
-		RoomObjects[toInstantiate.objectID]=objPtr;
-		std::weak_ptr<GameObject> toReturn = objPtr;
-		return toReturn;
+		objPtr->objectID = ++idCount;
+		RoomObjects[objPtr->objectID] = objPtr;
+		Game::GetInstance().initSignal.connect(boost::signals2::signal<void()>::slot_type(&GameObject::Init,objPtr.get(),_1).track_foreign(objPtr) );
+		return objPtr.get();
 	}
-	std::weak_ptr<GameObject> GameRoom::FindByID(GLint id)
+	GameObject* GameRoom::FindByID(GLint id)
 	{
 		if (RoomObjects.count(id) > 0)
-			return RoomObjects[id];
+			return RoomObjects[id].get();
 		else
-			return std::weak_ptr<GameObject>();
+			return nullptr;
 	}
 }

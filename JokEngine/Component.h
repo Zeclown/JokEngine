@@ -9,20 +9,35 @@ namespace Jokengine
 {
 	//basic declaration because of co dependency
 	class GameObject;
+
 	//abstract main component class
 	class Component : public JObject {
+	friend class GameObject;
 	public:
-		Component(std::weak_ptr<GameObject> gameObject);
+		virtual ~Component() {};
+		Component(GameObject* gameObject);
 		//is the component active
 		GLboolean   enabled;
 		//Get the current Owner of the component if it has one. 
 		GameObject* GetOwner();
-		//Destructor
-		virtual ~Component() = 0;
+		virtual Component *clone() const = 0;
 	protected:
-		std::weak_ptr<GameObject> owner;
+		virtual void Init() {};
+		GameObject* owner;
 
 
 	};
+	template <typename Base, typename Derived>
+	class ComponentCloneable : public Base
+	{
+	public:
+		using Base::Base;
+
+		virtual Base *clone() const
+		{
+			return new Derived(static_cast<Derived const &>(*this));
+		}
+	};
+
 }
 #endif

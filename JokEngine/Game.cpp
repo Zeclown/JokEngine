@@ -11,17 +11,8 @@
 namespace Jokengine
 {
 	Game *Game::instance = 0;
-	SpriteRenderingService  *Game::renderer;
-	CameraService *Game::cameras;
-	TimeService *Game::time;
-	PhysicsService *Game::physics;
-	GLfloat const Game::PTM=0.005;
-	boost::signals2::signal<void()> Game::initSignal;
-	boost::signals2::signal<void()> Game::updateSignal;
-	boost::signals2::signal<void()> Game::fixedSignal;
-
 	Game::Game(GLuint width, GLuint height, const std::string &gameName)
-		: width(width), height(height), gameroom(GameRoom::instance()), gameName(gameName), fixedRefreshTime(0.03), fixedUpdateTimer(0)
+		: width(width), height(height), gameroom(GameRoom::instance()), gameName(gameName), fixedRefreshTime(0.03), fixedUpdateTimer(0),BOX2D_TO_WORLD(200),WORLD_TO_BOX2D(0.02)
 	{
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -48,11 +39,11 @@ namespace Jokengine
 	{
 
 	}
-	std::weak_ptr<GameObject> Game::Instantiate(GameObject &toInstantiate)
+	GameObject* Game::Instantiate(GameObject &toInstantiate)
 	{
 		return gameroom.Instantiate(toInstantiate);
 	}
-	std::weak_ptr<GameObject> Game::FindByID(GLint objectID)
+	GameObject* Game::FindByID(GLint objectID)
 	{
 		return gameroom.FindByID(objectID);
 	}
@@ -74,10 +65,10 @@ namespace Jokengine
 
 		CameraHandler *cameraService = new CameraHandler();
 		Game::RegisterCameraService(cameraService);
-		GameObject *mainCam =  Instantiate(GameObject("CameraMain")).lock().get();
-		std::shared_ptr<Camera> mainCamComp=mainCam->AddComponent<Camera>().lock();
-		mainCamComp->frustum=glm::vec2(1250,720);
-		Instantiate(*mainCam);
+		GameObject mainCam =   GameObject("CameraMain");
+		Camera  *mainCamComp=mainCam.AddComponent<Camera>();
+		mainCamComp->frustum=glm::vec2(800,600);
+		Instantiate(mainCam);
 		cameras->RegisterCamera(*mainCamComp);
 
 		Clock *timeService = new Clock();
@@ -87,8 +78,6 @@ namespace Jokengine
 		Game::RegisterPhysicsService(physicsService);
 
 
-		initSignal();
-
 	}
 	void Game::Loop()
 	{
@@ -96,6 +85,7 @@ namespace Jokengine
 		//gameloop
 		while (!glfwWindowShouldClose(window))
 		{
+			initSignal();
 			time->UpdateTime(glfwGetTime());
 			fixedUpdateTimer += time->GetDeltaTime();
 			glfwPollEvents();		
@@ -167,11 +157,11 @@ namespace Jokengine
 	{
 		for (auto &iter : gameroom.RoomObjects)
 		{
-			auto drawPtr = iter.second->GetComponent<SpriteDrawable>().lock();
+			auto drawPtr = iter.second->GetComponent<SpriteDrawable>();
 			if (drawPtr)
 			{
 				glm::vec2 extrapolationMod = glm::vec2(0, 0);
-				auto physicPtr = iter.second->GetComponent<PhysicBody>().lock();
+				auto physicPtr = iter.second->GetComponent<PhysicBody>();
 				if (physicPtr && physicPtr->interpolate)
 				{
 					GLfloat alpha = fixedUpdateTimer / fixedRefreshTime;
@@ -186,7 +176,7 @@ namespace Jokengine
 		physics->FixedUpdate();
 		for (auto &iter : gameroom.RoomObjects)
 		{
-			auto physPtr = iter.second->GetComponent<PhysicBody>().lock();
+			auto physPtr = iter.second->GetComponent<PhysicBody>();
 			if (physPtr)
 			{
 				physPtr->FixedUpdate();

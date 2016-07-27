@@ -3,8 +3,8 @@
 namespace Jokengine
 {
 
-	SpriteDrawable::SpriteDrawable(std::weak_ptr<GameObject> gameObject)
-		:Component(gameObject)
+	SpriteDrawable::SpriteDrawable(GameObject* gameObject)
+		:ComponentCloneable(gameObject)
 	{
 
 	}

@@ -21,11 +21,13 @@ namespace Jokengine
 				instance_ = new GameRoom;
 			return *instance_; 
 		}
-		std::weak_ptr<GameObject> Instantiate(GameObject &toInstantiate);
+		GameObject* Instantiate(GameObject &toInstantiate);
 		//all the objects in the GameRoom
 		std::map<GLint,std::shared_ptr<GameObject>> RoomObjects;
-		std::weak_ptr<GameObject> FindByID(GLint id);
+		GameObject* FindByID(GLint id);
+		/*void CheckDestroyQueue();*/
 	private:
+		/*void DestroyObject();*/
 		static GameRoom *instance_;
 		int idCount;
 		GameRoom();

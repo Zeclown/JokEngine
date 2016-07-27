@@ -4,15 +4,16 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include "Component.h"
+#include "Collider.h"
 namespace Jokengine
 {
-	class CircleCollider :public Component
+	class CircleCollider :public ComponentCloneable<Collider,CircleCollider>
 	{
 	public:
 		//Radius of the collider
-		GLfloat Radius;
+		GLfloat radius;
 		// Constructor(s)
-		CircleCollider(std::weak_ptr<GameObject> gameObject,GLfloat radius, glm::vec2 localPosition, GLboolean isSolid);
+		CircleCollider(GameObject* gameObject);
 
 	};
 }

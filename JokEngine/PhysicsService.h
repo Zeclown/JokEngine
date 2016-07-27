@@ -13,7 +13,10 @@ namespace Jokengine
 			virtual b2Body* RegisterBody(b2BodyDef bodyDef,GLint mass) = 0;
 			virtual b2Fixture* RegisterFixtureBox(b2Body *body, glm::vec2 size=glm::vec2(1,1),glm::vec2 offset=glm::vec2(0,0)) = 0;
 			virtual b2Fixture* RegisterFixtureCircle(b2Body *body, GLfloat radius = 1, glm::vec2 offset = glm::vec2(0, 0)) = 0;
+			virtual b2Fixture* RegisterFixtureEdge(b2Body *body, glm::vec2 pointA, glm::vec2 pointB)=0;
 			virtual void FixedUpdate() = 0;
+
+
 	};
 }
 #endif // !PHYSICS_SERVICE_H

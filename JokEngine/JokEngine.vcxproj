@@ -142,6 +142,7 @@
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="CameraHandler.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />

@@ -5,10 +5,10 @@
 namespace Jokengine
 {
 	//default camera value
-	class Camera : public Component
+	class Camera :public ComponentCloneable<Component, Camera>
 	{
 	public:
-		Camera(std::weak_ptr<GameObject> gameObject);
+		Camera(GameObject* gameObject);
 		GLfloat zoom;
 		glm::vec2 frustum;
 		GLfloat farPlane;

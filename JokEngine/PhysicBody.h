@@ -4,12 +4,16 @@
 #include "Component.h"
 #include <gl\glew.h>
 #include "Box2D\Dynamics\b2Body.h"
+#include <boost\signals2.hpp>
 namespace Jokengine
 {
-	class PhysicBody : public Component
+	class PhysicBody : public ComponentCloneable<Component, PhysicBody>
 	{
 	public:
-		PhysicBody(std::weak_ptr<GameObject> gameObject);
+		boost::signals2::signal<void()> collisionSignal;
+		boost::signals2::signal<void()> triggerSignal;
+		PhysicBody(GameObject* gameObject);
+		PhysicBody(PhysicBody const & pb);
 		glm::vec2 velocity;
 		glm::vec2 angularVelocity;
 		glm::vec2 velocityModifier;
@@ -23,11 +27,12 @@ namespace Jokengine
 		GLfloat angularDrag;
 		GLboolean gravity;
 		GLboolean interpolate;
+		b2Body* GetB2body();
 		virtual void FixedUpdate();
-		virtual glm::vec2 PhysicBody::ComputeForce();
-	private:
+		virtual void AddForce();
+	protected:
+		virtual void Init();
 		b2Body* rBody;
-		void InitBody();
 
 	};
 }

@@ -23,7 +23,8 @@ namespace Jokengine
 		GLuint	   width, height;
 		GLfloat fixedRefreshTime;
 		std::string gameName;
-		static GLfloat const PTM;
+		GLfloat const BOX2D_TO_WORLD;
+		GLfloat const WORLD_TO_BOX2D;
 		//Destructor
 		~Game();
 		static Game& GetInstance()
@@ -40,21 +41,21 @@ namespace Jokengine
 		void FixedUpdate();
 		void Render();
 		void ProcessInput();
-		std::weak_ptr<GameObject> Instantiate(GameObject &toInstantiate);
-		static void RegisterSpriteRendererService(SpriteRenderingService *service);
-		static void RegisterCameraService(CameraService *service);
-		static void RegisterTimeService(TimeService *service);
-		static void RegisterPhysicsService(PhysicsService *service);
+		GameObject *Instantiate(GameObject &toInstantiate);
+		void RegisterSpriteRendererService(SpriteRenderingService *service);
+		void RegisterCameraService(CameraService *service);
+		void RegisterTimeService(TimeService *service);
+		void RegisterPhysicsService(PhysicsService *service);
 
-		std::weak_ptr<GameObject> FindByID(GLint objectID);
-		static SpriteRenderingService& GetSpriteRendererService();
-		static CameraService& GetCameraService();
-		static TimeService& GetTimeService();
-		static PhysicsService& GetPhysicsService();
+		GameObject* FindByID(GLint objectID);
+		SpriteRenderingService& GetSpriteRendererService();
+		CameraService& GetCameraService();
+		TimeService& GetTimeService();
+		PhysicsService& GetPhysicsService();
 
-		static boost::signals2::signal<void()> initSignal;
-		static boost::signals2::signal<void()> updateSignal;
-		static boost::signals2::signal<void()> fixedSignal;
+		boost::signals2::signal<void()> initSignal;
+		boost::signals2::signal<void()> updateSignal;
+		boost::signals2::signal<void()> fixedSignal;
 
 
 	private:
@@ -64,10 +65,10 @@ namespace Jokengine
 		GameRoom gameroom;
 		GLFWwindow * window;
 		//services
-		static SpriteRenderingService  *renderer;
-		static CameraService *cameras;
-		static TimeService *time;
-		static PhysicsService *physics;
+		SpriteRenderingService  *renderer;
+		CameraService *cameras;
+		TimeService *time;
+		PhysicsService *physics;
 		//GameLoop internal timers
 		GLfloat fixedUpdateTimer;
 	};
