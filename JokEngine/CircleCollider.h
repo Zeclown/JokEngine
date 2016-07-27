@@ -14,6 +14,8 @@ namespace Jokengine
 		GLfloat radius;
 		// Constructor(s)
 		CircleCollider(GameObject* gameObject);
+	protected:
+		virtual void Init();
 
 	};
 }

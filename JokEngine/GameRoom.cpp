@@ -1,6 +1,8 @@
 #include"GameRoom.h"
 #include"Game.h"
 #include <boost/signals2/signal.hpp>
+// added specializations for std::weak_ptr and std::shared_ptr
+
 namespace Jokengine
 {
 
@@ -16,7 +18,7 @@ namespace Jokengine
 		std::shared_ptr<GameObject> objPtr = std::make_shared<GameObject>(toInstantiate);
 		objPtr->objectID = ++idCount;
 		RoomObjects[objPtr->objectID] = objPtr;
-		Game::GetInstance().initSignal.connect(boost::signals2::signal<void()>::slot_type(&GameObject::Init,objPtr.get(),_1).track_foreign(objPtr) );
+		Game::GetInstance().initSignal.connect(boost::signals2::signal<void()>::slot_type(&GameObject::Init,objPtr.get()).track_foreign(objPtr) );
 		return objPtr.get();
 	}
 	GameObject* GameRoom::FindByID(GLint id)

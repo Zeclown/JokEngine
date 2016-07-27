@@ -66,10 +66,9 @@ namespace Jokengine
 		CameraHandler *cameraService = new CameraHandler();
 		Game::RegisterCameraService(cameraService);
 		GameObject mainCam =   GameObject("CameraMain");
-		Camera  *mainCamComp=mainCam.AddComponent<Camera>();
-		mainCamComp->frustum=glm::vec2(800,600);
-		Instantiate(mainCam);
-		cameras->RegisterCamera(*mainCamComp);
+		mainCam.AddComponent<Camera>();
+		Camera* camComp=Instantiate(mainCam)->GetComponent<Camera>();
+		cameras->RegisterCamera(*camComp);
 
 		Clock *timeService = new Clock();
 		Game::RegisterTimeService(timeService);

@@ -22,7 +22,6 @@ namespace Jokengine
 	}
 	b2Body* PhysicBody::GetB2body()
 	{
-		Init();
 		return rBody;
 	}
 	void PhysicBody::FixedUpdate()
