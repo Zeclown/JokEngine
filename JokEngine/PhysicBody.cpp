@@ -17,7 +17,7 @@ namespace Jokengine
 	void PhysicBody::Init()
 	{
 		if (!rBody)
-			MakeBody();		
+			MakeBody();
 	}
 	b2Body* PhysicBody::GetB2body()
 	{
