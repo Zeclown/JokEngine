@@ -16,13 +16,28 @@ namespace Jokengine
 	{
 		physicWorld->SetGravity(b2Vec2(gravity.x, gravity.y));
 	}
-	b2Body* Physics::RegisterBody(b2BodyDef bodyDef, GLint mass)
+	b2Body* Physics::RegisterBody(glm::vec2 position,isKinematic,isGravity,rotation,angularDrag,drag,GLint mass)
 	{
-		bodyDef.position =b2Vec2( bodyDef.position.x * Game::GetInstance().WORLD_TO_BOX2D, bodyDef.position.y * Game::GetInstance().WORLD_TO_BOX2D);
+		b2BodyDef bodyDef;
+		bodyDef.position.Set(position.x*Game::GetInstance().WORLD_TO_BOX2D,position.y*Game::GetInstance().WORLD_TO_BOX2D);
+		if (isKinematic)
+			bodyDef.type = b2_kinematicBody;
+		else
+			bodyDef.type = b2_dynamicBody;
+		if (!isGravity)
+		{
+			bodyDef.gravityScale = 0;
+		}
+		else
+		{
+			bodyDef.gravityScale = 1;
+		}
+		bodyDef.angle = rotation;
+		bodyDef.angularDamping = angularDrag;
+		bodyDef.linearDamping = drag;
 		b2Body *body = physicWorld->CreateBody(&bodyDef);
-
 		b2PolygonShape baseFixture;
-		baseFixture.SetAsBox(1,1);
+		baseFixture.SetAsBox(0.1,0.1);
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &baseFixture;
 		boxFixtureDef.density = 1;
@@ -30,13 +45,12 @@ namespace Jokengine
 		boxFixtureDef.filter.maskBits = 0;
 		body->CreateFixture(&boxFixtureDef);
 		return body;
-
 	}
 	b2Fixture* Physics::RegisterFixtureBox(b2Body *body,glm::vec2 size, glm::vec2 offset)
 	{
 		b2PolygonShape baseFixture;
 		baseFixture.SetAsBox(size.x*Game::GetInstance().WORLD_TO_BOX2D, size.y*Game::GetInstance().WORLD_TO_BOX2D);
-		baseFixture.m_centroid.Set(offset.x, offset.y);
+		baseFixture.m_centroid.Set(offset.x*Game::GetInstance().WORLD_TO_BOX2D, offset.y*Game::GetInstance().WORLD_TO_BOX2D);
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &baseFixture;
 		boxFixtureDef.density = 1;	

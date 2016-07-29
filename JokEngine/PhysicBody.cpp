@@ -5,7 +5,7 @@ namespace Jokengine
 {
 	PhysicBody::PhysicBody(GameObject* gameObject)
 		:velocity(glm::vec2(0, 0)), velocityModifier(glm::vec2(1, 1)), freezeRotation(false), kinematic(false)
-		, centerOfMass(glm::vec2(0, 0)), drag(0.5f), angularDrag(0.2f), gravity(true), interpolate(false), mass(1), angularVelocity(0,0), rBody(nullptr), ComponentCloneable(gameObject)
+		, centerOfMass(glm::vec2(0, 0)), drag(0.0f), angularDrag(0.0f), gravity(true), interpolate(false), mass(1), angularVelocity(0,0), rBody(nullptr), ComponentCloneable(gameObject)
 	{
 	}
 	PhysicBody::PhysicBody(PhysicBody const & pb)
@@ -30,13 +30,12 @@ namespace Jokengine
 		lastRot = GetOwner()->rotation;
 		lastPos = GetOwner()->position;
 		GetOwner()->position = glm::vec2(rBody->GetPosition().x,rBody->GetPosition().y)*Game::GetInstance().BOX2D_TO_WORLD;
-		GetOwner()->rotation = glm::degrees(rBody->GetAngle());
+		GetOwner()->rotation = rBody->GetAngle();
 		
 	
 	}
 	void PhysicBody::MakeBody()
-	{
-		b2BodyDef bodyDef;		bodyDef.position.Set(owner->position.x, owner->position.y);		if (kinematic)			bodyDef.type = b2_kinematicBody;		else			bodyDef.type = b2_dynamicBody;		if (!gravity)		{			bodyDef.gravityScale = 0;		}		else		{			bodyDef.gravityScale = 1;		}		bodyDef.angle = glm::radians(GetOwner()->rotation);		bodyDef.angularDamping = angularDrag;		bodyDef.linearDamping = drag;		rBody = Game::GetInstance().GetPhysicsService().RegisterBody(bodyDef, mass);
+	{		rBody = Game::GetInstance().GetPhysicsService().RegisterBody(glm::vec2(owner->position.x, owner->position.y),kinematic,gravity,GetOwner()->rotation,angularDrag,drag, mass);
 	}
 	void PhysicBody::AddForce()
 	{
