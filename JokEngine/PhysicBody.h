@@ -32,6 +32,7 @@ namespace Jokengine
 		virtual void AddForce();
 	protected:
 		virtual void Init();
+		virtual void MakeBody();
 		b2Body* rBody;
 
 	};

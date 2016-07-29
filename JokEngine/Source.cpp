@@ -12,7 +12,8 @@ void main()
 	game.Init();
 	GameObject go = GameObject("Player");
 	ResourceManager::LoadTexture("sprites/awesomeface.png", GL_TRUE, "Player");
-	go.position = glm::vec2(0, 0);
+	ResourceManager::LoadTexture("sprites/ground.png", GL_TRUE, "Ground");
+	go.position = glm::vec2(40, 0);
 	go.size = glm::vec2(40, 40);
 	SpriteDrawable *sd = go.AddComponent<SpriteDrawable>();
 	go.AddComponent<PhysicBody>();
@@ -28,7 +29,7 @@ void main()
 	groundVisual.position = glm::vec2(0,60);
 	groundVisual.size = glm::vec2(80, 4);
 	SpriteDrawable *sd2 = groundVisual.AddComponent<SpriteDrawable>();
-	sd2->sprite = ResourceManager::GetTexture("Player");
+	sd2->sprite = ResourceManager::GetTexture("Ground");
 	sd2->color = glm::vec3(1.0f, 1.0f, 1.0f);
 	game.Instantiate(groundVisual);
 	//test ground

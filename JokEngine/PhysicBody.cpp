@@ -17,11 +17,12 @@ namespace Jokengine
 	void PhysicBody::Init()
 	{
 		if (!rBody)
-		{
-			b2BodyDef bodyDef;			bodyDef.position.Set(owner->position.x*Game::GetInstance().WORLD_TO_BOX2D, owner->position.y*Game::GetInstance().WORLD_TO_BOX2D);			if (kinematic)				bodyDef.type = b2_kinematicBody;			else				bodyDef.type = b2_dynamicBody;			if (!gravity)			{				bodyDef.gravityScale = 0;			}			else			{				bodyDef.gravityScale = 1;			}			bodyDef.angle = glm::radians(GetOwner()->rotation);			bodyDef.angularDamping = angularDrag;			bodyDef.linearDamping = drag;			rBody = Game::GetInstance().GetPhysicsService().RegisterBody(bodyDef, mass);		}
+			MakeBody();		
 	}
 	b2Body* PhysicBody::GetB2body()
 	{
+		if (!rBody)
+			MakeBody();
 		return rBody;
 	}
 	void PhysicBody::FixedUpdate()
@@ -32,6 +33,10 @@ namespace Jokengine
 		GetOwner()->rotation = glm::degrees(rBody->GetAngle());
 		
 	
+	}
+	void PhysicBody::MakeBody()
+	{
+		b2BodyDef bodyDef;		bodyDef.position.Set(owner->position.x, owner->position.y);		if (kinematic)			bodyDef.type = b2_kinematicBody;		else			bodyDef.type = b2_dynamicBody;		if (!gravity)		{			bodyDef.gravityScale = 0;		}		else		{			bodyDef.gravityScale = 1;		}		bodyDef.angle = glm::radians(GetOwner()->rotation);		bodyDef.angularDamping = angularDrag;		bodyDef.linearDamping = drag;		rBody = Game::GetInstance().GetPhysicsService().RegisterBody(bodyDef, mass);
 	}
 	void PhysicBody::AddForce()
 	{
