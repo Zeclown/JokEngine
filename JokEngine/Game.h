@@ -47,6 +47,10 @@ namespace Jokengine
 		void RegisterTimeService(TimeService *service);
 		void RegisterPhysicsService(PhysicsService *service);
 
+		void EnablePhysicsDebug(GLboolean drawColliders, GLboolean logCollisions);
+
+
+
 		GameObject* FindByID(GLint objectID);
 		SpriteRenderingService& GetSpriteRendererService();
 		CameraService& GetCameraService();

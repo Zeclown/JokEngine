@@ -56,26 +56,37 @@ namespace Jokengine
 
 		ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
 
-		//Service Registration
-		SpriteRenderer *renderingService = new SpriteRenderer(ResourceManager::GetShader("sprite"));
-		Game::RegisterSpriteRendererService(renderingService);
+		//input callbacks setup
 
 		glfwSetKeyCallback(window, InputReader::KeyCallback);
 		glfwSetMouseButtonCallback(window, InputReader::MouseButtonCallback);
 
-		CameraHandler *cameraService = new CameraHandler();
-		Game::RegisterCameraService(cameraService);
+		//Service Registration
+		if (!renderer)//if the rendering service is not initialised yet
+		{
+			SpriteRenderer *renderingService = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+			Game::RegisterSpriteRendererService(renderingService);
+		}
+		if (!cameras)//if the camera service is not initialised yet
+		{
+			CameraHandler *cameraService = new CameraHandler();
+			Game::RegisterCameraService(cameraService);
+		}
+		if (!time)//if the time service is not initialised yet
+		{
+			Clock *timeService = new Clock();
+			Game::RegisterTimeService(timeService);
+		}
+		if (!physics)//if the physic service is not initialised yet
+		{
+			Physics *physicsService = new Physics();
+			Game::RegisterPhysicsService(physicsService);
+		}
+		//Instantiate base camera
 		GameObject mainCam =   GameObject("CameraMain");
 		mainCam.AddComponent<Camera>();
 		Camera* camComp=Instantiate(mainCam)->GetComponent<Camera>();
 		cameras->RegisterCamera(*camComp);
-
-		Clock *timeService = new Clock();
-		Game::RegisterTimeService(timeService);
-
-		Physics *physicsService = new Physics();
-		Game::RegisterPhysicsService(physicsService);
-
 
 	}
 	void Game::Loop()
@@ -92,9 +103,12 @@ namespace Jokengine
 			while (fixedUpdateTimer>=fixedRefreshTime)
 			{
 				FixedUpdate();
+				fixedSignal();
 				fixedUpdateTimer -= fixedRefreshTime;
+
 			}
 			Update();
+			updateSignal();
 			glm::mat4 projection = cameras->GetMainCamera()->GetViewMatrix();
 			ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -127,6 +141,10 @@ namespace Jokengine
 		if (cameras)
 			delete cameras;
 		cameras = service;
+	}
+	void Game::EnablePhysicsDebug(GLboolean drawColliders, GLboolean logCollisions)
+	{
+
 	}
 	SpriteRenderingService& Game::GetSpriteRendererService()
 	{

@@ -152,9 +152,11 @@
     <ClInclude Include="PhysicLayer.h" />
     <ClInclude Include="PhysicBody.h" />
     <ClInclude Include="Physics.h" />
+    <ClInclude Include="PhysicsDebug.h" />
     <ClInclude Include="PhysicsService.h" />
     <ClInclude Include="Resource_Manager.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="SpawnCube.h" />
     <ClInclude Include="SpriteDrawable.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="SpriteRenderingService.h" />
@@ -162,6 +164,7 @@
     <ClInclude Include="TimeService.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraHandler.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
@@ -176,6 +179,7 @@
     <ClCompile Include="PhysicLayer.cpp" />
     <ClCompile Include="PhysicBody.cpp" />
     <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="PhysicsDebug.cpp" />
     <ClCompile Include="Resource_Manager.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Source.cpp" />

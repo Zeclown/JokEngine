@@ -39,6 +39,10 @@ namespace Jokengine
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 	}
+	void SpriteRenderer::DrawSquare(glm::vec2 position,glm::vec2 size,GLfloat rotate,glm::vec3 color)
+	{
+		DrawSprite(ResourceManager::GetTexture(""), position, size, rotate, color);
+	}
 	void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec2 size, GLfloat rotate, glm::vec3 color)
 	{
 		this->shader.Use();
