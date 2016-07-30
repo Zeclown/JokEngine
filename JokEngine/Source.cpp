@@ -35,9 +35,9 @@ void main()
 	game.Instantiate(groundVisual);
 	//test ground
 	b2BodyDef groundDef;
-	groundDef.position.Set(0,4);
+	groundDef.position.Set(0,0);
 	groundDef.type = b2_staticBody;
-	b2Body* body = game.GetPhysicsService().RegisterBody(groundDef, 1);
+	b2Body* body = game.GetPhysicsService().RegisterBody(glm::vec2(0, 60),true,false,0,0,0,1);
 	game.GetPhysicsService().RegisterFixtureEdge(body, glm::vec2(-40, 60), glm::vec2(40, 60));
 
 

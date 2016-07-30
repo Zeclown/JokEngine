@@ -1,16 +1,17 @@
 #include "Physics.h"
 #include "Box2D\Dynamics\b2Body.h"
 #include "Game.h"
+#include <math.h>
 namespace Jokengine
 {
 	Physics::Physics()
-		:physicWorld(new b2World(b2Vec2(0,0.981))),velocityIteration(7),positionIteration(3),layerCount(1)
+		:physicWorld(new b2World(b2Vec2(0, 0.981))), velocityIteration(7), positionIteration(3), layerCount(1), layers({})
 	{
 	    layers[0]=PhysicLayer();
-		layers[0].name="default"
+		layers[0].name = "default";
 		for(int i=1;i<16;i++)
 		{
-			layers[i]=PhysicLayer(math.pow(2,i));
+			layers[i]=PhysicLayer(pow(2,i));
 		}
 	}
 	glm::vec2 Physics::GetGravity()
@@ -21,7 +22,7 @@ namespace Jokengine
 	{
 		physicWorld->SetGravity(b2Vec2(gravity.x, gravity.y));
 	}
-	b2Body* Physics::RegisterBody(glm::vec2 position,isKinematic,isGravity,rotation,angularDrag,drag,GLint mass)
+	b2Body* Physics::RegisterBody(glm::vec2 position,GLboolean isKinematic, GLboolean isGravity,GLfloat rotation, GLfloat angularDrag, GLfloat drag,GLint mass)
 	{
 		b2BodyDef bodyDef;
 		bodyDef.position.Set(position.x*Game::GetInstance().WORLD_TO_BOX2D,position.y*Game::GetInstance().WORLD_TO_BOX2D);
@@ -51,7 +52,7 @@ namespace Jokengine
 		body->CreateFixture(&boxFixtureDef);
 		return body;
 	}
-	b2Fixture* Physics::RegisterFixtureBox(b2Body *body,glm::vec2 size, glm::vec2 offset,string layerName="default")
+	b2Fixture* Physics::RegisterFixtureBox(b2Body *body,glm::vec2 size, glm::vec2 offset,std::string layerName)
 	{
 		b2PolygonShape baseFixture;
 		baseFixture.SetAsBox(size.x*Game::GetInstance().WORLD_TO_BOX2D, size.y*Game::GetInstance().WORLD_TO_BOX2D);
@@ -59,11 +60,11 @@ namespace Jokengine
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &baseFixture;
 		boxFixtureDef.density = 1;	
-		boxFixtureDef.filter.categoryBits=Game::GetPhysicServices().GetCategoryBits(layerName);
-		boxFixtureDef.filter.maskBits=Game::GetPhysicServices().GetMaskBits(layerName);
+		boxFixtureDef.filter.categoryBits=Game::GetInstance().GetPhysicsService().GetCategoryBits(layerName);
+		boxFixtureDef.filter.maskBits=Game::GetInstance().GetPhysicsService().GetMaskBits(layerName);
 		return body->CreateFixture(&boxFixtureDef);
 	}
-	b2Fixture* Physics::RegisterFixtureCircle(b2Body *body, GLfloat radius, glm::vec2 offset,string layerName="default")
+	b2Fixture* Physics::RegisterFixtureCircle(b2Body *body, GLfloat radius, glm::vec2 offset,std::string layerName)
 	{
 		b2CircleShape baseFixture;
 		baseFixture.m_radius=radius*Game::GetInstance().WORLD_TO_BOX2D;
@@ -71,11 +72,11 @@ namespace Jokengine
 		b2FixtureDef circleFixtureDef;
 		circleFixtureDef.shape = &baseFixture;
 		circleFixtureDef.density = 1;
-		circleFixtureDef.filter.categoryBits=Game::GetPhysicServices().GetCategoryBits(layerName);
-		circleFixtureDef.filter.maskBits=Game::GetPhysicServices().GetMaskBits(layerName);
+		circleFixtureDef.filter.categoryBits= Game::GetInstance().GetPhysicsService().GetCategoryBits(layerName);
+		circleFixtureDef.filter.maskBits=Game::GetInstance().GetPhysicsService().GetMaskBits(layerName);
 		return body->CreateFixture(&circleFixtureDef);
 	}
-	b2Fixture* Physics::RegisterFixtureEdge(b2Body *body, glm::vec2 pointA, glm::vec2 pointB,string layerName="default")
+	b2Fixture* Physics::RegisterFixtureEdge(b2Body *body, glm::vec2 pointA, glm::vec2 pointB,std::string layerName)
 	{
 
 		b2EdgeShape es;
@@ -85,45 +86,59 @@ namespace Jokengine
 		edgeFixtureDef.density = 1;
 		return body->CreateFixture(&edgeFixtureDef);
 	}
-	void Physics::SetMaskBits(string layerName,string otherLayer,GlBoolean isColliding)
+	void Physics::SetMaskBits(std::string layerName,std::string otherLayer,GLboolean isColliding)
 	{
-		vector<string> vec;
-		vec.add(otherLayer);
-		SetMaskBits(layerName,vec,isColliding);
 		
-	}
-	void Physics::SetMaskBits(string layerName,vector<string> otherLayers,GlBoolean isColliding)
-	{
-		auto iter=std::find(layers.begin(), layers.end(), layers[i].name)
-		if(iter!=layers.end())
+		auto iter1 = std::find_if(layers.begin(), layers.end(), [&layerName](const PhysicLayer& obj) {return obj.name == layerName; });
+		auto iter2 = std::find_if(layers.begin(), layers.end(), [&otherLayer](const PhysicLayer& obj) {return obj.name == otherLayer; });
+		if (iter1 != layers.end() && iter2 != layers.end())
 		{
-			mask|=GetMaskBits(otherLayers,isColliding)	
+			if (isColliding)
+			{
+				iter1->maskBits |= iter2->categoryBits;
+				iter2->maskBits |= iter1->categoryBits;
+			}
+			else
+			{
+				iter1->maskBits &= ~(iter2->categoryBits);
+				iter2->maskBits &= ~(iter1->categoryBits);
+			}
 		}
-		if(isColliding)
-			iter->maskBits|=mask;
-		else
-			iter->maskBits&=mask;
+			
+
 	}
-	void Physics::RegisterPhysicLayer(string layerName,uint16 maskBits=-1)
+	uint16 Physics::GetCategoryBits(std::string layerName)
+	{
+		auto iter = std::find_if(layers.begin(), layers.end(), [&layerName](const PhysicLayer& obj) {return obj.name == layerName; });
+		return iter->categoryBits;
+	}
+	void Physics::SetMaskBits(std::string layerName,std::vector<std::string> otherLayers,GLboolean isColliding)
+	{
+		for (int i = 0; i < otherLayers.size(); i++)
+		{
+			SetMaskBits(layerName,otherLayers[i],isColliding);
+		}
+	}
+	void Physics::RegisterPhysicLayer(std::string layerName,uint16 maskBits)
 	{
 		layers[layerCount].maskBits=maskBits;
 		layers[layerCount++].name=layerName;
 	}
-	uint16 GetMaskBits(string layerName,GlBoolean isColliding)
+	uint16 Physics::GetMaskBits(std::string layerName,GLboolean isColliding)
 	{
 		uint16 mask=0;
-		for(int i =0 ;i<layers.size();++i)
+		for (PhysicLayer &layer : layers)
 		{
-			if(layers[i].name==layerName)
+			if(layer.name==layerName)
 			{
-				mask|=layers[i].maskBits;
+				mask|= layer.maskBits;
 			}
 		}
 		if(isColliding)
 			return mask;
 		return ~mask;
 	}
-	uint16 GetMaskBits(vector<string> layerNames,GlBoolean isColliding)
+	uint16 Physics::GetMaskBits(std::vector<std::string> layerNames,GLboolean isColliding)
 	{
 		uint16 mask=0;
 		for(int i =0 ;i<layerNames.size();++i)

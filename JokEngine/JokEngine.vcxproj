@@ -84,7 +84,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ShowIncludes>true</ShowIncludes>
+      <ShowIncludes>false</ShowIncludes>
       <AdditionalIncludeDirectories>./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -110,7 +110,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ShowIncludes>true</ShowIncludes>
+      <ShowIncludes>false</ShowIncludes>
       <AdditionalIncludeDirectories>./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -149,6 +149,7 @@
     <ClInclude Include="GameRoom.h" />
     <ClInclude Include="InputReader.h" />
     <ClInclude Include="JObject.h" />
+    <ClInclude Include="PhysicLayer.h" />
     <ClInclude Include="PhysicBody.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="PhysicsService.h" />
@@ -172,6 +173,7 @@
     <ClCompile Include="GameRoom.cpp" />
     <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="JObject.cpp" />
+    <ClCompile Include="PhysicLayer.cpp" />
     <ClCompile Include="PhysicBody.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Resource_Manager.cpp" />
