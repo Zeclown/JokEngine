@@ -27,7 +27,10 @@ namespace Jokengine
 	}
 	GameObject::~GameObject()
 	{
-		
+	for(int i =0;i<components.size();++i)
+		delete components[i];
+	for(int i=0;i<children.size();++i)
+		delete children[i];
 	}
 	void GameObject::SetActive(GLboolean activeState)
 	{
