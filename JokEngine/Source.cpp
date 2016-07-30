@@ -3,6 +3,7 @@
 #include "SpriteDrawable.h"
 #include "PhysicBody.h"
 #include "CircleCollider.h"
+#include <math.h>
 using namespace Jokengine;
 
 void main()
@@ -13,7 +14,7 @@ void main()
 	GameObject go = GameObject("Player");
 	ResourceManager::LoadTexture("sprites/awesomeface.png", GL_TRUE, "Player");
 	ResourceManager::LoadTexture("sprites/ground.png", GL_TRUE, "Ground");
-	go.position = glm::vec2(40, 0);
+	go.position = glm::vec2(60, 0);
 	go.size = glm::vec2(40, 40);
 	SpriteDrawable *sd = go.AddComponent<SpriteDrawable>();
 	go.AddComponent<PhysicBody>();

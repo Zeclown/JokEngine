@@ -12,7 +12,7 @@ namespace Jokengine
 {
 	Game *Game::instance = 0;
 	Game::Game(GLuint width, GLuint height, const std::string &gameName)
-		: width(width), height(height), gameroom(GameRoom::instance()), gameName(gameName), fixedRefreshTime(0.03), fixedUpdateTimer(0),BOX2D_TO_WORLD(200),WORLD_TO_BOX2D(0.02)
+		: width(width), height(height), gameroom(GameRoom::instance()), gameName(gameName), fixedRefreshTime(0.03), fixedUpdateTimer(0),BOX2D_TO_WORLD(130),WORLD_TO_BOX2D(0.013)
 	{
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
