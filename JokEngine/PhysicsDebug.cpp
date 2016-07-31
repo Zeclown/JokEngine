@@ -15,22 +15,22 @@ namespace Jokengine
 	{
 		phys->SetGravity(gravity);
 	}
-	b2Body* PhysicsDebug::RegisterBody(glm::vec2 position, GLboolean isKinematic, GLboolean isGravity, GLfloat rotation, GLfloat angularDrag, GLfloat drag, GLint mass)
+	b2Body* PhysicsDebug::RegisterBody(PhysicBody* pb,glm::vec2 position, GLboolean isKinematic, GLboolean isGravity, GLfloat rotation, GLfloat angularDrag, GLfloat drag, GLint mass)
 	{
-		return phys->RegisterBody(position, isKinematic, isGravity, rotation, angularDrag, drag, mass);
+		return phys->RegisterBody(pb,position, isKinematic, isGravity, rotation, angularDrag, drag, mass);
 	}
-	b2Fixture* PhysicsDebug::RegisterFixtureBox(b2Body *body, glm::vec2 size, glm::vec2 offset, std::string layerName)
+	b2Fixture* PhysicsDebug::RegisterFixtureBox(b2Body *body,Collider* col, glm::vec2 size, glm::vec2 offset, std::string layerName)
 	{
-		return(phys->RegisterFixtureBox(body, size, offset, layerName));
+		return(phys->RegisterFixtureBox(body, col, size, offset, layerName));
 	}
-	b2Fixture* PhysicsDebug::RegisterFixtureCircle(b2Body *body, GLfloat radius, glm::vec2 offset, std::string layerName)
+	b2Fixture* PhysicsDebug::RegisterFixtureCircle(b2Body *body, Collider* col, GLfloat radius, glm::vec2 offset, std::string layerName)
 	{
-		return phys->RegisterFixtureCircle(body,  radius,  offset,  layerName);
+		return phys->RegisterFixtureCircle(body, col,  radius,  offset,  layerName);
 	}
-	b2Fixture* PhysicsDebug::RegisterFixtureEdge(b2Body *body, glm::vec2 pointA, glm::vec2 pointB, std::string layerName)
+	b2Fixture* PhysicsDebug::RegisterFixtureEdge(b2Body *body, Collider* col, glm::vec2 pointA, glm::vec2 pointB, std::string layerName)
 	{
 
-		return phys->RegisterFixtureEdge(body, pointA, pointB, layerName);
+		return phys->RegisterFixtureEdge(body, col,pointA, pointB, layerName);
 	}
 	void PhysicsDebug::SetMaskBits(std::string layerName, std::string otherLayer, GLboolean isColliding)
 	{

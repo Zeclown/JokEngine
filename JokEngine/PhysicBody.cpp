@@ -35,7 +35,7 @@ namespace Jokengine
 	
 	}
 	void PhysicBody::MakeBody()
-	{		rBody = Game::GetInstance().GetPhysicsService().RegisterBody(glm::vec2(owner->position.x, owner->position.y),kinematic,gravity,GetOwner()->rotation,angularDrag,drag, mass);
+	{		rBody = Game::GetInstance().GetPhysicsService().RegisterBody(this,glm::vec2(owner->position.x, owner->position.y),kinematic,gravity,GetOwner()->rotation,angularDrag,drag, mass);
 	}
 	void PhysicBody::AddForce()
 	{

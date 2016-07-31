@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <memory>
+#include "Collision.h"
 #include <boost\optional.hpp>
 namespace Jokengine
 {
@@ -86,6 +87,9 @@ namespace Jokengine
 		glm::vec2 getWorldPosition(GLboolean dirty=false);
 		//dirty flag that check if world position needs to be recalculated
 		GLboolean flagWorldPos;
+		//signals
+		boost::signals2::signal<void(Collision)> OnCollisionEnter;
+		boost::signals2::signal<void(Collision)> OnCollisionExit;
 	protected:
 		//All the components owned by the object
 		std::vector<Component*> components;

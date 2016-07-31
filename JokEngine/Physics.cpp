@@ -2,17 +2,24 @@
 #include "Box2D\Dynamics\b2Body.h"
 #include "Game.h"
 #include <math.h>
+
 namespace Jokengine
 {
 	Physics::Physics()
-		:physicWorld(new b2World(b2Vec2(0, 0.981))), velocityIteration(7), positionIteration(3), layerCount(1), layers({})
+		:physicWorld(new b2World(b2Vec2(0, 0.981))), velocityIteration(7), positionIteration(3), layerCount(1), layers({}), contactListener(new ContactListener)
 	{
+		physicWorld->SetContactListener(contactListener);
 	    layers[0]=PhysicLayer();
 		layers[0].name = "default";
 		for(int i=1;i<16;i++)
 		{
 			layers[i]=PhysicLayer(pow(2,i));
 		}
+	}
+	Physics::~Physics()
+	{
+		delete contactListener;
+		delete physicWorld;
 	}
 	glm::vec2 Physics::GetGravity()
 	{
@@ -22,7 +29,7 @@ namespace Jokengine
 	{
 		physicWorld->SetGravity(b2Vec2(gravity.x, gravity.y));
 	}
-	b2Body* Physics::RegisterBody(glm::vec2 position,GLboolean isKinematic, GLboolean isGravity,GLfloat rotation, GLfloat angularDrag, GLfloat drag,GLint mass)
+	b2Body* Physics::RegisterBody(PhysicBody *pb, glm::vec2 position,GLboolean isKinematic, GLboolean isGravity,GLfloat rotation, GLfloat angularDrag, GLfloat drag,GLint mass)
 	{
 		b2BodyDef bodyDef;
 		bodyDef.position.Set(position.x*Game::GetInstance().WORLD_TO_BOX2D,position.y*Game::GetInstance().WORLD_TO_BOX2D);
@@ -42,6 +49,7 @@ namespace Jokengine
 		bodyDef.angularDamping = angularDrag;
 		bodyDef.linearDamping = drag;
 		b2Body *body = physicWorld->CreateBody(&bodyDef);
+		body->SetUserData(pb);
 		b2PolygonShape baseFixture;
 		baseFixture.SetAsBox(0.1,0.1);
 		b2FixtureDef boxFixtureDef;
@@ -52,7 +60,7 @@ namespace Jokengine
 		body->CreateFixture(&boxFixtureDef);
 		return body;
 	}
-	b2Fixture* Physics::RegisterFixtureBox(b2Body *body,glm::vec2 size, glm::vec2 offset,std::string layerName)
+	b2Fixture* Physics::RegisterFixtureBox(b2Body *body,Collider *col,glm::vec2 size, glm::vec2 offset,std::string layerName)
 	{
 		b2PolygonShape baseFixture;
 		baseFixture.SetAsBox(size.x/2*Game::GetInstance().WORLD_TO_BOX2D, size.y/2*Game::GetInstance().WORLD_TO_BOX2D);
@@ -62,9 +70,11 @@ namespace Jokengine
 		boxFixtureDef.density = 1;	
 		boxFixtureDef.filter.categoryBits=Game::GetInstance().GetPhysicsService().GetCategoryBits(layerName);
 		boxFixtureDef.filter.maskBits=Game::GetInstance().GetPhysicsService().GetMaskBits(layerName);
-		return body->CreateFixture(&boxFixtureDef);
+		b2Fixture* fixture = body->CreateFixture(&boxFixtureDef);
+		fixture->SetUserData(col);
+		return fixture;
 	}
-	b2Fixture* Physics::RegisterFixtureCircle(b2Body *body, GLfloat radius, glm::vec2 offset,std::string layerName)
+	b2Fixture* Physics::RegisterFixtureCircle(b2Body *body, Collider *col, GLfloat radius, glm::vec2 offset,std::string layerName)
 	{
 		b2CircleShape baseFixture;
 		baseFixture.m_radius=radius*Game::GetInstance().WORLD_TO_BOX2D;
@@ -74,9 +84,11 @@ namespace Jokengine
 		circleFixtureDef.density = 1;
 		circleFixtureDef.filter.categoryBits= Game::GetInstance().GetPhysicsService().GetCategoryBits(layerName);
 		circleFixtureDef.filter.maskBits=Game::GetInstance().GetPhysicsService().GetMaskBits(layerName);
-		return body->CreateFixture(&circleFixtureDef);
+		b2Fixture* fixture = body->CreateFixture(&circleFixtureDef);
+		fixture->SetUserData(col);
+		return fixture;
 	}
-	b2Fixture* Physics::RegisterFixtureEdge(b2Body *body, glm::vec2 pointA, glm::vec2 pointB,std::string layerName)
+	b2Fixture* Physics::RegisterFixtureEdge(b2Body *body, Collider *col, glm::vec2 pointA, glm::vec2 pointB,std::string layerName)
 	{
 
 		b2EdgeShape es;
@@ -84,7 +96,9 @@ namespace Jokengine
 		b2FixtureDef edgeFixtureDef;
 		edgeFixtureDef.shape = &es;
 		edgeFixtureDef.density = 1;
-		return body->CreateFixture(&edgeFixtureDef);
+		b2Fixture* fixture = body->CreateFixture(&edgeFixtureDef);
+		fixture->SetUserData(col);
+		return fixture;
 	}
 	void Physics::SetMaskBits(std::string layerName,std::string otherLayer,GLboolean isColliding)
 	{

@@ -5,18 +5,22 @@
 #include "Box2D\Dynamics\b2World.h"
 #include "PhysicLayer.h"
 #include <array>
+#include "Collider.h"
+#include "PhysicBody.h"
+#include "ContactListener.h"
 namespace Jokengine
 {
 	class Physics : public PhysicsService
 	{
 	public:
 		Physics();
+		~Physics();
 		glm::vec2 GetGravity();
 		void SetGravity(glm::vec2 gravity);
-		b2Body* RegisterBody(glm::vec2 position,GLboolean isKinematic,GLboolean isGravity,GLfloat rotation,GLfloat angularDrag,GLfloat drag,GLint mass);
-		b2Fixture* RegisterFixtureBox(b2Body *body, glm::vec2 size = glm::vec2(1, 1), glm::vec2 offset = glm::vec2(0, 0), std::string layerName="default");
-		b2Fixture* RegisterFixtureCircle(b2Body *body, GLfloat radius = 1, glm::vec2 offset = glm::vec2(0, 0), std::string layerName = "default");
-		b2Fixture* RegisterFixtureEdge(b2Body *body, glm::vec2 pointA, glm::vec2 pointB, std::string layerName = "default");
+		b2Body* RegisterBody(PhysicBody *pb,glm::vec2 position,GLboolean isKinematic,GLboolean isGravity,GLfloat rotation,GLfloat angularDrag,GLfloat drag,GLint mass);
+		b2Fixture* RegisterFixtureBox(b2Body *body,Collider* col,glm::vec2 size = glm::vec2(1, 1), glm::vec2 offset = glm::vec2(0, 0), std::string layerName="default");
+		b2Fixture* RegisterFixtureCircle(b2Body *body, Collider* col, GLfloat radius = 1, glm::vec2 offset = glm::vec2(0, 0), std::string layerName = "default");
+		b2Fixture* RegisterFixtureEdge(b2Body *body, Collider* col, glm::vec2 pointA, glm::vec2 pointB, std::string layerName = "default");
 		void SetMaskBits(std::string layerName, std::vector<std::string> otherLayers, GLboolean isColliding=true);
 		void SetMaskBits(std::string layerName, std::string otherLayer, GLboolean isColliding=true);
 		void RegisterPhysicLayer(std::string layerName,uint16 maskBits=-1);
@@ -30,6 +34,7 @@ namespace Jokengine
 		int layerCount;
 		std::array<PhysicLayer,16> layers;
 		b2World* physicWorld;
+		ContactListener* contactListener;
 
 
 
