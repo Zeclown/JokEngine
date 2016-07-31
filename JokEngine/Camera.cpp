@@ -5,7 +5,7 @@
 namespace Jokengine
 {
 	Camera::Camera(GameObject* gameObject)
-		:frustum(glm::vec2(900,400)), ComponentCloneable(gameObject)
+		:frustum(glm::vec2(200.0f,200.0f)), ComponentCloneable(gameObject)
 	{
 
 	}

@@ -32,13 +32,10 @@ void main()
 	SpriteDrawable *sd2 = groundVisual.AddComponent<SpriteDrawable>();
 	sd2->sprite = ResourceManager::GetTexture("Ground");
 	sd2->color = glm::vec3(1.0f, 1.0f, 1.0f);
+	groundVisual.AddComponent<PhysicBody>()->kinematic=true;
+	groundVisual.AddComponent<BoxCollider>();
 	game.Instantiate(groundVisual);
-	//test ground
-	b2BodyDef groundDef;
-	groundDef.position.Set(0,0);
-	groundDef.type = b2_staticBody;
-	b2Body* body = game.GetPhysicsService().RegisterBody(glm::vec2(0, 60),true,false,0,0,0,1);
-	game.GetPhysicsService().RegisterFixtureEdge(body, glm::vec2(-40, 0), glm::vec2(40, 0));
+
 
 
 	//Game::GetPhysicsService().SetGravity(glm::vec2(0, 30));

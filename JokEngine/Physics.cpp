@@ -55,7 +55,7 @@ namespace Jokengine
 	b2Fixture* Physics::RegisterFixtureBox(b2Body *body,glm::vec2 size, glm::vec2 offset,std::string layerName)
 	{
 		b2PolygonShape baseFixture;
-		baseFixture.SetAsBox(size.x*Game::GetInstance().WORLD_TO_BOX2D, size.y*Game::GetInstance().WORLD_TO_BOX2D);
+		baseFixture.SetAsBox(size.x/2*Game::GetInstance().WORLD_TO_BOX2D, size.y/2*Game::GetInstance().WORLD_TO_BOX2D);
 		baseFixture.m_centroid.Set(offset.x*Game::GetInstance().WORLD_TO_BOX2D, offset.y*Game::GetInstance().WORLD_TO_BOX2D);
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &baseFixture;
