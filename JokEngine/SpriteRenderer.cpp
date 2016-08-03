@@ -43,8 +43,9 @@ namespace Jokengine
 	{
 		DrawSprite(ResourceManager::GetTexture(""), position, size, rotate, color);
 	}
-	void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec2 size, GLfloat rotate, glm::vec3 color)
+	void SpriteRenderer::DrawSprite(Sprite &sprite, glm::vec2 position, glm::vec2 size, GLfloat rotate, glm::vec3 color)
 	{
+		Texture2D &texture=sprite.texture;
 		this->shader.Use();
 		glm::mat4 model;
 		model = glm::translate(model, glm::vec3(position, 0.0f));
@@ -54,6 +55,8 @@ namespace Jokengine
 		this->shader.SetMatrix4("model", model);
 		// textured quad
 		this->shader.SetVector3f("spriteColor", color);
+		this->shader.SetVector2f("frame",sprite.frame);
+		this->shader.SetVector2f("frameSize",sprite.size);
 		glActiveTexture(GL_TEXTURE0);
 		texture.Bind();
 

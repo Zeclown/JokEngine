@@ -6,9 +6,10 @@ class Sprite
 	{
 		public:
 			Sprite(Texture2D *texture);
-			Sprite(Texture2D *texture, std::array<glm::vec2,6> textureCoords);
+			Sprite(Texture2D *texture, glm::vec2 size,GLint frame);
 			Texture2D *texture;
-			std::array<glm::vec2,6> textureCoords;
+			GLint frame;
+			glm::vec2 size;
 	}
 }
 
