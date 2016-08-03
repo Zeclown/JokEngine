@@ -163,6 +163,14 @@ namespace Jokengine
 			return mask;
 		return ~mask;
 	}
+	GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance, uint16 physicMask)
+	{
+		return true;
+	}
+	void Physics::Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &output, GLfloat maxDistance, uint16 physicMask)
+	{
+		
+	}
 	void Physics::FixedUpdate()
 	{
 		physicWorld->Step(Game::GetInstance().fixedRefreshTime,velocityIteration,positionIteration);

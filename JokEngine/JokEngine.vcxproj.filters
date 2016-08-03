@@ -102,6 +102,12 @@
     <ClInclude Include="ContactListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RaycastHit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RaycastListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -174,6 +180,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RaycastHit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
