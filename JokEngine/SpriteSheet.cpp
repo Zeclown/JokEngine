@@ -14,7 +14,13 @@ namespace Jokengine
 			for(int j=0;j<columns;j++)
 			{
 				std::array<glm::vec2,6> textCoords;
-				textCoord[0]=glm::vec2();
+				textCoord[0]=glm::vec2(columns*incrementCol, 1.0f-rows*incrementRow);
+				textCoord[1]=glm::vec2(incrementCol+incrementCol*columns, 1.0f-(incrementRow+incrementRow*rows));
+				textCoord[2]=glm::vec2(columns*incrementCol, 1.0f-(incrementRow+incrementRow*rows));
+				textCoord[3]=glm::vec2(columns*incrementCol, 1.0f-rows*incrementRow);
+				textCoord[4]=glm::vec2(incrementCol+incrementCol*columns, 1.0f-rows*incrementRow));
+				textCoord[5]=glm::vec2(incrementCol+incrementCol*columns, 1.0f-(incrementRow+incrementRow*rows));
+				sprites.push_back(Sprite(texture,textCoords));
 			}
 		
 	}
