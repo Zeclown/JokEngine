@@ -4,11 +4,17 @@
 
 namespace Jokengine
 {
-	class RaycastHit
+	class RaycastHit : public b2RayCastCallback
 	{
-		RaycastHit(Collider* collider, glm::vec2 point);
-		Collider *collider;
-		glm::vec2 point;
+		public:
+			
+			Collider *collider;
+			glm::vec2 point;
+			glm::vec2 normal;
+			explicit operator bool()
+			{
+				return collider!=NULL_PTR;
+			}
 	};
 }
 #endif // !RAYCAST_HIT_H
