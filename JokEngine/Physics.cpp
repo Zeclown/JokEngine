@@ -60,21 +60,22 @@ namespace Jokengine
 		body->CreateFixture(&boxFixtureDef);
 		return body;
 	}
-	b2Fixture* Physics::RegisterFixtureBox(b2Body *body,Collider *col,glm::vec2 size, glm::vec2 offset,std::string layerName)
+	b2Fixture* Physics::RegisterFixtureBox(b2Body *body,Collider *col,glm::vec2 size,GLboolean sensor, glm::vec2 offset,std::string layerName)
 	{
 		b2PolygonShape baseFixture;
 		baseFixture.SetAsBox(size.x/2*Game::GetInstance().WORLD_TO_BOX2D, size.y/2*Game::GetInstance().WORLD_TO_BOX2D);
 		baseFixture.m_centroid.Set(offset.x*Game::GetInstance().WORLD_TO_BOX2D, offset.y*Game::GetInstance().WORLD_TO_BOX2D);
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &baseFixture;
-		boxFixtureDef.density = 1;	
+		boxFixtureDef.density = 1;
+		boxFixtureDef.isSensor = sensor;
 		boxFixtureDef.filter.categoryBits=Game::GetInstance().GetPhysicsService().GetCategoryBits(layerName);
 		boxFixtureDef.filter.maskBits=Game::GetInstance().GetPhysicsService().GetMaskBits(layerName);
 		b2Fixture* fixture = body->CreateFixture(&boxFixtureDef);
 		fixture->SetUserData(col);
 		return fixture;
 	}
-	b2Fixture* Physics::RegisterFixtureCircle(b2Body *body, Collider *col, GLfloat radius, glm::vec2 offset,std::string layerName)
+	b2Fixture* Physics::RegisterFixtureCircle(b2Body *body, Collider *col, GLfloat radius, GLboolean sensor,glm::vec2 offset,std::string layerName)
 	{
 		b2CircleShape baseFixture;
 		baseFixture.m_radius=radius*Game::GetInstance().WORLD_TO_BOX2D;
@@ -82,6 +83,7 @@ namespace Jokengine
 		b2FixtureDef circleFixtureDef;
 		circleFixtureDef.shape = &baseFixture;
 		circleFixtureDef.density = 1;
+		circleFixtureDef.isSensor = sensor;
 		circleFixtureDef.filter.categoryBits= Game::GetInstance().GetPhysicsService().GetCategoryBits(layerName);
 		circleFixtureDef.filter.maskBits=Game::GetInstance().GetPhysicsService().GetMaskBits(layerName);
 		b2Fixture* fixture = body->CreateFixture(&circleFixtureDef);

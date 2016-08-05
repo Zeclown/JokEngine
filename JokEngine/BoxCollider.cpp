@@ -14,7 +14,7 @@ namespace Jokengine
 		PhysicBody *ptr = owner->GetComponent<PhysicBody>();
 		if (!ptr)
 			ptr = owner->AddComponent<PhysicBody>();
-		fixture = Game::GetInstance().GetPhysicsService().RegisterFixtureBox(ptr->GetB2body(),this,size,offset);
+		fixture = Game::GetInstance().GetPhysicsService().RegisterFixtureBox(ptr->GetB2body(),this,size,offset,isSolid);
 	}
 
 }

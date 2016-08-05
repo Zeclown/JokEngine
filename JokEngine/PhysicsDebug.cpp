@@ -19,13 +19,13 @@ namespace Jokengine
 	{
 		return phys->RegisterBody(pb,position, isKinematic, isGravity, rotation, angularDrag, drag, mass);
 	}
-	b2Fixture* PhysicsDebug::RegisterFixtureBox(b2Body *body,Collider* col, glm::vec2 size, glm::vec2 offset, std::string layerName)
+	b2Fixture* PhysicsDebug::RegisterFixtureBox(b2Body *body,Collider* col, glm::vec2 size,GLboolean sensor, glm::vec2 offset, std::string layerName)
 	{
-		return(phys->RegisterFixtureBox(body, col, size, offset, layerName));
+		return(phys->RegisterFixtureBox(body, col, size,sensor, offset, layerName));
 	}
-	b2Fixture* PhysicsDebug::RegisterFixtureCircle(b2Body *body, Collider* col, GLfloat radius, glm::vec2 offset, std::string layerName)
+	b2Fixture* PhysicsDebug::RegisterFixtureCircle(b2Body *body, Collider* col, GLfloat radius,GLboolean sensor, glm::vec2 offset, std::string layerName)
 	{
-		return phys->RegisterFixtureCircle(body, col,  radius,  offset,  layerName);
+		return phys->RegisterFixtureCircle(body, col,  radius, sensor, offset,  layerName);
 	}
 	b2Fixture* PhysicsDebug::RegisterFixtureEdge(b2Body *body, Collider* col, glm::vec2 pointA, glm::vec2 pointB, std::string layerName)
 	{

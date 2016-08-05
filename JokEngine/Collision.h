@@ -8,13 +8,13 @@ namespace Jokengine
 	{
 	public:
 		Collision() {};
-		Collision(Collider *colliderSelf, Collider *colliderOther, PhysicBody *physicBody ,GameObject *gameObject, std::vector<glm::vec2> contacts);
+		Collision(Collider *colliderSelf, Collider *colliderOther, PhysicBody *physicBody ,GameObject *gameObject, std::vector<glm::vec2> contacts,GLboolean sensor=false);
 		Collider *colliderSelf;
 		Collider *colliderOther;
 		PhysicBody *physicBody;
 		GameObject *gameObject;
 		std::vector<glm::vec2> contacts;
-		GLboolean trigger;
+		GLboolean sensor;
 	};
 }
 #endif // !COLLISION_H
