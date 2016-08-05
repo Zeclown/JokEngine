@@ -8,7 +8,8 @@ namespace Jokengine
 			result->collider=static_cast<Collider*>(fixture->getUserData());
 			result->point=glm::vec2(point.x,point.y);
 			result->normal=glm::vec2(normal.x,normal.y);
+			return fraction;
 		}
-		return fraction;
+		return 0;
 	}
 }

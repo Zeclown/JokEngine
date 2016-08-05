@@ -28,8 +28,8 @@ namespace Jokengine
 		uint16 GetMaskBits(std::string layerName, GLboolean isColliding=true);
 		uint16 GetCategoryBits(std::string layerName);
 		GLboolean Raycast(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance=1000, uint16 physicMask=-1);
-		GLboolean Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &output, GLfloat maxDistance, uint16 physicMask);
-		RaycastHit[] RaycastAll(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance=1000, uint16 physicMask=-1);
+		GLboolean Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &output, GLfloat maxDistance=1000, uint16 physicMask=-1);
+		std::vector<RaycastHit> RaycastAll(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance=1000, uint16 physicMask=-1);
 		void FixedUpdate();
 	private:
 		const int velocityIteration;

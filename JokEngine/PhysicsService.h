@@ -25,8 +25,9 @@ namespace Jokengine
 			virtual uint16 GetCategoryBits(std::string layerName)=0;
 			virtual uint16 GetMaskBits(std::vector<std::string> layerNames, GLboolean isColliding = true)=0;
 			virtual uint16 GetMaskBits(std::string layerName, GLboolean isColliding=true)=0;
-			virtual void Raycast(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance, uint16 physicMask)=0;
-			virtual GLboolean Raycast(glm::vec2 origin, glm::vec2 direction,RaycastHit &output, GLfloat maxDistance, uint16 physicMask)=0;
+			virtual GLboolean Raycast(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance=1000, uint16 physicMask=-1)=0;
+			virtual GLboolean Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &output, GLfloat maxDistance=1000, uint16 physicMask=-1)=0;
+			virtual std::vector<RaycastHit> RaycastAll(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance=1000, uint16 physicMask=-1)=0;
 			virtual void FixedUpdate() = 0;
 
 
