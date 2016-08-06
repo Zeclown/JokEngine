@@ -1,5 +1,6 @@
 #include "SpriteRenderer.h"
 #include "Game.h"
+#include "Sprite.h"
 namespace Jokengine
 {
 	SpriteRenderer::SpriteRenderer(Shader &shader)
@@ -41,11 +42,11 @@ namespace Jokengine
 	}
 	void SpriteRenderer::DrawSquare(glm::vec2 position,glm::vec2 size,GLfloat rotate,glm::vec3 color)
 	{
-		DrawSprite(ResourceManager::GetTexture(""), position, size, rotate, color);
+		
 	}
 	void SpriteRenderer::DrawSprite(Sprite &sprite, glm::vec2 position, glm::vec2 size, GLfloat rotate, glm::vec3 color)
 	{
-		Texture2D &texture=sprite.texture;
+		Texture2D &texture= *(sprite.texture);
 		this->shader.Use();
 		glm::mat4 model;
 		model = glm::translate(model, glm::vec3(position, 0.0f));
@@ -55,7 +56,7 @@ namespace Jokengine
 		this->shader.SetMatrix4("model", model);
 		// textured quad
 		this->shader.SetVector3f("spriteColor", color);
-		this->shader.SetVector2f("frame",sprite.frame);
+		this->shader.SetInteger("frame",sprite.frame);
 		this->shader.SetVector2f("frameSize",sprite.size);
 		glActiveTexture(GL_TEXTURE0);
 		texture.Bind();

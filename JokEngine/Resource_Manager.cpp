@@ -18,7 +18,6 @@ namespace Jokengine
 		Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
 		return Shaders[name];
 	}
-
 	Shader ResourceManager::GetShader(std::string name)
 	{
 		return Shaders[name];
@@ -34,7 +33,26 @@ namespace Jokengine
 	{
 		return Textures[name];
 	}
-
+	SpriteSheet ResourceManager::LoadSpritesheet(const GLchar *file, GLboolean alpha, glm::vec2 frameSize, std::string name)
+	{
+		ResourceManager::LoadTexture(file, alpha, name);
+		spriteSheets[name]= SpriteSheet(&Textures[name], frameSize);
+		return spriteSheets[name];
+	}
+	SpriteSheet ResourceManager::GetSpritesheet(std::string name)
+	{
+		return spriteSheets[name];
+	}
+	Sprite ResourceManager::LoadSprite(const GLchar *file, GLboolean alpha, std::string name)
+	{
+		ResourceManager::LoadTexture(file, alpha, name);
+		sprites[name] = Sprite(&Textures[name]);
+		return sprites[name];
+	}
+	Sprite ResourceManager::GetSprite(std::string name)
+	{
+		return sprites[name];
+	}
 	void ResourceManager::Clear()
 	{
 		// delete shaders	
@@ -43,6 +61,7 @@ namespace Jokengine
 		// delete textures
 		for (auto iter : Textures)
 			glDeleteTextures(1, &iter.second.ID);
+
 	}
 
 	Shader ResourceManager::loadShaderFromFile(const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile)

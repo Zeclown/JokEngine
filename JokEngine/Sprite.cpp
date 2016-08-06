@@ -7,7 +7,7 @@ namespace Jokengine
 	
 	}
 	Sprite::Sprite(Texture2D *texture)
-	:texture(texture),frame(0),size(glm::vec2(texture->width,texture->height))
+	:texture(texture),frame(0),size(glm::vec2(1,1))
 	{								
 	}
 }

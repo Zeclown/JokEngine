@@ -3,6 +3,7 @@
 #include "Texture.h"
 #include "SpriteRenderingService.h"
 #include "Component.h"
+#include "Sprite.h"
 namespace Jokengine
 {
 	// Component that store a sprite and ask the SpriteRenderer to draw it every frame
@@ -15,7 +16,7 @@ namespace Jokengine
 	class SpriteDrawable :public ComponentCloneable<Component,SpriteDrawable> {
 	public:
 		SpriteDrawable(GameObject* gameObject);
-		Texture2D sprite;
+		Sprite sprite;
 		glm::vec3   color;
 		// Draw sprite
 		virtual void Draw(SpriteRenderingService &renderer,glm::vec2 intrapolation);

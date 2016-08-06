@@ -160,9 +160,11 @@
     <ClInclude Include="Resource_Manager.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SpawnCube.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteDrawable.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="SpriteRenderingService.h" />
+    <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeService.h" />
   </ItemGroup>
@@ -189,8 +191,10 @@
     <ClCompile Include="Resource_Manager.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteDrawable.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
+    <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
