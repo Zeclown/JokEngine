@@ -1,10 +1,10 @@
 #ifndef RAYCAST_HIT_H
 #define RAYCAST_HIT_H
 #include "Collider.h"
-
+#include "Box2D\Box2D.h"
 namespace Jokengine
 {
-	class RaycastHit : public b2RayCastCallback
+	class RaycastHit
 	{
 		public:
 			
@@ -13,7 +13,7 @@ namespace Jokengine
 			glm::vec2 normal;
 			explicit operator bool()
 			{
-				return collider!=NULL_PTR;
+				return collider!=nullptr;
 			}
 	};
 }

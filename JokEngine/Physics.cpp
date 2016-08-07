@@ -2,7 +2,8 @@
 #include "Box2D\Dynamics\b2Body.h"
 #include "Game.h"
 #include <math.h>
-
+#include "RaycastListener.h"
+#include "RaycastAllListener.h"
 namespace Jokengine
 {
 	Physics::Physics()
@@ -170,21 +171,23 @@ namespace Jokengine
 		RaycastListener rayListener;
 		b2Vec2 pointA=b2Vec2(origin.x,origin.y);
 		b2Vec2 pointB=b2Vec2(origin.x+glm::normalize(direction).x*maxDistance,origin.y+glm::normalize(direction).y*maxDistance);
-		physicWorld->Raycast(rayListener,pointA,pointB);
+		physicWorld->RayCast(&rayListener,pointA,pointB);
+		return (bool)rayListener.result;
 	}
-	void Physics::Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &output, GLfloat maxDistance, uint16 physicMask)
+	GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &output, GLfloat maxDistance, uint16 physicMask)
 	{
 		RaycastListener rayListener= RaycastListener(&output);
 		b2Vec2 pointA=b2Vec2(origin.x,origin.y);
 		b2Vec2 pointB=b2Vec2(origin.x+glm::normalize(direction).x*maxDistance,origin.y+glm::normalize(direction).y*maxDistance);
-		physicWorld->Raycast(rayListener,pointA,pointB);
+		physicWorld->RayCast(&rayListener,pointA,pointB);
+		return (bool)*(rayListener.result);
 	}
-	std::vector<RaycastHit> Physics::RaycastAll(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance=1000, uint16 physicMask=-1)
+	std::vector<RaycastHit> Physics::RaycastAll(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance, uint16 physicMask)
 	{
 		RaycastAllListener rayListener;
 		b2Vec2 pointA=b2Vec2(origin.x,origin.y);
 		b2Vec2 pointB=b2Vec2(origin.x+glm::normalize(direction).x*maxDistance,origin.y+glm::normalize(direction).y*maxDistance);
-		physicWorld->Raycast(rayListener,pointA,pointB);
+		physicWorld->RayCast(&rayListener,pointA,pointB);
 		return rayListener.hits;
 	}
 	void Physics::FixedUpdate()

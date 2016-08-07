@@ -155,6 +155,7 @@
     <ClInclude Include="Physics.h" />
     <ClInclude Include="PhysicsDebug.h" />
     <ClInclude Include="PhysicsService.h" />
+    <ClInclude Include="RaycastAllListener.h" />
     <ClInclude Include="RaycastHit.h" />
     <ClInclude Include="RaycastListener.h" />
     <ClInclude Include="Resource_Manager.h" />
@@ -187,7 +188,9 @@
     <ClCompile Include="PhysicBody.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="PhysicsDebug.cpp" />
+    <ClCompile Include="RaycastAllListener.cpp" />
     <ClCompile Include="RaycastHit.cpp" />
+    <ClCompile Include="RaycastListener.cpp" />
     <ClCompile Include="Resource_Manager.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Source.cpp" />

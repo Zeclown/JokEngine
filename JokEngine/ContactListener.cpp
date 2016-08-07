@@ -20,8 +20,8 @@ namespace Jokengine
 		{
 			contacts.push_back(glm::vec2(worldManifold.points[i].x, worldManifold.points[i].y));
 		}
-		Collision col1 = Collision(colA, colB, physB, gameObjB, contacts,contact->IsSensor());
-		Collision col2 = Collision(colB, colA, physA, gameObjA, contacts,contact->IsSensor());
+		Collision col1 = Collision(colA, colB, physB, gameObjB, contacts,contact->GetFixtureA()->IsSensor() || contact->GetFixtureB()->IsSensor());
+		Collision col2 = Collision(colB, colA, physA, gameObjA, contacts, contact->GetFixtureA()->IsSensor() || contact->GetFixtureB()->IsSensor());
 		if (enter)
 		{
 			collisionEnterList.push_back(col1);

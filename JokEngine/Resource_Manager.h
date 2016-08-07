@@ -43,8 +43,8 @@ namespace Jokengine
 		// Retrieves a stored texture
 		static Texture2D GetTexture(std::string name);
 		// Resource storage
-		static std::map<std::string, Shader>    Shaders;
-		static std::map<std::string, Texture2D> Textures;
+		static std::map<std::string, Shader>    shaders;
+		static std::map<std::string, Texture2D> textures;
 		static std::map<std::string, Sprite> sprites;
 		static std::map<std::string, SpriteSheet> spriteSheets;
 		// Loads and generates a shader from file

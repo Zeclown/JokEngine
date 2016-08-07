@@ -9,34 +9,35 @@
 
 namespace Jokengine
 {
-	std::map<std::string, Texture2D>    ResourceManager::Textures;
-	std::map<std::string, Shader>       ResourceManager::Shaders;
-
+	std::map<std::string, Texture2D>    ResourceManager::textures;
+	std::map<std::string, Shader>       ResourceManager::shaders;
+	std::map<std::string, Sprite>       ResourceManager::sprites;
+	std::map<std::string, SpriteSheet>       ResourceManager::spriteSheets;
 
 	Shader ResourceManager::LoadShader(const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile, std::string name)
 	{
-		Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
-		return Shaders[name];
+		shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
+		return shaders[name];
 	}
 	Shader ResourceManager::GetShader(std::string name)
 	{
-		return Shaders[name];
+		return shaders[name];
 	}
 
 	Texture2D ResourceManager::LoadTexture(const GLchar *file, GLboolean alpha, std::string name)
 	{
-		Textures[name] = loadTextureFromFile(file, alpha);
-		return Textures[name];
+		textures[name] = loadTextureFromFile(file, alpha);
+		return textures[name];
 	}
 
 	Texture2D ResourceManager::GetTexture(std::string name)
 	{
-		return Textures[name];
+		return textures[name];
 	}
 	SpriteSheet ResourceManager::LoadSpritesheet(const GLchar *file, GLboolean alpha, glm::vec2 frameSize, std::string name)
 	{
 		ResourceManager::LoadTexture(file, alpha, name);
-		spriteSheets[name]= SpriteSheet(&Textures[name], frameSize);
+		spriteSheets[name]= SpriteSheet(&textures[name], frameSize);
 		return spriteSheets[name];
 	}
 	SpriteSheet ResourceManager::GetSpritesheet(std::string name)
@@ -46,7 +47,7 @@ namespace Jokengine
 	Sprite ResourceManager::LoadSprite(const GLchar *file, GLboolean alpha, std::string name)
 	{
 		ResourceManager::LoadTexture(file, alpha, name);
-		sprites[name] = Sprite(&Textures[name]);
+		sprites[name] = Sprite(&textures[name]);
 		return sprites[name];
 	}
 	Sprite ResourceManager::GetSprite(std::string name)
@@ -56,10 +57,10 @@ namespace Jokengine
 	void ResourceManager::Clear()
 	{
 		// delete shaders	
-		for (auto iter : Shaders)
+		for (auto iter : shaders)
 			glDeleteProgram(iter.second.ID);
 		// delete textures
-		for (auto iter : Textures)
+		for (auto iter : textures)
 			glDeleteTextures(1, &iter.second.ID);
 
 	}
