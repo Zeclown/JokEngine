@@ -19,6 +19,7 @@ namespace Jokengine
 		SpriteDrawable *spriteDraw;
 		GLboolean replaying;
 		GLfloat timer;
+		std::pair<AnimationFrame,GLboolean> currentFrame;
 		vector<std::pair<std::string,Animation>> animationQueue;
 		map<string,Animation> animations;
 		void updateAnimation();

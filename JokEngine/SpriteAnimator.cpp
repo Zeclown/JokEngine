@@ -5,13 +5,19 @@ void SpriteAnimator::Update()
 {
 	if(animationQueue.size()>0)
 	{
-		std::pair<AnimationFrame,GLboolean> nextFrame=animationQueue[0].GetNextFrame();
-		while(nextFrame.second || animationQueue.size()>1) //find the next animation or settle for the wrapped one
+		timer+=Game::GetInstance().GetTimeService().GetDeltaTime()*animationQueue[0].animationSpeed;
+		if(!nextFrame || timer>currentFrame.second.duration)//is it time for a next frame
 		{
-			animationQueue.erase(0);
-			nextFrame=animationQueue[0].GetNextFrame();
+			timer=0;
+			std::pair<AnimationFrame,GLboolean> nextFrame=animationQueue[0].GetNextFrame();
+			while(nextFrame.second && animationQueue.size()>1) //find the next animation or settle for the last wrapped one
+			{
+				animationQueue.erase(0);
+				nextFrame=animationQueue[0].GetNextFrame();
+			}
+			spriteDraw->sprite=nextFrame.first.sprite;
+			currentFrame=nextFrame;
 		}
-		spriteDraw->sprite=nextFrame.first.sprite;
 	}
 }
 
@@ -31,7 +37,7 @@ void SpriteAnimator::DeleteAnimation(std::string animationName)
 {
 	animations.erase(animationName);
 }
-void SpriteAnimator::PlayAnimation(std::std::string animationName,E_ANIMATION_PLAYMODE playmode)
+void SpriteAnimator::PlayAnimation(std::string animationName,E_ANIMATION_PLAYMODE playmode)
 {
 	if(animationQueue.size==0 || animationQueue[0].first!=animationName || playmode==E_ANIMATION_PLAYMODE::STOP_ALL)
 	{
