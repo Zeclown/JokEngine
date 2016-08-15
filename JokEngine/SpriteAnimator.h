@@ -4,23 +4,22 @@
 #include "Animation"
 namespace Jokengine
 {
+	enum E_ANIMATION_PLAYMODE {
+		STOP_ALL,STOP_OTHERS
+	};
 	class SpriteAnimator : public CloneableComponent<Component,SpriteAnimator>
 	{
 	public:
 		void Update();
-		void DeleteAnimation(string animationName);
-		void DeleteFrames(string animationName,GLint startFrame,GLint endFrame=std::numeric_limits<GLint>::max());
-		void SetFramesDuration(string animationName,GLfloat duration,GLint startFrame=0,GLint endFrame=std::numeric_limits<GLint>::max());
-		void SetFrameDuration(string animationName,GLfloat duration,GLint frameIndex)
-		AnimationFrame GetFrame(string animationName,GLint frame=0);
-		std::vector<AnimationFrame> GetFrames(string animationName,GLint startFrame,GLint endFrame);
-		void PlayAnimation(string animationName);
-		void AddToQueue(string animationName);
+		void AddAnimation(Animation animation,std::string animationName);
+		void DeleteAnimation(std::string animationName);
+		void PlayAnimation(std::string animationName,E_ANIMATION_PLAYMODE playmode=E_ANIMATION_PLAYMODE::STOP_OTHERS);
+		void AddToQueue(std::string animationName);
 	private:
 		SpriteDrawable *spriteDraw;
+		GLboolean replaying;
 		GLfloat timer;
-		GLint currentAnimIndex;
-		vector<Animation> animationQueue;
+		vector<std::pair<std::string,Animation>> animationQueue;
 		map<string,Animation> animations;
 		void updateAnimation();
 
