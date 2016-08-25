@@ -4,6 +4,10 @@
 #include "PhysicBody.h"
 #include "BoxCollider.h"
 #include <math.h>
+#include <AL/al.h>
+#include <AL/alc.h>
+#include <AudioSource.h>
+#include <CharacterController.h>
 using namespace Jokengine;
 
 void main()
@@ -12,6 +16,12 @@ void main()
 	Game& game = Game::GetInstance();
 	game.Init();
 	GameObject go = GameObject("Player");
+	go.AddComponent<CharacterController>();
+	ResourceManager::LoadAudioFile("test.wav", "test");
+	AudioSource *audioSource=go.AddComponent<AudioSource>();
+	AudioFile aFile = ResourceManager::GetAudioFile("test");
+	audioSource->RegisterSound(aFile,"test");
+	audioSource->AddToQueue("test");
 	ResourceManager::LoadSprite("sprites/awesomeface.png", GL_TRUE, "Player");
 	ResourceManager::LoadSprite("sprites/ground.png", GL_TRUE, "Ground");
 	go.position = glm::vec2(0, 0);
@@ -32,12 +42,12 @@ void main()
 	SpriteDrawable *sd2 = groundVisual.AddComponent<SpriteDrawable>();
 	sd2->sprite = ResourceManager::GetSprite("Ground");
 	sd2->color = glm::vec3(1.0f, 1.0f, 1.0f);
-	groundVisual.AddComponent<PhysicBody>()->kinematic=true;
+	groundVisual.AddComponent<PhysicBody>()->SetKinematic(true);
 	groundVisual.AddComponent<BoxCollider>();
 	game.Instantiate(groundVisual);
 
 
 
-	//Game::GetPhysicsService().SetGravity(glm::vec2(0, 30));
+
 	game.Loop();
 }

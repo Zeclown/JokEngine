@@ -88,6 +88,8 @@ namespace Jokengine
 		//dirty flag that check if world position needs to be recalculated
 		GLboolean flagWorldPos;
 		//signals
+		boost::signals2::signal<void()> Update;
+		boost::signals2::signal<void()> FixedUpdate;
 		boost::signals2::signal<void(Collision)> OnCollisionEnter;
 		boost::signals2::signal<void(Collision)> OnCollisionExit;
 	protected:

@@ -17,17 +17,19 @@ namespace Jokengine
 		keys = keyBuffer1;
 		nextKeys = keyBuffer2;
 		
-		for (int i = 0; i < 1024; i++)
+		for (int i = 0; i < 2024; i++)
 		{
-			keyBuffer1[i] = E_KEYSTATE::KEYNONE;
-			keyBuffer2[i] = E_KEYSTATE::KEYNONE;
+			keys[i] = E_KEYSTATE::KEYNONE;
+			nextKeys[i] = E_KEYSTATE::KEYNONE;
 		}
 	}
 
 	void InputReader::ProcessKeyInput(GLFWwindow* window, int key, int action, int mods)
 	{
+
 		if (action == GLFW_PRESS && nextKeys[key] !=E_KEYSTATE::KEYHELD )
 		{
+			
 			nextKeys[key] = E_KEYSTATE::KEY_DOWN;
 			
 		}
@@ -56,16 +58,20 @@ namespace Jokengine
 	}
 	void InputReader::UpdateInput()
 	{
-
+	
 		std::swap(keys, nextKeys);
 
-		for (int i = 0; i < 1024; i++) {
+		for (int i = 0; i < 2024; i++) {
 			
 			if (keys[i] == E_KEYSTATE::KEY_UP)
 			{
 				nextKeys[i] = E_KEYSTATE::KEYNONE;
 			}
 			else if (keys[i] == E_KEYSTATE::KEY_DOWN)
+			{
+				nextKeys[i] = E_KEYSTATE::KEYHELD;
+			}
+			else if (keys[i] == E_KEYSTATE::KEYHELD)
 			{
 				nextKeys[i] = E_KEYSTATE::KEYHELD;
 			}

@@ -10,7 +10,7 @@ namespace Jokengine
 		:physicWorld(new b2World(b2Vec2(0, 0.981))), velocityIteration(7), positionIteration(3), layerCount(1), layers({}), contactListener(new ContactListener)
 	{
 		physicWorld->SetContactListener(contactListener);
-	    layers[0]=PhysicLayer();
+	    layers[0]=PhysicLayer(0x0001);
 		layers[0].name = "default";
 		for(int i=1;i<16;i++)
 		{
@@ -55,20 +55,26 @@ namespace Jokengine
 		baseFixture.SetAsBox(0.1,0.1);
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &baseFixture;
-		boxFixtureDef.density = 1;
+		boxFixtureDef.density = 2;
 		boxFixtureDef.filter.categoryBits = 0;
 		boxFixtureDef.filter.maskBits = 0;
 		body->CreateFixture(&boxFixtureDef);
+
+		b2MassData mData;
+		body->GetMassData(&mData);
+		mData.mass = mass;
+		body->SetMassData(&mData);
 		return body;
 	}
 	b2Fixture* Physics::RegisterFixtureBox(b2Body *body,Collider *col,glm::vec2 size,GLboolean sensor, glm::vec2 offset,std::string layerName)
 	{
+
 		b2PolygonShape baseFixture;
 		baseFixture.SetAsBox(size.x/2*Game::GetInstance().WORLD_TO_BOX2D, size.y/2*Game::GetInstance().WORLD_TO_BOX2D);
 		baseFixture.m_centroid.Set(offset.x*Game::GetInstance().WORLD_TO_BOX2D, offset.y*Game::GetInstance().WORLD_TO_BOX2D);
 		b2FixtureDef boxFixtureDef;
 		boxFixtureDef.shape = &baseFixture;
-		boxFixtureDef.density = 1;
+		boxFixtureDef.density = 0;
 		boxFixtureDef.isSensor = sensor;
 		boxFixtureDef.filter.categoryBits=Game::GetInstance().GetPhysicsService().GetCategoryBits(layerName);
 		boxFixtureDef.filter.maskBits=Game::GetInstance().GetPhysicsService().GetMaskBits(layerName);
@@ -83,7 +89,7 @@ namespace Jokengine
 		baseFixture.m_p.Set(offset.x*Game::GetInstance().WORLD_TO_BOX2D, offset.y*Game::GetInstance().WORLD_TO_BOX2D);
 		b2FixtureDef circleFixtureDef;
 		circleFixtureDef.shape = &baseFixture;
-		circleFixtureDef.density = 1;
+		circleFixtureDef.density = 0;
 		circleFixtureDef.isSensor = sensor;
 		circleFixtureDef.filter.categoryBits= Game::GetInstance().GetPhysicsService().GetCategoryBits(layerName);
 		circleFixtureDef.filter.maskBits=Game::GetInstance().GetPhysicsService().GetMaskBits(layerName);
@@ -98,7 +104,7 @@ namespace Jokengine
 		es.Set(b2Vec2(pointA.x*Game::GetInstance().WORLD_TO_BOX2D, pointA.y*Game::GetInstance().WORLD_TO_BOX2D), b2Vec2(pointB.x*Game::GetInstance().WORLD_TO_BOX2D, pointB.y*Game::GetInstance().WORLD_TO_BOX2D));
 		b2FixtureDef edgeFixtureDef;
 		edgeFixtureDef.shape = &es;
-		edgeFixtureDef.density = 1;
+		edgeFixtureDef.density = 0.2;
 		b2Fixture* fixture = body->CreateFixture(&edgeFixtureDef);
 		fixture->SetUserData(col);
 		return fixture;

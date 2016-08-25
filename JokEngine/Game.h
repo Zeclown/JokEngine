@@ -12,6 +12,7 @@
 #include "CameraService.h"
 #include "TimeService.h"
 #include "PhysicsService.h"
+#include "AudioService.h"
 namespace Jokengine
 {
 	//Main game state manager
@@ -46,12 +47,14 @@ namespace Jokengine
 		void RegisterCameraService(CameraService *service);
 		void RegisterTimeService(TimeService *service);
 		void RegisterPhysicsService(PhysicsService *service);
+		void RegisterAudioService(AudioService *service);
 
 		void EnablePhysicsDebug(GLboolean drawColliders, GLboolean logCollisions);
 
 
 
 		GameObject* FindByID(GLint objectID);
+		AudioService& GetAudioService();
 		SpriteRenderingService& GetSpriteRendererService();
 		CameraService& GetCameraService();
 		TimeService& GetTimeService();
@@ -73,6 +76,7 @@ namespace Jokengine
 		CameraService *cameras;
 		TimeService *time;
 		PhysicsService *physics;
+		AudioService *audio;
 		//GameLoop internal timers
 		GLfloat fixedUpdateTimer;
 	};

@@ -7,7 +7,7 @@
 #include "CameraHandler.h"
 #include "Clock.h"
 #include "Physics.h"
-
+#include "Audio.h"
 namespace Jokengine
 {
 	Game *Game::instance = 0;
@@ -33,6 +33,17 @@ namespace Jokengine
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		//OPENAL initialization
+		ALCdevice *device;
+		device = alcOpenDevice(NULL);
+		ALCcontext *context;
+
+		context = alcCreateContext(device, NULL);
+		if (!alcMakeContextCurrent(context))
+			std::cout << "Audio Initialisation error";
+		
+
 	}
 
 	Game::~Game()
@@ -82,6 +93,11 @@ namespace Jokengine
 			Physics *physicsService = new Physics();
 			Game::RegisterPhysicsService(physicsService);
 		}
+		if (!audio)//if the audio service is not initialised yet
+		{
+			Audio *audio = new Audio();
+			Game::RegisterAudioService(audio);
+		}
 		//Instantiate base camera
 		GameObject mainCam =   GameObject("CameraMain");
 		mainCam.AddComponent<Camera>();
@@ -103,12 +119,14 @@ namespace Jokengine
 			while (fixedUpdateTimer>=fixedRefreshTime)
 			{
 				FixedUpdate();
-				fixedSignal();
+				for (auto &iter : gameroom.RoomObjects)
+				{
+					iter.second->FixedUpdate();
+				}
 				fixedUpdateTimer -= fixedRefreshTime;
 
 			}
 			Update();
-			updateSignal();
 			glm::mat4 projection = cameras->GetMainCamera()->GetViewMatrix();
 			ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -142,6 +160,12 @@ namespace Jokengine
 			delete cameras;
 		cameras = service;
 	}
+	void Game::RegisterAudioService(AudioService *service)
+	{
+		if (audio)
+			delete audio;
+		audio = service;
+	}
 	void Game::EnablePhysicsDebug(GLboolean drawColliders, GLboolean logCollisions)
 	{
 
@@ -158,6 +182,10 @@ namespace Jokengine
 	{
 		return *time;
 	}
+	AudioService& Game::GetAudioService()
+	{
+		return *audio;
+	}
 	PhysicsService& Game::GetPhysicsService()
 	{
 		return *physics;
@@ -168,7 +196,10 @@ namespace Jokengine
 	}
 	void Game::Update()
 	{
-		updateSignal();
+		for (auto &iter : gameroom.RoomObjects)
+		{
+			iter.second->Update();
+		}
 	}
 	void Game::Render()
 	{

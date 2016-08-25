@@ -9,7 +9,7 @@
 #include "texture.h"
 #include "shader.h"
 #include "SpriteSheet.h"
-
+#include "AudioFile.h"
 namespace Jokengine
 {
 
@@ -34,16 +34,24 @@ namespace Jokengine
 		static Sprite LoadSprite(const GLchar *file, GLboolean alpha, std::string name);
 		// Retrieves a stored sprite
 		static Sprite GetSprite(std::string name);
+		//Loads an AudioFile from a file
+		static AudioFile LoadAudioFile(const GLchar *file,std::string name);
+		// Retrieves a stored AudioFile
+		static AudioFile GetAudioFile(std::string name);
+
 		// de-allocates all loaded resources
 		static void      Clear();
 	private:
 		ResourceManager() { }
 		// Loads (and generates) a texture from file, returns reference from the storage
 		static Texture2D LoadTexture(const GLchar *file, GLboolean alpha, std::string name);
+		//Loads and generates an audio sound from a file, returns reference from the storage
+		static AudioFile LoadAudioFromFile(const GLchar *audioFilePath);
 		// Retrieves a stored texture
 		static Texture2D GetTexture(std::string name);
 		// Resource storage
 		static std::map<std::string, Shader>    shaders;
+		static std::map<std::string, AudioFile> audioFiles;
 		static std::map<std::string, Texture2D> textures;
 		static std::map<std::string, Sprite> sprites;
 		static std::map<std::string, SpriteSheet> spriteSheets;

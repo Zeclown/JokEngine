@@ -7,30 +7,48 @@
 #include <boost\signals2.hpp>
 namespace Jokengine
 {
+	enum E_FORCE_TYPE { FORCE, IMPULSE };
 	class PhysicBody : public ComponentCloneable<Component, PhysicBody>
 	{
+		
 	public:
 		boost::signals2::signal<void()> collisionSignal;
 		boost::signals2::signal<void()> triggerSignal;
 		PhysicBody(GameObject* gameObject);
 		PhysicBody(PhysicBody const & pb);
-		glm::vec2 velocity;
-		glm::vec2 angularVelocity;
-		glm::vec2 velocityModifier;
+		GLboolean interpolate;
+		b2Body* GetB2body();
+		virtual void FixedUpdate();
+		virtual void AddForce(glm::vec2 force,E_FORCE_TYPE forceType= E_FORCE_TYPE::FORCE);
+
+		glm::vec2 GetVelocity();
+		void SetVelocity(glm::vec2 vlcy);
+		void SetAngularVelocity(GLfloat vlcy);
+		GLfloat GetAngularVelocity();
+		GLfloat GetMass();
+		void SetMass(GLfloat m);
+		GLfloat GetDrag();
+		void SetDrag(GLfloat d);
+		GLboolean IsFreezeRotation();
+		void SetFreezeRotation(GLboolean freeze);
+		GLboolean IsGravity();
+		void SetGravity(GLboolean g);
+		GLboolean IsKinematic();
+		void SetKinematic(GLboolean k);
+
 		glm::vec2 lastPos;
 		GLfloat lastRot;
+	protected:
+		glm::vec2 velocity;
+		GLfloat angularVelocity;
 		GLboolean freezeRotation;
 		GLboolean kinematic;
 		glm::vec2 centerOfMass;
+
 		GLfloat mass;
 		GLfloat drag;
 		GLfloat angularDrag;
 		GLboolean gravity;
-		GLboolean interpolate;
-		b2Body* GetB2body();
-		virtual void FixedUpdate();
-		virtual void AddForce();
-	protected:
 		virtual void Init();
 		virtual void MakeBody();
 		b2Body* rBody;

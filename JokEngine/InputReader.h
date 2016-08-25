@@ -5,6 +5,7 @@
 #include <GLFW\glfw3.h>
 #include<glm\vec2.hpp>
 #include<vector>
+#include<array>
 namespace Jokengine
 {
 	enum E_KEYSTATE {
@@ -45,8 +46,8 @@ namespace Jokengine
 	private:
 		E_KEYSTATE *keys;
 		E_KEYSTATE *nextKeys;
-		E_KEYSTATE keyBuffer1[1024];
-		E_KEYSTATE keyBuffer2[1024];
+		E_KEYSTATE keyBuffer1[2024];
+		E_KEYSTATE keyBuffer2[2024];
 		GLfloat lastXMouse = 400, lastYMouse = 300;
 		GLfloat sensitivity = 0.05f;
 		GLfloat deltaXMouse = 0, deltaYMouse = 0;
