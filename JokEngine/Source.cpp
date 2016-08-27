@@ -32,7 +32,8 @@ void main()
 	go.AddComponent<BoxCollider>();
 	sd->sprite = ResourceManager::GetSpritesheet("Player").sprites[0];
 	SpriteAnimator* sp= go.AddComponent<SpriteAnimator>();
-	
+	sp->AddAnimation(Animation(ResourceManager::GetSpritesheet("Player")),"Idle");
+	sp->AddToQueue("Idle");
 	
 	sd->color = glm::vec3(1.0f, 1.0f, 1.0f);
 	for (int i = 0; i < 1; i++)

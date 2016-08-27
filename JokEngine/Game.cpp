@@ -8,6 +8,7 @@
 #include "Clock.h"
 #include "Physics.h"
 #include "Audio.h"
+#include "SpriteAnimator.h"
 namespace Jokengine
 {
 	Game *Game::instance = 0;
@@ -127,6 +128,7 @@ namespace Jokengine
 
 			}
 			Update();
+			UpdateAnimation();
 			glm::mat4 projection = cameras->GetMainCamera()->GetViewMatrix();
 			ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -136,6 +138,7 @@ namespace Jokengine
 			glfwSwapBuffers(window);
 		}
 	}
+
 	void Game::RegisterSpriteRendererService(SpriteRenderingService *service)
 	{
 		if(renderer)
@@ -199,6 +202,17 @@ namespace Jokengine
 		for (auto &iter : gameroom.RoomObjects)
 		{
 			iter.second->Update();
+		}
+	}
+	void Game::UpdateAnimation()
+	{
+		for (auto &iter : gameroom.RoomObjects)
+		{
+			auto drawPtr = iter.second->GetComponent<SpriteAnimator>();
+			if (drawPtr)
+			{
+				drawPtr->Update();
+			}
 		}
 	}
 	void Game::Render()

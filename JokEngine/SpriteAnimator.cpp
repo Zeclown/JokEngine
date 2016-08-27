@@ -2,7 +2,11 @@
 #include "Game.h";
 namespace Jokengine
 {
-void SpriteAnimator::Update()
+	SpriteAnimator::SpriteAnimator(GameObject * gameObject)
+		:ComponentCloneable(gameObject)
+	{
+	}
+	void SpriteAnimator::Update()
 {
 	if(animationQueue.size()>0)
 	{

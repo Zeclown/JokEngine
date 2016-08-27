@@ -38,10 +38,6 @@ namespace Jokengine
 		void Init();
 		// Start GameLoop
 		void Loop();
-		void Update();
-		void FixedUpdate();
-		void Render();
-		void ProcessInput();
 		GameObject *Instantiate(GameObject &toInstantiate);
 		void RegisterSpriteRendererService(SpriteRenderingService *service);
 		void RegisterCameraService(CameraService *service);
@@ -67,7 +63,11 @@ namespace Jokengine
 
 	private:
 		Game(GLuint width=1280, GLuint height=720, const std::string &gameName="JokEngine");
-
+		void UpdateAnimation();
+		void Update();
+		void FixedUpdate();
+		void Render();
+		void ProcessInput();
 		static Game *instance;
 		GameRoom gameroom;
 		GLFWwindow * window;

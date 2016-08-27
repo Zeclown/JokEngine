@@ -14,6 +14,7 @@ namespace Jokengine
 	class SpriteAnimator : public ComponentCloneable<Component,SpriteAnimator>
 	{
 	public:
+		SpriteAnimator(GameObject* gameObject);
 		void Update();
 		void AddAnimation(Animation animation,std::string animationName);
 		void DeleteAnimation(std::string animationName);
