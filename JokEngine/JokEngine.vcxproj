@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioFile.h" />
     <ClInclude Include="AudioService.h" />
@@ -167,6 +169,7 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SpawnCube.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SpriteAnimator.h" />
     <ClInclude Include="SpriteDrawable.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="SpriteRenderingService.h" />
@@ -175,6 +178,8 @@
     <ClInclude Include="TimeService.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioFile.cpp" />
     <ClCompile Include="AudioSource.cpp" />
@@ -204,6 +209,7 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SpriteAnimator.cpp" />
     <ClCompile Include="SpriteDrawable.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />

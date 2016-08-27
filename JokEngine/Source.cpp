@@ -8,6 +8,7 @@
 #include <AL/alc.h>
 #include <AudioSource.h>
 #include <CharacterController.h>
+#include <SpriteAnimator.h>
 using namespace Jokengine;
 
 void main()
@@ -22,14 +23,17 @@ void main()
 	AudioFile aFile = ResourceManager::GetAudioFile("test");
 	audioSource->RegisterSound(aFile,"test");
 	audioSource->AddToQueue("test");
-	ResourceManager::LoadSprite("sprites/awesomeface.png", GL_TRUE, "Player");
+	ResourceManager::LoadSpritesheet("sprites/awesomeface2-sheet.png", GL_TRUE, glm::vec2(64,64),"Player");
 	ResourceManager::LoadSprite("sprites/ground.png", GL_TRUE, "Ground");
 	go.position = glm::vec2(0, 0);
-	go.size = glm::vec2(10, 10);
+	go.size = glm::vec2(50, 50);
 	SpriteDrawable *sd = go.AddComponent<SpriteDrawable>();
 	go.AddComponent<PhysicBody>();
 	go.AddComponent<BoxCollider>();
-	sd->sprite = ResourceManager::GetSprite("Player");
+	sd->sprite = ResourceManager::GetSpritesheet("Player").sprites[0];
+	SpriteAnimator* sp= go.AddComponent<SpriteAnimator>();
+	
+	
 	sd->color = glm::vec3(1.0f, 1.0f, 1.0f);
 	for (int i = 0; i < 1; i++)
 	{
@@ -45,9 +49,6 @@ void main()
 	groundVisual.AddComponent<PhysicBody>()->SetKinematic(true);
 	groundVisual.AddComponent<BoxCollider>();
 	game.Instantiate(groundVisual);
-
-
-
 
 	game.Loop();
 }

@@ -5,6 +5,19 @@ namespace Jokengine
 		:animationSpeed(1),wrapMode(E_ANIMATION_WRAPMODE::LOOP),state(E_ANIMATION_STATE::PLAY)
 	{
 	}
+	Animation::Animation(std::vector<Sprite> sp)
+		: Animation()
+	{
+		for (int i = 0; i < sp.size(); i++)
+		{
+			frames.push_back(AnimationFrame(sp[i]));
+		}
+
+	}
+	Animation::Animation(SpriteSheet sp)
+		:Animation(sp.sprites)
+	{	
+	}
 	std::pair<AnimationFrame,GLboolean> Animation::GetNextFrame()
 	{
 		if(frameIndex>=frames.size())//Now in wrapping mode if we are not already. Decides what to do next since there is not more next frame to use
@@ -44,7 +57,7 @@ namespace Jokengine
 				{
 					if(frameIndex==0)//we turn back around and play the animation in order
 					{
-						state=E_ANIMATION_STATE::PLAY
+						state = E_ANIMATION_STATE::PLAY;
 						frameIndex++;
 					}
 					else
@@ -52,6 +65,6 @@ namespace Jokengine
 				}
 				break;
 		}
-		return nextFrame;
+		return std::pair<AnimationFrame, GLboolean>(nextFrame.first, wrapping);
 	}
 }

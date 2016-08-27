@@ -1,5 +1,5 @@
 #version 330 core
-layout (location = 0) in vec4 vPosition;
+layout (location = 0) in vec4 vPosition; //xy =position, zw=textureCoords
 out vec2 texCoords;
 
 uniform mat4 model;
@@ -18,12 +18,9 @@ void main()
     coordsArray=vPosition.zw;
     coordsArray.x=coordsArray.x*frameSize.x;
     coordsArray.y=coordsArray.y*frameSize.y;
-    if(nbRows>1)
-    {
-      coordsArray.y= frameSize.y*nbRows;
-    }
+
     offset.x=column*frameSize.x;
-    offset.y=0-(column*frameSize.y);
+    offset.y=1-(row*frameSize.y);
     texCoords = coordsArray.xy+offset;
     gl_Position = projection * model * vec4(vPosition.xy, 0.0, 1.0);
 }

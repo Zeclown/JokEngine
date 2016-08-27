@@ -1,6 +1,9 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
 #include "AnimationFrame.h"
+#include <GL\glew.h>
+#include <vector>
+#include "SpriteSheet.h"
 namespace Jokengine
 {
 	enum E_ANIMATION_WRAPMODE {
@@ -15,6 +18,8 @@ namespace Jokengine
 		};
 		public:
 			Animation();
+			Animation(std::vector<Sprite> sp);
+			Animation(SpriteSheet sp);
 			GLfloat animationSpeed;
 			E_ANIMATION_WRAPMODE wrapMode; 
 			std::vector<AnimationFrame> frames;

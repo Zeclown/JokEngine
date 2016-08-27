@@ -23,7 +23,7 @@ namespace Jokengine
 				textCoord[5]=glm::vec2(incrementCol+incrementCol*columns, 1.0f-(incrementRow+incrementRow*rows));
 				sprites.push_back(Sprite(texture,textCoords)); */
 				
-				sprites.push_back(Sprite(texture,frameCount,frameSize));
+				sprites.push_back(Sprite(texture,frameCount,glm::vec2(frameSize.x/texture->Width,frameSize.y/texture->Height)));
 				frameCount++;
 			}
 		

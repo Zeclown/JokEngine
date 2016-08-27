@@ -1,19 +1,21 @@
 #include "SpriteAnimator.h"
+#include "Game.h";
 namespace Jokengine
 {
 void SpriteAnimator::Update()
 {
 	if(animationQueue.size()>0)
 	{
-		timer+=Game::GetInstance().GetTimeService().GetDeltaTime()*animationQueue[0].animationSpeed;
-		if(!nextFrame || timer>currentFrame.second.duration)//is it time for a next frame
+
+		timer+=Game::GetInstance().GetTimeService().GetDeltaTime()*animationQueue[0].second.animationSpeed;
+		if(timer>currentFrame.first.duration)//is it time for a next frame
 		{
 			timer=0;
-			std::pair<AnimationFrame,GLboolean> nextFrame=animationQueue[0].GetNextFrame();
+			std::pair<AnimationFrame,GLboolean> nextFrame=animationQueue[0].second.GetNextFrame();
 			while(nextFrame.second && animationQueue.size()>1) //find the next animation or settle for the last wrapped one
 			{
-				animationQueue.erase(0);
-				nextFrame=animationQueue[0].GetNextFrame();
+				animationQueue.erase(animationQueue.begin());
+				nextFrame=animationQueue[0].second.GetNextFrame();
 			}
 			spriteDraw->sprite=nextFrame.first.sprite;
 			currentFrame=nextFrame;
@@ -39,7 +41,7 @@ void SpriteAnimator::DeleteAnimation(std::string animationName)
 }
 void SpriteAnimator::PlayAnimation(std::string animationName,E_ANIMATION_PLAYMODE playmode)
 {
-	if(animationQueue.size==0 || animationQueue[0].first!=animationName || playmode==E_ANIMATION_PLAYMODE::STOP_ALL)
+	if(animationQueue.size()==0 || animationQueue[0].first!=animationName || playmode==E_ANIMATION_PLAYMODE::STOP_ALL)
 	{
 		animationQueue.insert(animationQueue.begin(),std::make_pair(animationName,animations[animationName]));	
 	}
