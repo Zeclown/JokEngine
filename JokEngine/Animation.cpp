@@ -5,17 +5,17 @@ namespace Jokengine
 		:animationSpeed(1),wrapMode(E_ANIMATION_WRAPMODE::LOOP),state(E_ANIMATION_STATE::PLAY)
 	{
 	}
-	Animation::Animation(std::vector<Sprite> sp)
+	Animation::Animation(std::vector<Sprite> sp, GLfloat frameDuration)
 		: Animation()
 	{
 		for (int i = 0; i < sp.size(); i++)
 		{
-			frames.push_back(AnimationFrame(sp[i]));
+			frames.push_back(AnimationFrame(sp[i], frameDuration));
 		}
 
 	}
-	Animation::Animation(SpriteSheet sp)
-		:Animation(sp.sprites)
+	Animation::Animation(SpriteSheet sp, GLfloat frameDuration)
+		:Animation(sp.sprites, frameDuration)
 	{	
 	}
 	std::pair<AnimationFrame,GLboolean> Animation::GetNextFrame()

@@ -7,7 +7,7 @@ namespace Jokengine
 	{
 		public:
 			AnimationFrame() {};
-			AnimationFrame(Sprite sprite,GLfloat duration=0.5f);
+			AnimationFrame(Sprite sprite,GLfloat duration);
 			Sprite sprite;
 			GLfloat duration;
 			

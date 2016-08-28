@@ -18,8 +18,8 @@ namespace Jokengine
 		};
 		public:
 			Animation();
-			Animation(std::vector<Sprite> sp);
-			Animation(SpriteSheet sp);
+			Animation(std::vector<Sprite> sp,GLfloat frameDuration=0.5f);
+			Animation(SpriteSheet sp, GLfloat frameDuration = 0.5f);
 			GLfloat animationSpeed;
 			E_ANIMATION_WRAPMODE wrapMode; 
 			std::vector<AnimationFrame> frames;
