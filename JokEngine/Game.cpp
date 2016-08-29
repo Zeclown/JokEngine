@@ -227,7 +227,7 @@ namespace Jokengine
 				if (physicPtr && physicPtr->interpolate)
 				{
 					GLfloat alpha = fixedUpdateTimer / fixedRefreshTime;
-					extrapolationMod = iter.second->position- (iter.second->position * alpha + physicPtr->lastPos*(1-alpha));
+					extrapolationMod = iter.second->GetWorldPosition()- (iter.second->GetWorldPosition() * alpha + physicPtr->lastPos*(1-alpha));
 				}
 				drawPtr->Draw(*renderer, extrapolationMod);
 			}

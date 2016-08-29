@@ -27,7 +27,6 @@ namespace Jokengine
 		glm::vec2   position, size;
 		GLfloat     rotation;
 
-		
 		// Constructor(s)
 		GameObject();
 		GameObject(std::string name = "GameObject");
@@ -78,15 +77,16 @@ namespace Jokengine
 			}
 			return toGet;
 		}
+		glm::vec2 GetWorldPosition();
+		glm::vec2 GetWorldSize();
+		GLfloat GetWorldRotation();
+		void SetParent(GameObject* go);
+		GameObject* GetParent();
 		void Init();
 		//Check if the game object is currently active
 		GLboolean isActive();
 		//Set the current active state of the GameObject
 		void SetActive(GLboolean activeState);
-		//Get the world position and update it if the dirty flag is on
-		glm::vec2 getWorldPosition(GLboolean dirty=false);
-		//dirty flag that check if world position needs to be recalculated
-		GLboolean flagWorldPos;
 		//signals
 		boost::signals2::signal<void()> Update;
 		boost::signals2::signal<void()> FixedUpdate;
@@ -95,7 +95,8 @@ namespace Jokengine
 	protected:
 		//All the components owned by the object
 		std::vector<Component*> components;
-		std::vector<std::shared_ptr<GameObject>> children;
+		std::vector<GameObject*> children;
+		GameObject* parent;
 		std::vector<Component*> initList;
 
 		GLboolean    active;

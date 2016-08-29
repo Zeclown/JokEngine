@@ -4,12 +4,12 @@ namespace Jokengine
 {
 
 	SpriteDrawable::SpriteDrawable(GameObject* gameObject)
-		:ComponentCloneable(gameObject)
+		:ComponentCloneable(gameObject),color(glm::vec3(1,1,1))
 	{
 
 	}
 	void SpriteDrawable::Draw(SpriteRenderingService &renderer, glm::vec2 intrapolation)
 	{
-		renderer.DrawSprite(sprite,GetOwner()->position- intrapolation, GetOwner()->size, GetOwner()->rotation,color);
+		renderer.DrawSprite(sprite,GetOwner()->GetWorldPosition() - intrapolation, GetOwner()->GetWorldSize(), GetOwner()->GetWorldRotation(),color);
 	}
 }

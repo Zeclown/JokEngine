@@ -26,7 +26,7 @@ void main()
 	ResourceManager::LoadSpritesheet("sprites/awesomeface2-sheet.png", GL_TRUE, glm::vec2(64,64),"Player");
 	ResourceManager::LoadSprite("sprites/ground.png", GL_TRUE, "Ground");
 	go.position = glm::vec2(0, 0);
-	go.size = glm::vec2(50, 50);
+	go.size = glm::vec2(10, 10);
 	SpriteDrawable *sd = go.AddComponent<SpriteDrawable>();
 	go.AddComponent<PhysicBody>();
 	go.AddComponent<BoxCollider>();
@@ -34,13 +34,13 @@ void main()
 	SpriteAnimator* sp= go.AddComponent<SpriteAnimator>();
 	sp->AddAnimation(Animation(ResourceManager::GetSpritesheet("Player")),"Idle");
 	sp->AddToQueue("Idle");
-	
 	sd->color = glm::vec3(1.0f, 1.0f, 1.0f);
-	for (int i = 0; i < 1; i++)
-	{
-		game.Instantiate(go);
-	}
-
+	GameObject* parent=game.Instantiate(go);
+	
+	GameObject child=GameObject("childPlayer");
+	child.position += glm::vec2(4, -4);
+	child.AddComponent<SpriteDrawable>()->sprite= ResourceManager::GetSpritesheet("Player").sprites[0];
+	game.Instantiate(child)->SetParent(parent);
 	GameObject groundVisual = GameObject("Ground");
 	groundVisual.position = glm::vec2(0,80);
 	groundVisual.size = glm::vec2(90, 4);
