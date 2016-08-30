@@ -17,6 +17,16 @@ namespace Jokengine
 		Default,Player,Floor,UI
 	};
 	//Base class representing all entities
+	//Can be assigned components to modify its behaviour
+	//Needs to be Instantiated in gamespace by the Game instance
+	// Example:
+	//
+	//  GameObject go = GameObject("Player");  //Create a base prototype
+	//  go.AddComponent<CharacterController>(); //Add a custom component to it
+	//  go.AddComponent<SpriteDrawable>().sprite= ResourceManager::GetSprite("Shark"); //Add a SpriteDrawable component to it and assign it a sprite
+	//
+	//  game.Instantiate(go); //Copy the prototype in gamespace
+
 	class GameObject : public JObject
 	{
 		friend class GameRoom;
@@ -51,7 +61,7 @@ namespace Jokengine
 			initList.push_back(newComp);
 			return newComp;
 		}
-		//Get the first occurence of a Component of type <T> on the GameObject. If none is found, returns uninitialised boost::optional
+		//Get the first occurence of a Component of type <T> on the GameObject. 
 		template<typename T>
 		T* GetComponent()
 		{
@@ -65,7 +75,7 @@ namespace Jokengine
 			}
 			return nullptr;
 		}
-		//Get all occurences of a Component of type <T> on the GameObject. If none is found, returns uninitialised boost::optional
+		//Get all occurences of a Component of type <T> on the GameObject.
 		template<typename T>
 		std::vector<T*> GetComponents()
 		{
@@ -80,6 +90,7 @@ namespace Jokengine
 		glm::vec2 GetWorldPosition();
 		glm::vec2 GetWorldSize();
 		GLfloat GetWorldRotation();
+		//Set the parent of the GameObject in the hierarchy
 		void SetParent(GameObject* go);
 		GameObject* GetParent();
 		void Init();

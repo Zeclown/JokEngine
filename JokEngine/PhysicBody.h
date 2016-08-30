@@ -8,6 +8,7 @@
 namespace Jokengine
 {
 	enum E_FORCE_TYPE { FORCE, IMPULSE };
+	//Component that marks the game object as subject to simulated physics. 
 	class PhysicBody : public ComponentCloneable<Component, PhysicBody>
 	{
 		

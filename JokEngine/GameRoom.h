@@ -11,7 +11,7 @@
 namespace Jokengine
 {
 
-	//Singleton class where all the GameObjects currently in the game are. This is a "scene".
+	//Singleton class where all the GameObjects currently in the game are. This is a "scene". It is contained in Game and shouldn't be used directly
 	class GameRoom
 	{
 	public:

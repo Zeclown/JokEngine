@@ -5,6 +5,8 @@
 #include <vector>
 namespace Jokengine
 {
+	//A Contact Listener used by physic services
+	//Dispatches collision callbacks to the concerned gameobjects
 	class ContactListener : public b2ContactListener
 	{
 	public:

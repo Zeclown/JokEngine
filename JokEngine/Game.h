@@ -17,8 +17,15 @@
 namespace Jokengine
 {
 	//Main game state manager
-	//Also manages window inputs
-
+	//It is where all the services are located
+	//Handles the initialisation process, the game loop and the window management
+	// Example:
+	//
+	//  Game& game = Game::GetInstance(); //get a handle on the game instance
+	//  game.Init(); //Initialise the game application and all the services and engines (OpenGL,OpenAL,Box2D,...)
+	//  GameObject go = GameObject("Player"); //Make a new prototype to instantiate
+	//  game.Instantiate(go); //Instantiate a copy of the prototype in the gamespace
+	//	game.Loop();//Starts the gameloop, locking the application
 	class Game
 	{
 	public:

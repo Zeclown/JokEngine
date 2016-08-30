@@ -3,6 +3,7 @@
 #include "RaycastHit.h"
 namespace Jokengine
 {
+	//Listener used by the default physics service
 	class RaycastListener: public b2RayCastCallback
 	{
 		public:

@@ -4,6 +4,7 @@
 #include "Box2D\Box2D.h"
 namespace Jokengine
 {
+	//A raycasthit class that is often populated by the physics service
 	class RaycastHit
 	{
 		public:
