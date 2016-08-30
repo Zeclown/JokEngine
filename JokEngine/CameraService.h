@@ -6,7 +6,7 @@
 #include "Camera.h"
 namespace Jokengine
 {
-
+	//The Camera Service stores a set of cameras to be used by the renderers
 	class CameraService
 	{
 	public:

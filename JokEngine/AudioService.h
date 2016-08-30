@@ -4,6 +4,8 @@
 #include "AudioSource.h"
 namespace Jokengine
 {
+	//The Audio Service pure virtual class
+	//It is used by AudioSources to register new sources and play sounds
 	class AudioService
 	{
 		public:

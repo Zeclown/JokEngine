@@ -7,6 +7,9 @@
 #include "Collider.h"
 namespace Jokengine
 {
+	//BoxCollider Component
+	//Add a boxlike shape to the gameobject that collides with other colliders
+	//Will add a physicbody component if none is currently on the gameobject
 	class BoxCollider :public ComponentCloneable<Collider, BoxCollider>
 	{
 	public:

@@ -4,6 +4,12 @@
 #include <AL\alc.h>
 namespace Jokengine
 {
+	//An audio file loaded from a file by the Resource Manager
+	// Example:
+	//
+	//  ResourceManager::LoadAudioFile("SwordSlash.wav", "SwordSlash01");
+	//  AudioFile aFile = ResourceManager::GetAudioFile("SwordSlash01");
+
 	class AudioFile
 	{
 	public:

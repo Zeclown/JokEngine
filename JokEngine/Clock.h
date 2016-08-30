@@ -3,6 +3,7 @@
 #include "TimeService.h"
 namespace Jokengine
 {
+	//The default time service used by JokEngine
 	class Clock : public TimeService
 	{
 	public:

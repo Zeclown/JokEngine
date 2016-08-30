@@ -4,7 +4,14 @@
 #include <glm\glm.hpp>
 namespace Jokengine
 {
-	//default camera value
+	//A camera component that can be registered as the current view
+	//
+	// Example:
+	//
+	//  GameObject mainCam = GameObject("CameraMain");
+	//  mainCam.AddComponent<Camera>();
+	//  Camera* camComp = Instantiate(mainCam)->GetComponent<Camera>();
+	//  game->GetCameraService()->RegisterCamera(*camComp);
 	class Camera :public ComponentCloneable<Component, Camera>
 	{
 	public:

@@ -3,6 +3,7 @@
 #include "CameraService.h"
 namespace Jokengine
 {
+	//Default Camera Service
 	class CameraHandler : public CameraService
 	{
 	public:

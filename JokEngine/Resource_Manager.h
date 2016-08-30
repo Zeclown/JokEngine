@@ -15,10 +15,10 @@ namespace Jokengine
 
 	// A static ResourceManager class 
 	// load Sprites and Shaders and store them
-	// Exemple:
+	// Example:
 	//
 	//  ResourceManager::LoadSprite("textures/goblin.png",GL_TRUE,"goblin")
-	//  Texture2D sprite=ResourceManager::GetSprite("goblin");
+	//  Sprite sprite=ResourceManager::GetSprite("goblin");
 	class ResourceManager
 	{
 	public:
