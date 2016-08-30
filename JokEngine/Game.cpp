@@ -5,10 +5,12 @@
 #include "PhysicBody.h"
 #include "SpriteRenderer.h"
 #include "CameraHandler.h"
+#include "TextRenderer.h"
 #include "Clock.h"
 #include "Physics.h"
 #include "Audio.h"
 #include "SpriteAnimator.h"
+
 namespace Jokengine
 {
 	Game *Game::instance = 0;
@@ -55,12 +57,19 @@ namespace Jokengine
 	{
 		return gameroom.Instantiate(toInstantiate);
 	}
+	void Game::Destroy(GameObject & toDestroy, GLfloat after)
+	{
+		gameroom.Destroy(toDestroy, after);
+	}
 	GameObject* Game::FindByID(GLint objectID)
 	{
 		return gameroom.FindByID(objectID);
 	}
+
 	void Game::Init()
 	{
+
+
 
 		// Load basic shaders
 		ResourceManager::LoadShader("shaders/baseSprite.vshader", "shaders/baseSprite.fshader", nullptr, "sprite");
@@ -77,27 +86,33 @@ namespace Jokengine
 		if (!renderer)//if the rendering service is not initialised yet
 		{
 			SpriteRenderer *renderingService = new SpriteRenderer(ResourceManager::GetShader("sprite"));
-			Game::RegisterSpriteRendererService(renderingService);
+			RegisterSpriteRendererService(renderingService);
 		}
 		if (!cameras)//if the camera service is not initialised yet
 		{
 			CameraHandler *cameraService = new CameraHandler();
-			Game::RegisterCameraService(cameraService);
+			RegisterCameraService(cameraService);
 		}
 		if (!time)//if the time service is not initialised yet
 		{
 			Clock *timeService = new Clock();
-			Game::RegisterTimeService(timeService);
+			RegisterTimeService(timeService);
 		}
 		if (!physics)//if the physic service is not initialised yet
 		{
 			Physics *physicsService = new Physics();
-			Game::RegisterPhysicsService(physicsService);
+			RegisterPhysicsService(physicsService);
 		}
 		if (!audio)//if the audio service is not initialised yet
 		{
 			Audio *audio = new Audio();
-			Game::RegisterAudioService(audio);
+			RegisterAudioService(audio);
+		}
+		if (!text)//if the text rendering service is not initialised yet
+		{
+			TextRenderer *textService = new TextRenderer(width, height);
+			textService->Load("fonts/emulogic.TTF", 24);
+			RegisterTextRendererService(textService);
 		}
 		//Instantiate base camera
 		GameObject mainCam =   GameObject("CameraMain");
@@ -135,6 +150,7 @@ namespace Jokengine
 			glClear(GL_COLOR_BUFFER_BIT);
 			// Render
 			Render();
+			CleanUpResources();
 			glfwSwapBuffers(window);
 		}
 	}
@@ -169,6 +185,12 @@ namespace Jokengine
 			delete audio;
 		audio = service;
 	}
+	void Game::RegisterTextRendererService(TextRenderingService *service)
+	{
+		if (text)
+			delete text;
+		text = service;
+	}
 	void Game::EnablePhysicsDebug(GLboolean drawColliders, GLboolean logCollisions)
 	{
 
@@ -193,9 +215,17 @@ namespace Jokengine
 	{
 		return *physics;
 	}
+	TextRenderingService &Game::GetTextRendererService()
+	{
+		return *text;
+	}
 	void Game::ProcessInput()
 	{
 		InputReader::instance().UpdateInput();
+	}
+	void Game::CleanUpResources()
+	{
+		gameroom.CleanUpResources();
 	}
 	void Game::Update()
 	{
@@ -216,7 +246,7 @@ namespace Jokengine
 		}
 	}
 	void Game::Render()
-	{
+	{	
 		for (auto &iter : gameroom.RoomObjects)
 		{
 			auto drawPtr = iter.second->GetComponent<SpriteDrawable>();

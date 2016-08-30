@@ -6,7 +6,7 @@ namespace Jokengine
 	// Base class of every object in JokEngine
 	class JObject {
 	public:
-		JObject() {};
+		JObject();
 		virtual void Destroy(GLfloat time = 0);
 		virtual GLboolean CheckDestroy(GLfloat dt);
 		~JObject();

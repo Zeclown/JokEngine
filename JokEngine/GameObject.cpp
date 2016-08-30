@@ -34,7 +34,6 @@ namespace Jokengine
 	{
 	for(int i =0;i<components.size();++i)
 		delete components[i];
-
 	}
 	void GameObject::SetActive(GLboolean activeState)
 	{

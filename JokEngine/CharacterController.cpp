@@ -23,4 +23,8 @@ void CharacterController::Update()
 	{
 		owner->GetComponent<PhysicBody>()->AddForce(glm::vec2(1.0f, 0)*Game::GetInstance().GetTimeService().GetDeltaTime(), E_FORCE_TYPE::IMPULSE);
 	}
+	if (InputReader::instance().isButton(GLFW_KEY_P))
+	{
+		Game::GetInstance().Destroy(*owner);
+	}
 }

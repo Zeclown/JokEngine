@@ -13,6 +13,7 @@
 #include "TimeService.h"
 #include "PhysicsService.h"
 #include "AudioService.h"
+#include "TextRenderingService.h"
 namespace Jokengine
 {
 	//Main game state manager
@@ -21,9 +22,6 @@ namespace Jokengine
 	class Game
 	{
 	public:
-		GLuint	   width, height;
-		GLfloat fixedRefreshTime;
-		std::string gameName;
 		GLfloat const BOX2D_TO_WORLD;
 		GLfloat const WORLD_TO_BOX2D;
 		//Destructor
@@ -39,15 +37,16 @@ namespace Jokengine
 		// Start GameLoop
 		void Loop();
 		GameObject *Instantiate(GameObject &toInstantiate);
+		void Destroy(GameObject &toDestroy,GLfloat after=0);
 		void RegisterSpriteRendererService(SpriteRenderingService *service);
 		void RegisterCameraService(CameraService *service);
 		void RegisterTimeService(TimeService *service);
 		void RegisterPhysicsService(PhysicsService *service);
 		void RegisterAudioService(AudioService *service);
-
+		void RegisterTextRendererService(TextRenderingService *service);
 		void EnablePhysicsDebug(GLboolean drawColliders, GLboolean logCollisions);
 
-
+		GLfloat fixedRefreshTime;
 
 		GameObject* FindByID(GLint objectID);
 		AudioService& GetAudioService();
@@ -55,6 +54,7 @@ namespace Jokengine
 		CameraService& GetCameraService();
 		TimeService& GetTimeService();
 		PhysicsService& GetPhysicsService();
+		TextRenderingService& GetTextRendererService();
 
 		boost::signals2::signal<void()> initSignal;
 		boost::signals2::signal<void()> updateSignal;
@@ -68,7 +68,11 @@ namespace Jokengine
 		void FixedUpdate();
 		void Render();
 		void ProcessInput();
+		void CleanUpResources();
 		static Game *instance;
+		GLuint	   width, height;
+
+		std::string gameName;
 		GameRoom gameroom;
 		GLFWwindow * window;
 		//services
@@ -77,6 +81,8 @@ namespace Jokengine
 		TimeService *time;
 		PhysicsService *physics;
 		AudioService *audio;
+		TextRenderingService *text;
+
 		//GameLoop internal timers
 		GLfloat fixedUpdateTimer;
 	};

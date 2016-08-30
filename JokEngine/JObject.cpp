@@ -5,6 +5,10 @@ namespace Jokengine
 	{
 
 	}
+	JObject::JObject()
+		:toDestroyTimer(0),markedToDestroy(false)
+	{
+	}
 	void JObject::Destroy(GLfloat time)
 	{
 		markedToDestroy = true;
@@ -12,7 +16,8 @@ namespace Jokengine
 	}
 	GLboolean JObject::CheckDestroy(GLfloat dt)
 	{
-		toDestroyTimer -= dt;
+		if(markedToDestroy)
+			toDestroyTimer -= dt;
 		return markedToDestroy && toDestroyTimer <= 0;
 
 	}
