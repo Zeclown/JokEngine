@@ -10,55 +10,54 @@
 #include "shader.h"
 #include "SpriteSheet.h"
 #include "AudioFile.h"
-namespace Jokengine
+
+
+// A static ResourceManager class 
+// load Sprites and Shaders and store them
+// Example:
+//
+//  ResourceManager::LoadSprite("textures/goblin.png",GL_TRUE,"goblin")
+//  Sprite sprite=ResourceManager::GetSprite("goblin");
+class ResourceManager
 {
+public:
+	// Loads (and generates) a shader program from file loading vertex, fragment (and geometry) shader's source code. Returns reference from the storage
+	static Shader   LoadShader(const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile, std::string name);
+	// Retrieves a stored shader
+	static Shader   GetShader(std::string name);
+	// Loads a spritesheet from a file
+	static SpriteSheet LoadSpritesheet(const GLchar *file, GLboolean alpha,glm::vec2 frameSize, std::string name);
+	// Retrieves a stored spritesheet
+	static SpriteSheet GetSpritesheet( std::string name);
+	// Loads a sprite from a file
+	static Sprite LoadSprite(const GLchar *file, GLboolean alpha, std::string name);
+	// Retrieves a stored sprite
+	static Sprite GetSprite(std::string name);
+	//Loads an AudioFile from a file
+	static AudioFile LoadAudioFile(const GLchar *file,std::string name);
+	// Retrieves a stored AudioFile
+	static AudioFile GetAudioFile(std::string name);
 
-	// A static ResourceManager class 
-	// load Sprites and Shaders and store them
-	// Example:
-	//
-	//  ResourceManager::LoadSprite("textures/goblin.png",GL_TRUE,"goblin")
-	//  Sprite sprite=ResourceManager::GetSprite("goblin");
-	class ResourceManager
-	{
-	public:
-		// Loads (and generates) a shader program from file loading vertex, fragment (and geometry) shader's source code. Returns reference from the storage
-		static Shader   LoadShader(const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile, std::string name);
-		// Retrieves a stored shader
-		static Shader   GetShader(std::string name);
-		// Loads a spritesheet from a file
-		static SpriteSheet LoadSpritesheet(const GLchar *file, GLboolean alpha,glm::vec2 frameSize, std::string name);
-		// Retrieves a stored spritesheet
-		static SpriteSheet GetSpritesheet( std::string name);
-		// Loads a sprite from a file
-		static Sprite LoadSprite(const GLchar *file, GLboolean alpha, std::string name);
-		// Retrieves a stored sprite
-		static Sprite GetSprite(std::string name);
-		//Loads an AudioFile from a file
-		static AudioFile LoadAudioFile(const GLchar *file,std::string name);
-		// Retrieves a stored AudioFile
-		static AudioFile GetAudioFile(std::string name);
+	// de-allocates all loaded resources
+	static void      Clear();
+private:
+	ResourceManager() { }
+	// Loads (and generates) a texture from file, returns reference from the storage
+	static Texture2D LoadTexture(const GLchar *file, GLboolean alpha, std::string name);
+	//Loads and generates an audio sound from a file, returns reference from the storage
+	static AudioFile LoadAudioFromFile(const GLchar *audioFilePath);
+	// Retrieves a stored texture
+	static Texture2D GetTexture(std::string name);
+	// Resource storage
+	static std::map<std::string, Shader>    shaders;
+	static std::map<std::string, AudioFile> audioFiles;
+	static std::map<std::string, Texture2D> textures;
+	static std::map<std::string, Sprite> sprites;
+	static std::map<std::string, SpriteSheet> spriteSheets;
+	// Loads and generates a shader from file
+	static Shader    loadShaderFromFile(const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile = nullptr);
+	// Loads a single texture from file
+	static Texture2D loadTextureFromFile(const GLchar *file, GLboolean alpha);
+};
 
-		// de-allocates all loaded resources
-		static void      Clear();
-	private:
-		ResourceManager() { }
-		// Loads (and generates) a texture from file, returns reference from the storage
-		static Texture2D LoadTexture(const GLchar *file, GLboolean alpha, std::string name);
-		//Loads and generates an audio sound from a file, returns reference from the storage
-		static AudioFile LoadAudioFromFile(const GLchar *audioFilePath);
-		// Retrieves a stored texture
-		static Texture2D GetTexture(std::string name);
-		// Resource storage
-		static std::map<std::string, Shader>    shaders;
-		static std::map<std::string, AudioFile> audioFiles;
-		static std::map<std::string, Texture2D> textures;
-		static std::map<std::string, Sprite> sprites;
-		static std::map<std::string, SpriteSheet> spriteSheets;
-		// Loads and generates a shader from file
-		static Shader    loadShaderFromFile(const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile = nullptr);
-		// Loads a single texture from file
-		static Texture2D loadTextureFromFile(const GLchar *file, GLboolean alpha);
-	};
-}
 #endif

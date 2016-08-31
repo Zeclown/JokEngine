@@ -11,277 +11,275 @@
 #include "Audio.h"
 #include "SpriteAnimator.h"
 
-namespace Jokengine
+
+Game *Game::instance = 0;
+Game::Game(GLuint width, GLuint height, const std::string &gameName)
+	: width(width), height(height), gameroom(GameRoom::instance()), gameName(gameName), fixedRefreshTime(0.03), fixedUpdateTimer(0),BOX2D_TO_WORLD(110),WORLD_TO_BOX2D(1/BOX2D_TO_WORLD)
 {
-	Game *Game::instance = 0;
-	Game::Game(GLuint width, GLuint height, const std::string &gameName)
-		: width(width), height(height), gameroom(GameRoom::instance()), gameName(gameName), fixedRefreshTime(0.03), fixedUpdateTimer(0),BOX2D_TO_WORLD(110),WORLD_TO_BOX2D(1/BOX2D_TO_WORLD)
-	{
-		glfwInit();
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+	glfwInit();
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-		window = glfwCreateWindow(width, height, gameName.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(window);
+	window = glfwCreateWindow(width, height, gameName.c_str(), nullptr, nullptr);
+	glfwMakeContextCurrent(window);
 
-		glewExperimental = GL_TRUE;
-		glewInit();
-		glGetError(); // Call it once to catch glewInit() bug, all other errors are now from our application.
+	glewExperimental = GL_TRUE;
+	glewInit();
+	glGetError(); // Call it once to catch glewInit() bug, all other errors are now from our application.
 
 
-					  // OpenGL configuration
-		glViewport(0, 0, width, height);
-		glEnable(GL_CULL_FACE);
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+					// OpenGL configuration
+	glViewport(0, 0, width, height);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		//OPENAL initialization
-		ALCdevice *device;
-		device = alcOpenDevice(NULL);
-		ALCcontext *context;
+	//OPENAL initialization
+	ALCdevice *device;
+	device = alcOpenDevice(NULL);
+	ALCcontext *context;
 
-		context = alcCreateContext(device, NULL);
-		if (!alcMakeContextCurrent(context))
-			std::cout << "Audio Initialisation error";
+	context = alcCreateContext(device, NULL);
+	if (!alcMakeContextCurrent(context))
+		std::cout << "Audio Initialisation error";
 		
 
+}
+
+Game::~Game()
+{
+
+}
+GameObject* Game::Instantiate(GameObject &toInstantiate)
+{
+	return gameroom.Instantiate(toInstantiate);
+}
+void Game::Destroy(GameObject & toDestroy, GLfloat after)
+{
+	gameroom.Destroy(toDestroy, after);
+}
+GameObject* Game::FindByID(GLint objectID)
+{
+	return gameroom.FindByID(objectID);
+}
+
+void Game::Init()
+{
+
+
+
+	// Load basic shaders
+	ResourceManager::LoadShader("shaders/baseSprite.vshader", "shaders/baseSprite.fshader", nullptr, "sprite");
+	// Configure shaders
+
+	ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
+
+	//input callbacks setup
+
+	glfwSetKeyCallback(window, InputReader::KeyCallback);
+	glfwSetMouseButtonCallback(window, InputReader::MouseButtonCallback);
+
+	//Service Registration
+	if (!renderer)//if the rendering service is not initialised yet
+	{
+		SpriteRenderer *renderingService = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+		RegisterSpriteRendererService(renderingService);
+	}
+	if (!cameras)//if the camera service is not initialised yet
+	{
+		CameraHandler *cameraService = new CameraHandler();
+		RegisterCameraService(cameraService);
+	}
+	if (!time)//if the time service is not initialised yet
+	{
+		Clock *timeService = new Clock();
+		RegisterTimeService(timeService);
+	}
+	if (!physics)//if the physic service is not initialised yet
+	{
+		Physics *physicsService = new Physics();
+		RegisterPhysicsService(physicsService);
+	}
+	if (!audio)//if the audio service is not initialised yet
+	{
+		Audio *audio = new Audio();
+		RegisterAudioService(audio);
+	}
+	//Instantiate base camera
+	GameObject mainCam =   GameObject("CameraMain");
+	mainCam.AddComponent<Camera>();
+	Camera* camComp=Instantiate(mainCam)->GetComponent<Camera>();
+	cameras->RegisterCamera(*camComp);
+	//Instantiate base UI camera
+	GameObject uiCam = GameObject("UICamera");
+	uiCam.AddComponent<Camera>();
+	Camera* uiCamComp = Instantiate(uiCam)->GetComponent<Camera>();
+	uiCamComp->frustum = glm::vec2(width, height);
+	cameras->RegisterUICamera(*uiCamComp);
+
+	if (!text)//if the text rendering service is not initialised yet
+	{
+		TextRenderer *textService = new TextRenderer(width, height);
+		textService->Load("fonts/emulogic.TTF", 24);
+		RegisterTextRendererService(textService);
 	}
 
-	Game::~Game()
+}
+void Game::Loop()
+{
+
+	//gameloop
+	while (!glfwWindowShouldClose(window))
 	{
-
-	}
-	GameObject* Game::Instantiate(GameObject &toInstantiate)
-	{
-		return gameroom.Instantiate(toInstantiate);
-	}
-	void Game::Destroy(GameObject & toDestroy, GLfloat after)
-	{
-		gameroom.Destroy(toDestroy, after);
-	}
-	GameObject* Game::FindByID(GLint objectID)
-	{
-		return gameroom.FindByID(objectID);
-	}
-
-	void Game::Init()
-	{
-
-
-
-		// Load basic shaders
-		ResourceManager::LoadShader("shaders/baseSprite.vshader", "shaders/baseSprite.fshader", nullptr, "sprite");
-		// Configure shaders
-
-		ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
-
-		//input callbacks setup
-
-		glfwSetKeyCallback(window, InputReader::KeyCallback);
-		glfwSetMouseButtonCallback(window, InputReader::MouseButtonCallback);
-
-		//Service Registration
-		if (!renderer)//if the rendering service is not initialised yet
+		initSignal();
+		time->UpdateTime(glfwGetTime());
+		fixedUpdateTimer += time->GetDeltaTime();
+		glfwPollEvents();		
+		ProcessInput();
+		while (fixedUpdateTimer>=fixedRefreshTime)
 		{
-			SpriteRenderer *renderingService = new SpriteRenderer(ResourceManager::GetShader("sprite"));
-			RegisterSpriteRendererService(renderingService);
-		}
-		if (!cameras)//if the camera service is not initialised yet
-		{
-			CameraHandler *cameraService = new CameraHandler();
-			RegisterCameraService(cameraService);
-		}
-		if (!time)//if the time service is not initialised yet
-		{
-			Clock *timeService = new Clock();
-			RegisterTimeService(timeService);
-		}
-		if (!physics)//if the physic service is not initialised yet
-		{
-			Physics *physicsService = new Physics();
-			RegisterPhysicsService(physicsService);
-		}
-		if (!audio)//if the audio service is not initialised yet
-		{
-			Audio *audio = new Audio();
-			RegisterAudioService(audio);
-		}
-		//Instantiate base camera
-		GameObject mainCam =   GameObject("CameraMain");
-		mainCam.AddComponent<Camera>();
-		Camera* camComp=Instantiate(mainCam)->GetComponent<Camera>();
-		cameras->RegisterCamera(*camComp);
-		//Instantiate base UI camera
-		GameObject uiCam = GameObject("UICamera");
-		uiCam.AddComponent<Camera>();
-		Camera* uiCamComp = Instantiate(uiCam)->GetComponent<Camera>();
-		uiCamComp->frustum = glm::vec2(width, height);
-		cameras->RegisterUICamera(*uiCamComp);
-
-		if (!text)//if the text rendering service is not initialised yet
-		{
-			TextRenderer *textService = new TextRenderer(width, height);
-			textService->Load("fonts/emulogic.TTF", 24);
-			RegisterTextRendererService(textService);
-		}
-
-	}
-	void Game::Loop()
-	{
-
-		//gameloop
-		while (!glfwWindowShouldClose(window))
-		{
-			initSignal();
-			time->UpdateTime(glfwGetTime());
-			fixedUpdateTimer += time->GetDeltaTime();
-			glfwPollEvents();		
-			ProcessInput();
-			while (fixedUpdateTimer>=fixedRefreshTime)
+			FixedUpdate();
+			for (auto &iter : gameroom.RoomObjects)
 			{
-				FixedUpdate();
-				for (auto &iter : gameroom.RoomObjects)
-				{
-					if(iter.second->isActive())
-						iter.second->FixedUpdate();
-				}
-				fixedUpdateTimer -= fixedRefreshTime;
+				if(iter.second->isActive())
+					iter.second->FixedUpdate();
+			}
+			fixedUpdateTimer -= fixedRefreshTime;
 
-			}
-			Update();
-			UpdateAnimation();
-			glm::mat4 projection = cameras->GetMainCamera()->GetViewMatrix();
-			ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
-			// Render
-			Render();
-			CleanUpResources();
-			glfwSwapBuffers(window);
 		}
+		Update();
+		UpdateAnimation();
+		glm::mat4 projection = cameras->GetMainCamera()->GetViewMatrix();
+		ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+		// Render
+		Render();
+		CleanUpResources();
+		glfwSwapBuffers(window);
 	}
+}
 
-	void Game::RegisterSpriteRendererService(SpriteRenderingService *service)
-	{
-		if(renderer)
-			delete renderer;
-		renderer = service;
-	}
-	void Game::RegisterPhysicsService(PhysicsService *service)
-	{
-		if (physics)
-			delete physics;
-		physics = service;
-	}
-	void Game::RegisterTimeService(TimeService *service)
-	{
-		if (time)
-			delete time;
-		time = service;
-	}
-	void Game::RegisterCameraService(CameraService *service)
-	{
-		if (cameras)
-			delete cameras;
-		cameras = service;
-	}
-	void Game::RegisterAudioService(AudioService *service)
-	{
-		if (audio)
-			delete audio;
-		audio = service;
-	}
-	void Game::RegisterTextRendererService(TextRenderingService *service)
-	{
-		if (text)
-			delete text;
-		text = service;
-	}
-	void Game::EnablePhysicsDebug(GLboolean drawColliders, GLboolean logCollisions)
-	{
+void Game::RegisterSpriteRendererService(SpriteRenderingService *service)
+{
+	if(renderer)
+		delete renderer;
+	renderer = service;
+}
+void Game::RegisterPhysicsService(PhysicsService *service)
+{
+	if (physics)
+		delete physics;
+	physics = service;
+}
+void Game::RegisterTimeService(TimeService *service)
+{
+	if (time)
+		delete time;
+	time = service;
+}
+void Game::RegisterCameraService(CameraService *service)
+{
+	if (cameras)
+		delete cameras;
+	cameras = service;
+}
+void Game::RegisterAudioService(AudioService *service)
+{
+	if (audio)
+		delete audio;
+	audio = service;
+}
+void Game::RegisterTextRendererService(TextRenderingService *service)
+{
+	if (text)
+		delete text;
+	text = service;
+}
+void Game::EnablePhysicsDebug(GLboolean drawColliders, GLboolean logCollisions)
+{
 
-	}
-	SpriteRenderingService& Game::GetSpriteRendererService()
+}
+SpriteRenderingService& Game::GetSpriteRendererService()
+{
+	return *renderer;
+}
+CameraService& Game::GetCameraService()
+{
+	return *cameras;
+}
+TimeService& Game::GetTimeService()
+{
+	return *time;
+}
+AudioService& Game::GetAudioService()
+{
+	return *audio;
+}
+PhysicsService& Game::GetPhysicsService()
+{
+	return *physics;
+}
+TextRenderingService &Game::GetTextRendererService()
+{
+	return *text;
+}
+void Game::ProcessInput()
+{
+	InputReader::instance().UpdateInput();
+}
+void Game::CleanUpResources()
+{
+	gameroom.CleanUpResources();
+}
+void Game::Update()
+{
+	for (auto &iter : gameroom.RoomObjects)
 	{
-		return *renderer;
+		if (iter.second->isActive())
+			iter.second->Update();
 	}
-	CameraService& Game::GetCameraService()
+}
+void Game::UpdateAnimation()
+{
+	for (auto &iter : gameroom.RoomObjects)
 	{
-		return *cameras;
-	}
-	TimeService& Game::GetTimeService()
-	{
-		return *time;
-	}
-	AudioService& Game::GetAudioService()
-	{
-		return *audio;
-	}
-	PhysicsService& Game::GetPhysicsService()
-	{
-		return *physics;
-	}
-	TextRenderingService &Game::GetTextRendererService()
-	{
-		return *text;
-	}
-	void Game::ProcessInput()
-	{
-		InputReader::instance().UpdateInput();
-	}
-	void Game::CleanUpResources()
-	{
-		gameroom.CleanUpResources();
-	}
-	void Game::Update()
-	{
-		for (auto &iter : gameroom.RoomObjects)
+		auto drawPtr = iter.second->GetActiveComponent<SpriteAnimator>();
+		if (drawPtr)
 		{
-			if (iter.second->isActive())
-				iter.second->Update();
+			drawPtr->Update();
 		}
 	}
-	void Game::UpdateAnimation()
+}
+void Game::Render()
+{	
+	for (auto &iter : gameroom.RoomObjects)
 	{
-		for (auto &iter : gameroom.RoomObjects)
+		auto drawPtr = iter.second->GetActiveComponent<SpriteDrawable>();
+		if (drawPtr)
 		{
-			auto drawPtr = iter.second->GetActiveComponent<SpriteAnimator>();
-			if (drawPtr)
+			glm::vec2 extrapolationMod = glm::vec2(0, 0);
+			auto physicPtr = iter.second->GetActiveComponent<PhysicBody>();
+			if (physicPtr && physicPtr->interpolate)
 			{
-				drawPtr->Update();
+				GLfloat alpha = fixedUpdateTimer / fixedRefreshTime;
+				extrapolationMod = iter.second->GetWorldPosition()- (iter.second->GetWorldPosition() * alpha + physicPtr->lastPos*(1-alpha));
 			}
+			drawPtr->Draw(*renderer, extrapolationMod);
 		}
 	}
-	void Game::Render()
-	{	
-		for (auto &iter : gameroom.RoomObjects)
-		{
-			auto drawPtr = iter.second->GetActiveComponent<SpriteDrawable>();
-			if (drawPtr)
-			{
-				glm::vec2 extrapolationMod = glm::vec2(0, 0);
-				auto physicPtr = iter.second->GetActiveComponent<PhysicBody>();
-				if (physicPtr && physicPtr->interpolate)
-				{
-					GLfloat alpha = fixedUpdateTimer / fixedRefreshTime;
-					extrapolationMod = iter.second->GetWorldPosition()- (iter.second->GetWorldPosition() * alpha + physicPtr->lastPos*(1-alpha));
-				}
-				drawPtr->Draw(*renderer, extrapolationMod);
-			}
-		}
-	}
-	void Game::FixedUpdate()
+}
+void Game::FixedUpdate()
+{
+	physics->FixedUpdate();
+	for (auto &iter : gameroom.RoomObjects)
 	{
-		physics->FixedUpdate();
-		for (auto &iter : gameroom.RoomObjects)
+		auto physPtr = iter.second->GetActiveComponent<PhysicBody>();
+		if (physPtr)
 		{
-			auto physPtr = iter.second->GetActiveComponent<PhysicBody>();
-			if (physPtr)
-			{
-				physPtr->FixedUpdate();
-			}
+			physPtr->FixedUpdate();
 		}
 	}
 }

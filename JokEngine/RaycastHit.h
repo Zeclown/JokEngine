@@ -2,21 +2,20 @@
 #define RAYCAST_HIT_H
 #include "Collider.h"
 #include "Box2D\Box2D.h"
-namespace Jokengine
+
+//A raycasthit class that is often populated by the physics service
+class RaycastHit
 {
-	//A raycasthit class that is often populated by the physics service
-	class RaycastHit
-	{
-		public:
+	public:
 			
-			Collider *collider;
-			glm::vec2 point;
-			glm::vec2 normal;
-			explicit operator bool()
-			{
-				return collider!=nullptr;
-			}
-	};
-}
+		Collider *collider;
+		glm::vec2 point;
+		glm::vec2 normal;
+		explicit operator bool()
+		{
+			return collider!=nullptr;
+		}
+};
+
 #endif // !RAYCAST_HIT_H
 

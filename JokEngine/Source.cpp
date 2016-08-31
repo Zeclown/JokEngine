@@ -9,7 +9,7 @@
 #include <AudioSource.h>
 #include <CharacterController.h>
 #include <SpriteAnimator.h>
-using namespace Jokengine;
+
 
 void main()
 {

@@ -1,6 +1,6 @@
 #include "CharacterController.h"
 #include "PhysicBody.h"
-CharacterController::CharacterController(Jokengine::GameObject *gameObject)
+CharacterController::CharacterController(GameObject *gameObject)
 	:ComponentCloneable(gameObject)
 {
 	

@@ -2,8 +2,7 @@
 #define SPRITE_H
 #include "Texture.h"
 #include <glm\matrix.hpp>
-namespace Jokengine
-{
+
 class Sprite
 {
 		public:
@@ -14,6 +13,6 @@ class Sprite
 			GLint frame;
 			glm::vec2 size;
 };
-}
+
 
 #endif

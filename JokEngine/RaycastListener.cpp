@@ -1,31 +1,29 @@
 #include "RaycastListener.h"
-namespace Jokengine
+
+RaycastListener::~RaycastListener()
 {
-	RaycastListener::~RaycastListener()
+	if (resultOwner)
 	{
-		if (resultOwner)
-		{
-			delete result;
-		}
+		delete result;
 	}
-	RaycastListener::RaycastListener(RaycastHit *result)
-		:result(result),resultOwner(false)
+}
+RaycastListener::RaycastListener(RaycastHit *result)
+	:result(result),resultOwner(false)
+{
+	if (!result)
 	{
-		if (!result)
-		{
-			result = new RaycastHit();
-			resultOwner = true;
-		}
+		result = new RaycastHit();
+		resultOwner = true;
 	}
-	float32 RaycastListener::ReportFixture(b2Fixture* fixture, const b2Vec2& point, const b2Vec2& normal, float32 fraction)
+}
+float32 RaycastListener::ReportFixture(b2Fixture* fixture, const b2Vec2& point, const b2Vec2& normal, float32 fraction)
+{
+	if(result)
 	{
-		if(result)
-		{
-			result->collider=static_cast<Collider*>(fixture->GetUserData());
-			result->point=glm::vec2(point.x,point.y);
-			result->normal=glm::vec2(normal.x,normal.y);
-			return fraction;
-		}
-		return 0;
+		result->collider=static_cast<Collider*>(fixture->GetUserData());
+		result->point=glm::vec2(point.x,point.y);
+		result->normal=glm::vec2(normal.x,normal.y);
+		return fraction;
 	}
+	return 0;
 }
