@@ -75,6 +75,21 @@ namespace Jokengine
 			}
 			return nullptr;
 		}
+		//Get the first occurence of a Component of type <T> that is enabled on the GameObject. 
+		template<typename T>
+		T* GetActiveComponent()
+		{
+			for (auto const &comp : components)
+			{
+				auto derived = dynamic_cast<T*>(comp);
+				if (derived != nullptr)
+				{
+					if(derived->enabled)
+						return derived;
+				}
+			}
+			return nullptr;
+		}
 		//Get all occurences of a Component of type <T> on the GameObject.
 		template<typename T>
 		std::vector<T*> GetComponents()

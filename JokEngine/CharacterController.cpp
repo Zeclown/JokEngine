@@ -25,6 +25,6 @@ void CharacterController::Update()
 	}
 	if (InputReader::instance().isButton(GLFW_KEY_P))
 	{
-		Game::GetInstance().Destroy(*owner);
+		Game::GetInstance().Destroy(*owner,3);
 	}
 }

@@ -137,7 +137,8 @@ namespace Jokengine
 				FixedUpdate();
 				for (auto &iter : gameroom.RoomObjects)
 				{
-					iter.second->FixedUpdate();
+					if(iter.second->isActive())
+						iter.second->FixedUpdate();
 				}
 				fixedUpdateTimer -= fixedRefreshTime;
 
@@ -231,14 +232,15 @@ namespace Jokengine
 	{
 		for (auto &iter : gameroom.RoomObjects)
 		{
-			iter.second->Update();
+			if (iter.second->isActive())
+				iter.second->Update();
 		}
 	}
 	void Game::UpdateAnimation()
 	{
 		for (auto &iter : gameroom.RoomObjects)
 		{
-			auto drawPtr = iter.second->GetComponent<SpriteAnimator>();
+			auto drawPtr = iter.second->GetActiveComponent<SpriteAnimator>();
 			if (drawPtr)
 			{
 				drawPtr->Update();
@@ -249,11 +251,11 @@ namespace Jokengine
 	{	
 		for (auto &iter : gameroom.RoomObjects)
 		{
-			auto drawPtr = iter.second->GetComponent<SpriteDrawable>();
+			auto drawPtr = iter.second->GetActiveComponent<SpriteDrawable>();
 			if (drawPtr)
 			{
 				glm::vec2 extrapolationMod = glm::vec2(0, 0);
-				auto physicPtr = iter.second->GetComponent<PhysicBody>();
+				auto physicPtr = iter.second->GetActiveComponent<PhysicBody>();
 				if (physicPtr && physicPtr->interpolate)
 				{
 					GLfloat alpha = fixedUpdateTimer / fixedRefreshTime;
@@ -268,7 +270,7 @@ namespace Jokengine
 		physics->FixedUpdate();
 		for (auto &iter : gameroom.RoomObjects)
 		{
-			auto physPtr = iter.second->GetComponent<PhysicBody>();
+			auto physPtr = iter.second->GetActiveComponent<PhysicBody>();
 			if (physPtr)
 			{
 				physPtr->FixedUpdate();

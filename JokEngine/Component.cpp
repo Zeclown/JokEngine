@@ -3,7 +3,7 @@
 namespace Jokengine
 {
 	Component::Component(GameObject* gameObject)
-		:owner(gameObject)
+		:owner(gameObject),enabled(true)
 	{
 	}
 	GameObject* Component::GetOwner()
