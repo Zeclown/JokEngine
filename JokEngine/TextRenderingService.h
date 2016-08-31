@@ -5,7 +5,7 @@
 #include <glm\glm.hpp>
 namespace Jokengine
 {
-
+	//The default UI Text Service to render text
 	class TextRenderingService
 	{
 	public:

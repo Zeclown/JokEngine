@@ -10,6 +10,7 @@
 #include "Sprite.h"
 namespace Jokengine
 {
+	//Default Sprite Rendering Service
 	class SpriteRenderer:public SpriteRenderingService
 	{
 	public:

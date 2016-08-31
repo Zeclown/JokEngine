@@ -3,6 +3,7 @@
 #include <gl\glew.h>
 namespace Jokengine
 {
+	//Time Service that holds information about Timers and is updated each frame
 	class TimeService
 	{
 	public:

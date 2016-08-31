@@ -9,10 +9,10 @@ namespace Jokengine
 	// Component that store a sprite and ask the SpriteRenderer to draw it every frame
 	// Exemple:
 	//
-	//  RessourceManager::LoadTexture("textures/goblin.png",GL_TRUE,"goblin")
+	//  RessourceManager::LoadSprite("textures/goblin.png",GL_TRUE,"goblin")
 	//	GameObject go= GameObject();
 	//	go.AddComponent<SpriteRenderer>();
-	//  go.sprite=ResourceManager::GetTexture("goblin");
+	//  go.sprite=ResourceManager::GetSprite("goblin");
 	class SpriteDrawable :public ComponentCloneable<Component,SpriteDrawable> {
 	public:
 		SpriteDrawable(GameObject* gameObject);
