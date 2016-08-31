@@ -6,6 +6,7 @@
 
 #include "TextRenderer.h"
 #include "Resource_Manager.h"
+#include "Game.h"
 
 namespace Jokengine
 {
@@ -13,7 +14,7 @@ namespace Jokengine
 	{
 		// Load and configure shader
 		this->textShader = ResourceManager::LoadShader("shaders/text.vshader", "shaders/text.fshader", nullptr, "text");
-		this->textShader.SetMatrix4("projection", glm::ortho(0.0f, static_cast<GLfloat>(width), static_cast<GLfloat>(height), 0.0f), GL_TRUE);
+		this->textShader.SetMatrix4("projection", Game::GetInstance().GetCameraService().GetUICamera()->GetViewMatrix(), GL_TRUE);
 		this->textShader.SetInteger("text", 0);
 		// Configure VAO/VBO for texture quads
 		glGenVertexArrays(1, &this->VAO);
@@ -91,6 +92,7 @@ namespace Jokengine
 
 	void TextRenderer::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
 	{
+		this->textShader.SetMatrix4("projection", Game::GetInstance().GetCameraService().GetUICamera()->GetViewMatrix(), GL_TRUE);
 		// Activate corresponding render state	
 		this->textShader.Use();
 		this->textShader.SetVector3f("textColor", color);

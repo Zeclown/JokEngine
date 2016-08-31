@@ -108,17 +108,24 @@ namespace Jokengine
 			Audio *audio = new Audio();
 			RegisterAudioService(audio);
 		}
+		//Instantiate base camera
+		GameObject mainCam =   GameObject("CameraMain");
+		mainCam.AddComponent<Camera>();
+		Camera* camComp=Instantiate(mainCam)->GetComponent<Camera>();
+		cameras->RegisterCamera(*camComp);
+		//Instantiate base UI camera
+		GameObject uiCam = GameObject("UICamera");
+		uiCam.AddComponent<Camera>();
+		Camera* uiCamComp = Instantiate(uiCam)->GetComponent<Camera>();
+		uiCamComp->frustum = glm::vec2(width, height);
+		cameras->RegisterUICamera(*uiCamComp);
+
 		if (!text)//if the text rendering service is not initialised yet
 		{
 			TextRenderer *textService = new TextRenderer(width, height);
 			textService->Load("fonts/emulogic.TTF", 24);
 			RegisterTextRendererService(textService);
 		}
-		//Instantiate base camera
-		GameObject mainCam =   GameObject("CameraMain");
-		mainCam.AddComponent<Camera>();
-		Camera* camComp=Instantiate(mainCam)->GetComponent<Camera>();
-		cameras->RegisterCamera(*camComp);
 
 	}
 	void Game::Loop()
