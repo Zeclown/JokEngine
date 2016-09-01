@@ -1,15 +1,5 @@
-#include "Game.h"
-#include "Resource_Manager.h"
-#include "SpriteDrawable.h"
-#include "PhysicBody.h"
-#include "BoxCollider.h"
-#include <math.h>
-#include <AL/al.h>
-#include <AL/alc.h>
-#include <AudioSource.h>
-#include <CharacterController.h>
-#include <SpriteAnimator.h>
-
+#include "JokEngine.h"
+#include "CharacterController.h"
 
 void main()
 {

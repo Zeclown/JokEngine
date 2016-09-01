@@ -13,8 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Test">
-      <UniqueIdentifier>{35297563-ccda-4fca-9ff3-f0d7d188897e}</UniqueIdentifier>
+    <Filter Include="Source Files\Joust">
+      <UniqueIdentifier>{36444f3c-7d01-412e-b9e2-12c7d0e1103c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Joust">
+      <UniqueIdentifier>{73f43a0c-5cfc-436b-8ef0-3caccab08184}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -96,9 +99,6 @@
     <ClInclude Include="PhysicsDebug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpawnCube.h">
-      <Filter>Source Files\Test</Filter>
-    </ClInclude>
     <ClInclude Include="ContactListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -129,9 +129,6 @@
     <ClInclude Include="Audio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterController.h">
-      <Filter>Source Files\Test</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -146,6 +143,12 @@
     </ClInclude>
     <ClInclude Include="TextRenderingService.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JokEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterController.h">
+      <Filter>Header Files\Joust</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -178,9 +181,6 @@
     </ClCompile>
     <ClCompile Include="InputReader.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files\Test</Filter>
     </ClCompile>
     <ClCompile Include="GameRoom.cpp">
       <Filter>Source Files</Filter>
@@ -245,9 +245,6 @@
     <ClCompile Include="Audio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterController.cpp">
-      <Filter>Source Files\Test</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -259,6 +256,12 @@
     </ClCompile>
     <ClCompile Include="TextRenderer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterController.cpp">
+      <Filter>Source Files\Joust</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

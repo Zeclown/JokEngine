@@ -1,0 +1,8 @@
+This library has the following dependencies
+OpenAL Soft
+FreeAlut
+Box2D
+freetype
+glew
+GLFW
+SOIL
