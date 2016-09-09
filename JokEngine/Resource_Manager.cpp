@@ -91,7 +91,7 @@ AudioFile ResourceManager::LoadAudioFromFile(const GLchar *audioFilePath)
 	#pragma warning(disable: 4996) //deprecated function (Sorry about that guys)
 		// deprecated code here
 
-		alutLoadWAVFile((ALbyte*)"test.wav", &format, &data, &size, &freq, &loop);
+		alutLoadWAVFile((ALbyte*)audioFilePath, &format, &data, &size, &freq, &loop);
 		//std::ifstream audioClipFile(audioFilePath, std::ios_base::binary);
 	#pragma warning(pop)
 		alBufferData(buffer, format, data, size, freq);

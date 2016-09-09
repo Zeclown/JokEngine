@@ -1,0 +1,33 @@
+A clear room function that deletes every GameObjects in the gameroom :Done!
+
+A don't destroy on clear room option for gameobjects :Done!
+
+Wrapper around boost::signals 
+
+A GameObject directory (like prefabs) so we can load GameObjects at the start of the game as prototypes
+
+UI components :Done!
+
+Semi Transparent sprites (Cant believe I missed that one) :Done!
+
+isAnyButtonDown :Done!
+
+Sprite Rendering order (Depth testing)  :Done!
+
+Being able to flip sprites :Done!
+
+Allow to set friction on physic bodies
+
+Helper that creates animation from spritesheet with first frame index and last frame index :Done!
+
+BUGS
+
+Freeze Rotation Not working :Done!
+
+GameObjects constructor conflicts! :Done!
+
+Box2D colliders are bigger than the models
+
+Aspect Ratio is not preserved :Done!
+
+GetVelocity on physicbodies is not working :Done!

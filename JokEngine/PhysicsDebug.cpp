@@ -14,9 +14,9 @@ void PhysicsDebug::SetGravity(glm::vec2 gravity)
 {
 	phys->SetGravity(gravity);
 }
-b2Body* PhysicsDebug::RegisterBody(PhysicBody* pb,glm::vec2 position, GLboolean isKinematic, GLboolean isGravity, GLfloat rotation, GLfloat angularDrag, GLfloat drag, GLint mass)
+b2Body* PhysicsDebug::RegisterBody(PhysicBody* pb,glm::vec2 position, GLboolean isKinematic, GLboolean isGravity, GLfloat rotation, GLfloat angularDrag, GLfloat drag, GLint mass, GLboolean isRotation)
 {
-	return phys->RegisterBody(pb,position, isKinematic, isGravity, rotation, angularDrag, drag, mass);
+	return phys->RegisterBody(pb,position, isKinematic, isGravity, rotation, angularDrag, drag, mass, isRotation);
 }
 b2Fixture* PhysicsDebug::RegisterFixtureBox(b2Body *body,Collider* col, glm::vec2 size,GLboolean sensor, glm::vec2 offset, std::string layerName)
 {

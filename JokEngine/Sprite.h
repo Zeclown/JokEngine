@@ -12,6 +12,7 @@ class Sprite
 			Texture2D *texture;
 			GLint frame;
 			glm::vec2 size;
+			GLboolean flipped;
 };
 
 

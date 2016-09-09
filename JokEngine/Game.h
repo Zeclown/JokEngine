@@ -43,6 +43,7 @@ public:
 	// Start GameLoop
 	void Loop();
 	GameObject *Instantiate(GameObject &toInstantiate);
+	void ClearRoom();
 	void Destroy(GameObject &toDestroy,GLfloat after=0);
 	void RegisterSpriteRendererService(SpriteRenderingService *service);
 	void RegisterCameraService(CameraService *service);

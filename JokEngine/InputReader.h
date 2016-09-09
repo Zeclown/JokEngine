@@ -31,11 +31,11 @@ public:
 	static void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods);// this method is specified as glfw mouse button callback
 	std::vector<GLfloat> GetMouseAxis();
 	std::vector<GLfloat> GetJoystickAxis(int joystick);	
-	//Has the button just been released
+	//Has the button just been released -1 for any key
 	GLboolean isButtonUp(GLint key);
-	//Has the button just been pressed
+	//Has the button just been pressed -1 for any key
 	GLboolean isButtonDown(GLint key);
-	//Is the button held down
+	//Is the button held down -1 for any key
 	GLboolean isButton(GLint key);
 
 	void ProcessKeyInput(GLFWwindow* window, int key, int action, int mods);

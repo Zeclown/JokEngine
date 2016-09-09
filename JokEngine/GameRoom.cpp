@@ -52,7 +52,19 @@ void GameRoom::CleanUpResources()
 			
 	}
 }
-
+void GameRoom::ClearRoom()
+{
+	for (std::map<GLint, std::shared_ptr<GameObject>>::iterator iter = RoomObjects.begin(); iter != RoomObjects.end();)
+	{
+		if (!(iter->second->dontDestroyOnClean))
+		{
+			DestroyObject(*iter->second);
+			iter = RoomObjects.begin();
+		}
+		else
+			iter++;
+	}
+}
 GameObject* GameRoom::FindByID(GLint id)
 {
 	if (RoomObjects.count(id) > 0)

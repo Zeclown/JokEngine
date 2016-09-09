@@ -17,6 +17,15 @@ Animation::Animation(SpriteSheet sp, GLfloat frameDuration)
 	:Animation(sp.sprites, frameDuration)
 {	
 }
+Animation::Animation(SpriteSheet sp, GLuint firstFrame, GLuint lastFrame, GLfloat frameDuration)
+	:Animation()
+{
+	for (int i = firstFrame; i <= lastFrame; i++)
+	{
+		frames.push_back(AnimationFrame(sp.sprites[i], frameDuration));
+	}
+}
+
 std::pair<AnimationFrame,GLboolean> Animation::GetNextFrame()
 {
 	if(frameIndex>=frames.size())//Now in wrapping mode if we are not already. Decides what to do next since there is not more next frame to use

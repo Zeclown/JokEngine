@@ -9,11 +9,11 @@ public:
 	CameraHandler();
 		void RegisterCamera(Camera &cam);
 		void RegisterUICamera(Camera &cam);
-		std::shared_ptr<Camera> GetMainCamera();
-		std::shared_ptr<Camera> GetUICamera();
+		Camera* GetMainCamera();
+		Camera* GetUICamera();
 private:
-	std::shared_ptr<Camera> mainCamera;
-	std::shared_ptr<Camera> uiCamera;
+	Camera* mainCamera;
+	Camera* uiCamera;
 };
 
 #endif

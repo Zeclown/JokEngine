@@ -168,6 +168,17 @@
     <ClInclude Include="InputReader.h" />
     <ClInclude Include="JObject.h" />
     <ClInclude Include="JokEngine.h" />
+    <ClInclude Include="JoustExample\BlinkingObject.h" />
+    <ClInclude Include="JoustExample\Command.h" />
+    <ClInclude Include="JoustExample\FadeOutHelper.h" />
+    <ClInclude Include="JoustExample\GameManager.h" />
+    <ClInclude Include="JoustExample\InputHandler.h" />
+    <ClInclude Include="JoustExample\JumpCommand.h" />
+    <ClInclude Include="JoustExample\Knight.h" />
+    <ClInclude Include="JoustExample\KnightAI.h" />
+    <ClInclude Include="JoustExample\MoveLeftCommand.h" />
+    <ClInclude Include="JoustExample\MoveRightCommand.h" />
+    <ClInclude Include="JoustExample\PlayerKnight.h" />
     <ClInclude Include="PhysicLayer.h" />
     <ClInclude Include="PhysicBody.h" />
     <ClInclude Include="Physics.h" />
@@ -186,6 +197,7 @@
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="TextRenderer.h" />
     <ClInclude Include="TextRenderingService.h" />
+    <ClInclude Include="TextUI.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeService.h" />
   </ItemGroup>
@@ -210,6 +222,17 @@
     <ClCompile Include="GameRoom.cpp" />
     <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="JObject.cpp" />
+    <ClCompile Include="JoustExample\BlinkingObject.cpp" />
+    <ClCompile Include="JoustExample\FadeOutHelper.cpp" />
+    <ClCompile Include="JoustExample\GameManager.cpp" />
+    <ClCompile Include="JoustExample\InputHandler.cpp" />
+    <ClCompile Include="JoustExample\Joust.cpp" />
+    <ClCompile Include="JoustExample\JumpCommand.cpp" />
+    <ClCompile Include="JoustExample\Knight.cpp" />
+    <ClCompile Include="JoustExample\KnightAI.cpp" />
+    <ClCompile Include="JoustExample\MoveLeftCommand.cpp" />
+    <ClCompile Include="JoustExample\MoveRightCommand.cpp" />
+    <ClCompile Include="JoustExample\PlayerKnight.cpp" />
     <ClCompile Include="PhysicLayer.cpp" />
     <ClCompile Include="PhysicBody.cpp" />
     <ClCompile Include="Physics.cpp" />
@@ -226,6 +249,7 @@
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="TextRenderer.cpp" />
+    <ClCompile Include="TextUI.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>

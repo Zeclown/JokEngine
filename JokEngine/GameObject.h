@@ -35,10 +35,10 @@ public:
 	E_JTAG tag;
 	glm::vec2   position, size;
 	GLfloat     rotation;
-
+	GLboolean dontDestroyOnClean;
 	// Constructor(s)
 	GameObject();
-	GameObject(std::string name = "GameObject");
+	GameObject(std::string name);
 	GameObject(const GameObject &gameObject);
 	~GameObject();
 	//Create a component and add it to the GameObject. Return a reference to the component

@@ -11,8 +11,8 @@ class CameraService
 public:
 	virtual void RegisterCamera(Camera &cam)= 0;
 	virtual void RegisterUICamera(Camera &cam) = 0;
-	virtual std::shared_ptr<Camera> GetMainCamera()=0;
-	virtual std::shared_ptr<Camera> GetUICamera() = 0;
+	virtual Camera* GetMainCamera()=0;
+	virtual Camera* GetUICamera() = 0;
 };
 
 #endif

@@ -6,13 +6,13 @@
 BoxCollider::BoxCollider(GameObject *owner)
 	:ComponentCloneable(owner)
 {
-	size = owner->size;
+	size = glm::vec2(1);
 }
 void BoxCollider::Init()
 {
 	PhysicBody *ptr = owner->GetComponent<PhysicBody>();
 	if (!ptr)
 		ptr = owner->AddComponent<PhysicBody>();
-	fixture = Game::GetInstance().GetPhysicsService().RegisterFixtureBox(ptr->GetB2body(),this,size,!isSolid, offset);
+	fixture = Game::GetInstance().GetPhysicsService().RegisterFixtureBox(ptr->GetB2body(), this, size*owner->GetWorldSize() , !isSolid, offset);
 }
 

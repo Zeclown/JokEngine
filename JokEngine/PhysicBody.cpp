@@ -34,7 +34,7 @@ void PhysicBody::FixedUpdate()
 	
 }
 void PhysicBody::MakeBody()
-{	rBody = Game::GetInstance().GetPhysicsService().RegisterBody(this,glm::vec2(owner->position.x, owner->position.y),kinematic,gravity,GetOwner()->rotation,angularDrag,drag, mass);
+{	rBody = Game::GetInstance().GetPhysicsService().RegisterBody(this,glm::vec2(owner->position.x, owner->position.y),kinematic,gravity,GetOwner()->rotation,angularDrag,drag, mass,!freezeRotation);
 }
 void PhysicBody::AddForce(glm::vec2 force, E_FORCE_TYPE forceType)
 {
@@ -46,7 +46,7 @@ void PhysicBody::AddForce(glm::vec2 force, E_FORCE_TYPE forceType)
 
 glm::vec2 PhysicBody::GetVelocity()
 {
-	return velocity;
+	return glm::vec2(rBody->GetLinearVelocity().x, rBody->GetLinearVelocity().y);
 }
 
 void PhysicBody::SetVelocity(glm::vec2 vlcy)
@@ -104,7 +104,7 @@ void PhysicBody::SetFreezeRotation(GLboolean freeze)
 {
 	freezeRotation = freeze;
 	if (rBody)
-		rBody->SetFixedRotation(freeze);
+		rBody->SetFixedRotation(!freeze);
 }
 
 GLboolean PhysicBody::IsGravity()
