@@ -3,7 +3,7 @@
 #include "Game.h"
 void FadeOutHelper::Init()
 {
-	owner->Update.connect(boost::bind(&FadeOutHelper::Update, this));
+	signalConnections.push_back(owner->Update.connect(boost::bind(&FadeOutHelper::Update, this)));
 	if (timeToFadeInSeconds == 0)
 	{
 		timeToFadeInSeconds = 1;

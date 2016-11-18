@@ -4,8 +4,7 @@
 #include <GL/glew.h>
 #include <memory>
 #include <iostream>
-
-
+#include <boost\signals2.hpp>
 //basic declaration because of co dependency
 class GameObject;
 
@@ -13,7 +12,7 @@ class GameObject;
 class Component : public JObject {
 friend class GameObject;
 public:
-	virtual ~Component() {};
+	virtual ~Component();
 	Component(GameObject* gameObject);
 	//is the component active
 	GLboolean   enabled;
@@ -22,7 +21,9 @@ public:
 	virtual Component *clone() const = 0;
 protected:
 	virtual void Init() {};
+	std::vector<boost::signals2::connection> signalConnections;
 	GameObject* owner;
+	GLint componentID;
 
 
 };

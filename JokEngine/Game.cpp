@@ -15,7 +15,7 @@
 
 Game *Game::instance = 0;
 Game::Game(GLuint width, GLuint height, const std::string &gameName)
-	: width(width), height(height), gameroom(GameRoom::instance()), gameName(gameName), fixedRefreshTime(0.03), fixedUpdateTimer(0),BOX2D_TO_WORLD(110),WORLD_TO_BOX2D(1/BOX2D_TO_WORLD)
+	: width(width), height(height), gameroom(GameRoom::instance()), gameName(gameName), fixedRefreshTime(0.03), fixedUpdateTimer(0),BOX2D_TO_WORLD(15),WORLD_TO_BOX2D(1/BOX2D_TO_WORLD)
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -58,6 +58,10 @@ GameObject* Game::Instantiate(GameObject &toInstantiate)
 	return gameroom.Instantiate(toInstantiate);
 }
 void Game::Destroy(GameObject & toDestroy, GLfloat after)
+{
+	gameroom.Destroy(toDestroy, after);
+}
+void Game::Destroy(Component &toDestroy, GLfloat after)
 {
 	gameroom.Destroy(toDestroy, after);
 }
@@ -237,10 +241,13 @@ void Game::UpdateAnimation()
 {
 	for (auto &iter : gameroom.RoomObjects)
 	{
-		auto drawPtr = iter.second->GetActiveComponent<SpriteAnimator>();
-		if (drawPtr)
+		if (iter.second->isActive())
 		{
-			drawPtr->Update();
+			auto drawPtr = iter.second->GetActiveComponent<SpriteAnimator>();
+			if (drawPtr)
+			{
+				drawPtr->Update();
+			}
 		}
 	}
 }
@@ -254,15 +261,18 @@ void Game::Render()
 	//build the render queues
 	for (auto &iter : gameroom.RoomObjects)
 	{
-		auto drawPtr = iter.second->GetActiveComponent<SpriteDrawable>();
-		auto drawUIPts= iter.second->GetActiveComponent<TextUI>();
-		if (drawPtr)
+		if (iter.second->isActive())
 		{
-			renderQueue.insert(RenderQueueType::value_type(drawPtr->drawOrder, drawPtr));			
-		}
-		if (drawUIPts)
-		{
-			renderQueueUI.insert(RenderQueueUIType::value_type(drawUIPts->drawOrder, drawUIPts));
+			auto drawPtr = iter.second->GetActiveComponent<SpriteDrawable>();
+			auto drawUIPts = iter.second->GetActiveComponent<TextUI>();
+			if (drawPtr)
+			{
+				renderQueue.insert(RenderQueueType::value_type(drawPtr->drawOrder, drawPtr));
+			}
+			if (drawUIPts)
+			{
+				renderQueueUI.insert(RenderQueueUIType::value_type(drawUIPts->drawOrder, drawUIPts));
+			}
 		}
 	}
 
@@ -338,7 +348,7 @@ void Game::ClearRoom()
 	GameObject mainCam = GameObject("CameraMain");
 	mainCam.AddComponent<Camera>();
 	Camera* camComp = Instantiate(mainCam)->GetComponent<Camera>();
-	camComp->frustum = glm::vec2(width/5.5, height/5.5);
+	camComp->frustum = glm::vec2(width/20, height/20);
 	cameras->RegisterCamera(*camComp);
 
 	//Instantiate base UI camera

@@ -8,6 +8,8 @@ class TextUI:public ComponentCloneable<Component,TextUI>
 public:
 	GLuint drawOrder;
 	std::string text;
+	GLboolean worldCoordinates;
+	GLboolean justify;
 	glm::vec3 color;
 	glm::vec2 position;
 	GLfloat scale;

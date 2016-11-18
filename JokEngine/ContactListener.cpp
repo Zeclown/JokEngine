@@ -1,6 +1,6 @@
 #include "ContactListener.h"
 #include "GameObject.h"
-
+#include "Game.h"
 void ContactListener::PushCollision(b2Contact* contact,GLboolean enter)
 {
 	b2Fixture *fixA = contact->GetFixtureA();
@@ -44,11 +44,13 @@ void ContactListener::SendCollisionsCalls()
 {
 	for (int i = 0; i < collisionEnterList.size(); ++i)
 	{
-		collisionEnterList[i].colliderSelf->GetOwner()->OnCollisionEnter(collisionEnterList[i]);
+		if(Game::GetInstance().FindByID(collisionEnterList[i].objID))
+			collisionEnterList[i].colliderSelf->GetOwner()->OnCollisionEnter(collisionEnterList[i]);
 	}
 	for (int i = 0; i < collisionExitList.size(); ++i)
 	{
-		collisionExitList[i].colliderSelf->GetOwner()->OnCollisionExit(collisionExitList[i]);
+		if (Game::GetInstance().FindByID(collisionExitList[i].objID))
+			collisionExitList[i].colliderSelf->GetOwner()->OnCollisionExit(collisionExitList[i]);
 	}
 	collisionEnterList.clear();
 	collisionExitList.clear();

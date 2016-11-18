@@ -89,15 +89,42 @@ void TextRenderer::Load(std::string font, GLuint fontSize)
 
 
 
-void TextRenderer::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
+void TextRenderer::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, GLboolean worldCoordinates, GLboolean justify, glm::vec3 color)
 {
 	this->textShader.SetMatrix4("projection", Game::GetInstance().GetCameraService().GetUICamera()->GetViewMatrix(), GL_TRUE);
 	// Activate corresponding render state	
 	this->textShader.Use();
 	this->textShader.SetVector3f("textColor", color);
+	if (worldCoordinates)
+	{
+		glm::mat4 model;
+		this->textShader.SetMatrix4("projection", Game::GetInstance().GetCameraService().GetMainCamera()->GetViewMatrix(), GL_TRUE);
+		scale /= 20;
+		glm::translate(model, glm::vec3(x, y, 0));
+		textShader.SetMatrix4("model", model);
+	}
+	else
+	{
+		textShader.SetMatrix4("model", glm::mat4(1));
+	}
 	glActiveTexture(GL_TEXTURE0);
 	glBindVertexArray(this->VAO);
 
+
+
+	if (justify)//we need to calculate the left offset
+	{
+		std::string::const_iterator i;
+		GLfloat startX = x;
+		GLfloat endX = startX;
+		for (i = text.begin(); i != text.end(); i++)
+		{
+			Character ch = characters[*i];
+			endX+=(ch.advance / 64) * scale;
+		}
+		GLfloat offsetX= (endX-startX)/2;
+		x -= offsetX;
+	}
 	// Iterate through all characters
 	std::string::const_iterator c;
 	for (c = text.begin(); c != text.end(); c++)
@@ -119,6 +146,7 @@ void TextRenderer::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat sc
 			{ xpos + w, ypos + h,   1.0, 1.0 },
 			{ xpos + w, ypos,       1.0, 0.0 }
 		};
+
 		// Render glyph texture over quad
 		glBindTexture(GL_TEXTURE_2D, ch.textureID);
 		// Update content of VBO memory
@@ -129,7 +157,7 @@ void TextRenderer::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat sc
 		// Render quad
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 		// Now advance cursors for next glyph
-		x += (ch.advance >> 6) * scale; 
+		x += (ch.advance /64) * scale;  // Bitshift  to get value in pixels
 	}
 	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);

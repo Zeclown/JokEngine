@@ -46,6 +46,8 @@ public:
 	T*  AddComponent()
 	{
 		auto newComp = new T(this);
+		newComp->componentID = idCount;
+		idCount++;
 		components.push_back(newComp);
 		initList.push_back(newComp);
 		return newComp;
@@ -56,6 +58,8 @@ public:
 
 		auto newComp = component.clone();
 		newComp->owner = this;
+		newComp->componentID = idCount;
+		idCount++;
 		components.push_back(newComp);
 		initList.push_back(newComp);
 		return newComp;
@@ -107,6 +111,7 @@ public:
 	//Set the parent of the GameObject in the hierarchy
 	void SetParent(GameObject* go);
 	GameObject* GetParent();
+	int GetObjectID();
 	void Init();
 	//Check if the game object is currently active
 	GLboolean isActive();
@@ -123,7 +128,7 @@ protected:
 	std::vector<GameObject*> children;
 	GameObject* parent;
 	std::vector<Component*> initList;
-
+	GLint idCount;
 	GLboolean    active;
 	GLint objectID;
 };

@@ -45,6 +45,7 @@ public:
 	GameObject *Instantiate(GameObject &toInstantiate);
 	void ClearRoom();
 	void Destroy(GameObject &toDestroy,GLfloat after=0);
+	void Destroy(Component &toDestroy, GLfloat after = 0);
 	void RegisterSpriteRendererService(SpriteRenderingService *service);
 	void RegisterCameraService(CameraService *service);
 	void RegisterTimeService(TimeService *service);

@@ -73,8 +73,7 @@ b2Fixture* Physics::RegisterFixtureBox(b2Body *body,Collider *col,glm::vec2 size
 	b2PolygonShape baseFixture;
 	size *= Game::GetInstance().WORLD_TO_BOX2D;
 	offset*= Game::GetInstance().WORLD_TO_BOX2D;
-	baseFixture.SetAsBox(size.x/2, size.y/2);
-	baseFixture.m_centroid.Set(offset.x, offset.y);
+	baseFixture.SetAsBox(size.x/2, size.y/2,b2Vec2(offset.x, offset.y),0);
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &baseFixture;
 	boxFixtureDef.density = 0;
@@ -178,10 +177,12 @@ uint16 Physics::GetMaskBits(std::vector<std::string> layerNames,GLboolean isColl
 GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance, uint16 physicMask)
 {
 	RaycastListener rayListener;
+	origin *= Game::GetInstance().WORLD_TO_BOX2D;
+	maxDistance *= Game::GetInstance().WORLD_TO_BOX2D;
 	b2Vec2 pointA=b2Vec2(origin.x,origin.y);
 	b2Vec2 pointB=b2Vec2(origin.x+glm::normalize(direction).x*maxDistance,origin.y+glm::normalize(direction).y*maxDistance);
 	physicWorld->RayCast(&rayListener,pointA,pointB);
-	return (bool)rayListener.result;
+	return (bool)rayListener.result->collider;
 }
 GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &output, GLfloat maxDistance, uint16 physicMask)
 {
@@ -189,7 +190,7 @@ GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &ou
 	b2Vec2 pointA=b2Vec2(origin.x,origin.y);
 	b2Vec2 pointB=b2Vec2(origin.x+glm::normalize(direction).x*maxDistance,origin.y+glm::normalize(direction).y*maxDistance);
 	physicWorld->RayCast(&rayListener,pointA,pointB);
-	return (bool)*(rayListener.result);
+	return (bool)rayListener.result->collider;
 }
 std::vector<RaycastHit> Physics::RaycastAll(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance, uint16 physicMask)
 {
@@ -202,4 +203,5 @@ std::vector<RaycastHit> Physics::RaycastAll(glm::vec2 origin, glm::vec2 directio
 void Physics::FixedUpdate()
 {
 	physicWorld->Step(Game::GetInstance().fixedRefreshTime,velocityIteration,positionIteration);
+	contactListener->SendCollisionsCalls();
 }

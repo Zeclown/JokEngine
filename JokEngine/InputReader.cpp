@@ -63,8 +63,12 @@ void InputReader::UpdateInput()
 	std::swap(keys, nextKeys);
 
 	for (int i = 0; i < 2024; i++) {
-			
-		if (keys[i] == E_KEYSTATE::KEY_UP)
+
+		if (keys[i] == E_KEYSTATE::KEYNONE)
+		{
+			nextKeys[i] = E_KEYSTATE::KEYNONE;
+		}
+		else if (keys[i] == E_KEYSTATE::KEY_UP)
 		{
 			nextKeys[i] = E_KEYSTATE::KEYNONE;
 		}

@@ -17,5 +17,7 @@ private:
 	Command* jumpCom;
 	Command* moveLeftCom;
 	Command* moveRightCom;
+	Command* wingsDownCom;
+	Command* stopWalkingCom;
 	InputReader* input;
 };

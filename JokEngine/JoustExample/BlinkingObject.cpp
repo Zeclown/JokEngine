@@ -1,13 +1,14 @@
 #include "BlinkingObject.h"
 #include "Game.h"
-#include "SpriteRenderer.h"
+#include "SpriteDrawable.h"
 #include "TextUI.h"
 void BlinkingObject::Init()
 {
-	owner->Update.connect(boost::bind(&BlinkingObject::Update,this));
+	displayComponent = nullptr;
+	signalConnections.push_back(owner->Update.connect(boost::bind(&BlinkingObject::Update,this)));
 	if (!ui)
 	{
-		displayComponent = (Component*)owner->GetComponent<SpriteRenderer>();
+		displayComponent = (Component*)owner->GetComponent<SpriteDrawable>();
 	}
 	else
 		displayComponent= (Component*)owner->GetComponent<TextUI>();

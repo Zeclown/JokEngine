@@ -67,6 +67,7 @@ void SpriteRenderer::DrawSquare(glm::vec2 position,glm::vec2 size,GLfloat rotate
 }
 void SpriteRenderer::DrawSprite(Sprite &sprite, glm::vec2 position, glm::vec2 size, GLfloat rotate, glm::vec4 color)
 {
+
 	Texture2D &texture= *(sprite.texture);
 	this->shader.Use();
 	glm::mat4 model;

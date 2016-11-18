@@ -23,6 +23,7 @@ public:
 
 	GameObject* Instantiate(GameObject &toInstantiate);
 	void Destroy(GameObject &toDestroy,GLfloat after);
+	void Destroy(Component &toDestroy, GLfloat after);
 	void ClearRoom();
 	void CleanUpResources();
 	//all the objects in the GameRoom

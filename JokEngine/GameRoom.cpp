@@ -12,12 +12,15 @@ GameRoom::GameRoom()
 }
 
 GameObject* GameRoom::Instantiate(GameObject &toInstantiate) {
-		
-	std::shared_ptr<GameObject> objPtr = std::make_shared<GameObject>(toInstantiate);
-	objPtr->objectID = ++idCount;
-	RoomObjects[objPtr->objectID] = objPtr;
-	Game::GetInstance().initSignal.connect(boost::signals2::signal<void()>::slot_type(&GameObject::Init,objPtr.get()).track_foreign(objPtr) );
-	return objPtr.get();
+	idCount++;
+	RoomObjects[idCount] = std::make_shared<GameObject>(toInstantiate);
+	RoomObjects[idCount]->objectID = idCount;
+	Game::GetInstance().initSignal.connect(boost::signals2::signal<void()>::slot_type(&GameObject::Init, RoomObjects[idCount].get()).track_foreign(RoomObjects[idCount]) );
+	return RoomObjects[idCount].get();
+}
+void GameRoom::Destroy(Component &toDestroy, GLfloat after)
+{
+	toDestroy.Destroy(after);
 }
 void GameRoom::Destroy(GameObject & toDestroy, GLfloat after)
 {
