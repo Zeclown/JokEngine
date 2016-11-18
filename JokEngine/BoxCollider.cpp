@@ -13,6 +13,7 @@ void BoxCollider::Init()
 	PhysicBody *ptr = owner->GetComponent<PhysicBody>();
 	if (!ptr)
 		ptr = owner->AddComponent<PhysicBody>();
-	fixture = Game::GetInstance().GetPhysicsService().RegisterFixtureBox(ptr->GetB2body(), this, size*owner->GetWorldSize() , !isSolid, offset);
+	fixture = Game::GetInstance().GetPhysicsService().RegisterFixtureBox(ptr->GetB2body(), this, size*owner->GetWorldSize() , !isSolid, offset,physicLayer);
+	fixture->SetFriction(friction);
 }
 

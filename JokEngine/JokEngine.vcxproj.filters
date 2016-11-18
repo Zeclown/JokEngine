@@ -186,6 +186,27 @@
     <ClInclude Include="JoustExample\KnightAI.h">
       <Filter>Header Files\Joust</Filter>
     </ClInclude>
+    <ClInclude Include="JoustExample\WingsDownCommand.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\StopWalkingCommand.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\EnemyManager.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\EnemyKnight.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\ScoreBoard.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\EnemyEgg.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\ScoreText.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -333,6 +354,27 @@
       <Filter>Source Files\Joust</Filter>
     </ClCompile>
     <ClCompile Include="JoustExample\KnightAI.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\WingsDownCommand.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\StopWalkingCommand.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\EnemyManager.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\EnemyKnight.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\ScoreBoard.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\EnemyEgg.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\ScoreText.cpp">
       <Filter>Source Files\Joust</Filter>
     </ClCompile>
   </ItemGroup>

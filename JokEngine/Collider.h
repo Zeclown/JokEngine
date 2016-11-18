@@ -15,10 +15,12 @@ public:
 	//Is it a solid collider or a trigger collider that sends events to the GameObject
 	GLboolean isSolid;
 	std::string physicLayer;
-		
 	Collider(GameObject* gameObject);
-	virtual ~Collider() = 0;
+	GLfloat GetFriction();
+	void SetFriction(GLfloat f);
+	virtual ~Collider();
 protected:
+	GLfloat friction;
 	b2Fixture *fixture; 
 };
 

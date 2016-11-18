@@ -21,10 +21,11 @@ public:
 	void SetUpMainGame();
 	void SetUpActive();
 	void SetUpScoreboard();
+	void ActivatePlayer2();
 	std::map<std::string,GameObject> prefabs;
 	Game *game;
 	E_GAME_STATE state;
-	std::vector<PlayerKnight> players;
+	std::vector<PlayerKnight*> players;
 
 
 

@@ -1,17 +1,19 @@
 #include "PlayerKnight.h"
 #include "GameObject.h"
 #include "Game.h"
+#include "FadeOutHelper.h"
 #include <cmath>
 PlayerKnight::PlayerKnight(GameObject * go)
 	:ComponentCloneable(go),playerNumber(0)
 {
-
+	healthPoints = 3;
+	score = 0;
 }
 void PlayerKnight::Init()
 {
 	Knight::Init();
 	input = GetOwner()->GetActiveComponent<InputHandler>();
-	owner->Update.connect(boost::bind(&PlayerKnight::Update, this));
+	signalConnections.push_back(owner->Update.connect(boost::bind(&PlayerKnight::Update, this)));
 }
 
 void PlayerKnight::Update()
@@ -22,6 +24,11 @@ void PlayerKnight::Update()
 	{
 		commands.at(i)->Execute(*this);
 	}
+}
+
+void PlayerKnight::Die()
+{
+	owner->AddComponent<FadeOutHelper>()->timeToFadeInSeconds=0.3f;
 }
 
 

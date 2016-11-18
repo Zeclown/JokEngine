@@ -16,9 +16,11 @@ public:
 	boost::signals2::signal<void()> triggerSignal;
 	PhysicBody(GameObject* gameObject);
 	PhysicBody(PhysicBody const & pb);
+	~PhysicBody();
 	GLboolean interpolate;
 	b2Body* GetB2body();
 	virtual void FixedUpdate();
+	virtual void Update();
 	virtual void AddForce(glm::vec2 force,E_FORCE_TYPE forceType= E_FORCE_TYPE::FORCE);
 
 	glm::vec2 GetVelocity();
@@ -35,6 +37,7 @@ public:
 	void SetGravity(GLboolean g);
 	GLboolean IsKinematic();
 	void SetKinematic(GLboolean k);
+
 
 	glm::vec2 lastPos;
 	GLfloat lastRot;

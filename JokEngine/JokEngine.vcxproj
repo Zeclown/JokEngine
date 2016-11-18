@@ -170,6 +170,9 @@
     <ClInclude Include="JokEngine.h" />
     <ClInclude Include="JoustExample\BlinkingObject.h" />
     <ClInclude Include="JoustExample\Command.h" />
+    <ClInclude Include="JoustExample\EnemyEgg.h" />
+    <ClInclude Include="JoustExample\EnemyKnight.h" />
+    <ClInclude Include="JoustExample\EnemyManager.h" />
     <ClInclude Include="JoustExample\FadeOutHelper.h" />
     <ClInclude Include="JoustExample\GameManager.h" />
     <ClInclude Include="JoustExample\InputHandler.h" />
@@ -179,6 +182,10 @@
     <ClInclude Include="JoustExample\MoveLeftCommand.h" />
     <ClInclude Include="JoustExample\MoveRightCommand.h" />
     <ClInclude Include="JoustExample\PlayerKnight.h" />
+    <ClInclude Include="JoustExample\ScoreBoard.h" />
+    <ClInclude Include="JoustExample\ScoreText.h" />
+    <ClInclude Include="JoustExample\StopWalkingCommand.h" />
+    <ClInclude Include="JoustExample\WingsDownCommand.h" />
     <ClInclude Include="PhysicLayer.h" />
     <ClInclude Include="PhysicBody.h" />
     <ClInclude Include="Physics.h" />
@@ -223,6 +230,9 @@
     <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="JObject.cpp" />
     <ClCompile Include="JoustExample\BlinkingObject.cpp" />
+    <ClCompile Include="JoustExample\EnemyEgg.cpp" />
+    <ClCompile Include="JoustExample\EnemyKnight.cpp" />
+    <ClCompile Include="JoustExample\EnemyManager.cpp" />
     <ClCompile Include="JoustExample\FadeOutHelper.cpp" />
     <ClCompile Include="JoustExample\GameManager.cpp" />
     <ClCompile Include="JoustExample\InputHandler.cpp" />
@@ -233,6 +243,10 @@
     <ClCompile Include="JoustExample\MoveLeftCommand.cpp" />
     <ClCompile Include="JoustExample\MoveRightCommand.cpp" />
     <ClCompile Include="JoustExample\PlayerKnight.cpp" />
+    <ClCompile Include="JoustExample\ScoreBoard.cpp" />
+    <ClCompile Include="JoustExample\ScoreText.cpp" />
+    <ClCompile Include="JoustExample\StopWalkingCommand.cpp" />
+    <ClCompile Include="JoustExample\WingsDownCommand.cpp" />
     <ClCompile Include="PhysicLayer.cpp" />
     <ClCompile Include="PhysicBody.cpp" />
     <ClCompile Include="Physics.cpp" />
