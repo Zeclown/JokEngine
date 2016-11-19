@@ -17,7 +17,7 @@ void KnightAI::Init()
 	state = E_AI_STATE::TARGETING;
 	jumpTimer = 0;
 
-	srand(time(NULL));
+	srand((int)time(NULL));
 }
 
 std::vector<Command*> KnightAI::ProcessAI()
