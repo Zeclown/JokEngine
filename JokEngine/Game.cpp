@@ -85,7 +85,7 @@ void Game::Init()
 
 	glfwSetKeyCallback(window, InputReader::KeyCallback);
 	glfwSetMouseButtonCallback(window, InputReader::MouseButtonCallback);
-
+	glfwSetCharModsCallback(window, InputReader::CharmodsCallback);
 	//Service Registration
 	if (!renderer)//if the rendering service is not initialised yet
 	{

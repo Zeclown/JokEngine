@@ -155,6 +155,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameRoom.h" />
+    <ClInclude Include="InputBox.h" />
     <ClInclude Include="InputReader.h" />
     <ClInclude Include="JObject.h" />
     <ClInclude Include="JokEngine.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="JoustExample\JumpCommand.h" />
     <ClInclude Include="JoustExample\Knight.h" />
     <ClInclude Include="JoustExample\KnightAI.h" />
+    <ClInclude Include="JoustExample\LeaderBoard.h" />
     <ClInclude Include="JoustExample\MoveLeftCommand.h" />
     <ClInclude Include="JoustExample\MoveRightCommand.h" />
     <ClInclude Include="JoustExample\PlayerKnight.h" />
@@ -217,6 +219,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameRoom.cpp" />
+    <ClCompile Include="InputBox.cpp" />
     <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="JObject.cpp" />
     <ClCompile Include="JoustExample\BlinkingObject.cpp" />
@@ -230,6 +233,7 @@
     <ClCompile Include="JoustExample\JumpCommand.cpp" />
     <ClCompile Include="JoustExample\Knight.cpp" />
     <ClCompile Include="JoustExample\KnightAI.cpp" />
+    <ClCompile Include="JoustExample\LeaderBoard.cpp" />
     <ClCompile Include="JoustExample\MoveLeftCommand.cpp" />
     <ClCompile Include="JoustExample\MoveRightCommand.cpp" />
     <ClCompile Include="JoustExample\PlayerKnight.cpp" />

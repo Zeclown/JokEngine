@@ -1,6 +1,7 @@
 #include"InputReader.h"
 
 InputReader *InputReader::instance_ = 0;
+boost::signals2::signal<void(unsigned int)> InputReader::OnTextInput = boost::signals2::signal<void(unsigned int)>();
 void InputReader::KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) // this method is specified as glfw key callback
 {
 	//here we access the instance via the singleton pattern and forward the callback to the instance method
@@ -9,6 +10,11 @@ void InputReader::KeyCallback(GLFWwindow* window, int key, int scancode, int act
 void InputReader::MouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
 	InputReader::instance().ProcessKeyInput(window, button, action, mods);
+}
+
+void InputReader::CharmodsCallback(GLFWwindow * window, unsigned int codepoint, int mods)
+{
+	OnTextInput(codepoint);
 }
 
 InputReader::InputReader()
@@ -125,3 +131,5 @@ GLboolean InputReader::isButton(GLint key)
 	}
 	return false;
 }
+
+

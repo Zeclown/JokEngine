@@ -207,6 +207,12 @@
     <ClInclude Include="JoustExample\ScoreText.h">
       <Filter>Header Files\Joust</Filter>
     </ClInclude>
+    <ClInclude Include="JoustExample\LeaderBoard.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="InputBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -376,6 +382,12 @@
     </ClCompile>
     <ClCompile Include="JoustExample\ScoreText.cpp">
       <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\LeaderBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputBox.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
