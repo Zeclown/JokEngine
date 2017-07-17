@@ -1,6 +1,4 @@
 #include "LeaderBoard.h"
-#include <sstream>
-#include <fstream>
 #include <algorithm>
 #include "GameObject.h"
 #include "Game.h"
@@ -20,22 +18,15 @@ LeaderBoard::LeaderBoard(GameObject * go)
 }
 void LeaderBoard::Init()
 {
-	signalConnections.push_back(owner->Update.connect(boost::bind(&LeaderBoard::Update, this)));
+
 }
 
-void LeaderBoard::Update()
-{
-	if (isWaitingName)
-	{
-		
-	}
-}
 
 void LeaderBoard::FetchSavedEntries()
 {
-	std::fstream scoreFile;
-	std::string line;
 
+	std::string line;
+	std::fstream scoreFile;
 	scoreFile.open("scores.txt");
 	if (scoreFile.is_open())
 	{
@@ -45,13 +36,14 @@ void LeaderBoard::FetchSavedEntries()
 			RegisterSavedEntry(saveEntry);
 		}
 	}
-	scoreFile.close();
 	OrderEntries();
+	scoreFile.close();
 }
 
 void LeaderBoard::GenerateTextEntries(GameObject& TextPrototype)
 {
-	
+	OrderEntries();
+	int newScoreIndex=-1;
 	for (size_t i=0;i<entries.size();i++)
 	{
 		GameObject* NewEntryName=Game::GetInstance().Instantiate(TextPrototype);
@@ -67,9 +59,20 @@ void LeaderBoard::GenerateTextEntries(GameObject& TextPrototype)
 		NewEntryScore->GetComponent<TextUI>()->position += glm::vec2(0, 30 + 30 * i);
 		NewEntryRank->GetComponent<TextUI>()->position += glm::vec2(-130, 30 + 30 * i);
 		NewEntryName->GetComponent<TextUI>()->position += glm::vec2(+130, 30 + 30 * i);
+		if (entries[i].name == "HIGHSCORE")
+		{
+			newScoreIndex = i;
+			NewEntryName->GetComponent<TextUI>()->text = "";
+		}
+
 		entriesText.push_back(NewEntryScore->GetComponent<TextUI>());
 		entriesText.push_back(NewEntryRank->GetComponent<TextUI>());
 		entriesText.push_back(NewEntryName->GetComponent<TextUI>());
+	}
+	if (newScoreIndex != -1)
+	{
+		input->position = entriesText[newScoreIndex * 3 + 2]->position;
+		input->color = entriesText[newScoreIndex * 3 + 2]->color;
 	}
 }
 
@@ -78,17 +81,24 @@ bool LeaderBoard::CheckScore(int score)
 	return entries.size()<10 || score > entries.back().score;
 }
 
-void LeaderBoard::RegisterNewEntry(int score)
+void LeaderBoard::RegisterNewEntry(int score,InputBox* box)
 {
+	input = box;
 	isWaitingName = true;
-	newHighscore.score = score;
+	s_LeaderBoardEntry newEntry;
+	newEntry.score = score;
+	newEntry.name = "HIGHSCORE";
+	RegisterSavedEntry(newEntry);
+	OrderEntries();
+	
 }
 
-void LeaderBoard::RegisterSavedEntry(s_LeaderBoardEntry Entry)
+s_LeaderBoardEntry* LeaderBoard::RegisterSavedEntry(s_LeaderBoardEntry Entry)
 {
 	if (entries.size() >= 10)//if we already have 10 score saved, we destroy the last one
 		entries.resize(9);
-	entries.push_back(Entry);
+	entries.push_back(s_LeaderBoardEntry(Entry));
+	return &entries.back();
 }
 
 s_LeaderBoardEntry LeaderBoard::ReadSavedEntry(std::string line)
@@ -125,7 +135,21 @@ void LeaderBoard::OrderEntries()
 
 void LeaderBoard::SaveScores()
 {
-	std::fstream scoreFile("scores.txt", std::fstream::out);
+	std::fstream scoreFile;
+	scoreFile.open("scores.txt");
+	s_LeaderBoardEntry* newHighscore=nullptr;
+	for (size_t i = 0; i<entries.size(); i++)
+	{
+		if (entries[i].name == "HIGHSCORE")
+		{
+			newHighscore = &entries[i];
+		}
+	}
+	if (isWaitingName && input && newHighscore)
+	{	
+		newHighscore->name = input->text;
+	}
+
 
 	for (auto entry : entries)
 	{

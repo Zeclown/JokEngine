@@ -16,7 +16,7 @@ void BlinkingObject::Init()
 
 void BlinkingObject::Update()
 {
-	if (displayComponent)
+	if (displayComponent && enabled)
 	{
 		timer -= Game::GetInstance().GetTimeService().GetDeltaTime();
 		if (timer < 0)

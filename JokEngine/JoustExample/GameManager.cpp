@@ -14,7 +14,7 @@
 #include "EnemyKnight.h"
 #include "ScoreBoard.h"
 #include "EnemyEgg.h"
-#include "LeaderBoard.h"
+
 void GameManager::Init()
 {
 	signalConnections.push_back(owner->Update.connect(boost::bind(&GameManager::Update, this)));
@@ -48,17 +48,24 @@ void GameManager::Init()
 	as->RegisterSound(ResourceManager::GetAudioFile("MainTheme"), "MainTheme");
 	as->looping = true;
 	prefabs.insert(std::map< std::string, GameObject >::value_type("MusicBox", musicBox));
-	
+
+	GameObject nameBox = GameObject("InputScore");
+	InputBox* inputComp = nameBox.AddComponent<InputBox>();
+	inputComp->maxCharacters = 3;
+	inputComp->position= glm::vec2(0, 0);
+	inputComp->justify = true;
+	inputComp->scale = 1;
+	inputComp->isTruncating = true;
+	inputComp->color = glm::vec3(255, 255, 255);
+	prefabs.insert(std::map< std::string, GameObject >::value_type("InputBoxLB", nameBox));
+
 	GameObject highScoreCongrats = GameObject("CongratsUI");
 	TextUI* txtCongrats = highScoreCongrats.AddComponent<TextUI>();
-	BlinkingObject* blinking = highScoreCongrats.AddComponent<BlinkingObject>();
-	blinking->ui = true;
-	blinking->secondsBeforeBlinks = 1;
 	txtCongrats->position = glm::vec2(0, 200);
 	txtCongrats->justify = true;
 	txtCongrats->scale = 1;
 	txtCongrats->text = "New Highscore! Congrats ";
-	txtCongrats->color = glm::vec3(255, 255, 255);
+	txtCongrats->color = glm::vec3(0, 255, 255);
 	prefabs.insert(std::map< std::string, GameObject >::value_type("CongratsUI", highScoreCongrats));
 
 	GameObject highScore = GameObject("LeaderboardEntry");
@@ -83,7 +90,7 @@ void GameManager::Init()
 	prefabs.insert(std::map< std::string, GameObject >::value_type("Leaderboard", MainLeaderBoard));
 
 	GameObject startText = GameObject("StartUI");
-	blinking=startText.AddComponent<BlinkingObject>();
+	BlinkingObject* blinking=startText.AddComponent<BlinkingObject>();
 	blinking->ui = true;
 	blinking->secondsBeforeBlinks = 1;
 	TextUI* txt=startText.AddComponent<TextUI>();
@@ -288,8 +295,11 @@ void GameManager::Update()
 		}
 		break;
 	case E_GAME_STATE::GAME_SCOREBOARD:
-		if (InputReader::instance().isButtonDown(-1))
+		if (InputReader::instance().isButtonDown(GLFW_KEY_ENTER))
+		{
+			activeLB->SaveScores();
 			SetUpMenu();
+		}
 		break;
 	}
 }
@@ -298,8 +308,10 @@ void GameManager::SetUpMenu()
 	state = E_GAME_STATE::GAME_MENU;
 	game->ClearRoom();
 	game->Instantiate(prefabs.find("TitleScreen")->second);
-	game->Instantiate(prefabs.find("MusicBox")->second)->GetComponent<AudioSource>()->PlaySound("MainTheme");
+	if(!initDone)
+		game->Instantiate(prefabs.find("MusicBox")->second)->GetComponent<AudioSource>()->PlaySound("MainTheme");
 	game->Instantiate(prefabs.find("StartUI")->second);
+	initDone=true;
 }
 void GameManager::SetUpActive()
 {
@@ -340,24 +352,39 @@ void GameManager::SetUpScoreboard()
 	GameObject* LBHeader = game->Instantiate(prefabs.find("LeaderboardHeader")->second);
 	GameObject* Leaderboard= game->Instantiate(prefabs.find("Leaderboard")->second);
 	LeaderBoard* LBComp = Leaderboard->GetComponent<LeaderBoard>();
+	activeLB = LBComp;
+	LBComp->FetchSavedEntries();
 	GameObject* GratsMessage = game->Instantiate(prefabs.find("CongratsUI")->second);
+	GameObject* NameMessage = game->Instantiate(prefabs.find("CongratsUI")->second);
+	GameObject* EnterMessage = game->Instantiate(prefabs.find("CongratsUI")->second);
+	EnterMessage->GetComponent<TextUI>()->text = "Press Enter to Continue";
+	EnterMessage->GetComponent<TextUI>()->color = glm::vec3(255, 255, 255);
+	EnterMessage->GetComponent<TextUI>()->position.y += 100;
+	NameMessage->GetComponent<TextUI>()->position.y += 50;
+
+	GameObject* boxName = game->Instantiate(prefabs.find("InputBoxLB")->second);
 	GratsMessage->SetActive(false);
+	NameMessage->SetActive(false);
 	if (player1Score >= player2Score && LBComp->CheckScore(player1Score))
 	{
 		//Player 1 got a new HighScore!
-		LBComp->RegisterNewEntry(player1Score);
+		LBComp->RegisterNewEntry(player1Score, boxName->GetComponent<InputBox>());
 		GratsMessage->GetComponent<TextUI>()->text += "Player 1!";
 		GratsMessage->SetActive(true);
+		NameMessage->GetComponent<TextUI>()->text = "Type your name";
+		NameMessage->SetActive(true);
 	}
 	else if(LBComp->CheckScore(player2Score))
 	{
 		//Player 2 got a new HighScore!
-		LBComp->RegisterNewEntry(player2Score);
+		LBComp->RegisterNewEntry(player2Score, boxName->GetComponent<InputBox>());
 		GratsMessage->GetComponent<TextUI>()->text += "Player 2!";
 		GratsMessage->SetActive(true);
+		NameMessage->GetComponent<TextUI>()->text = "Type your name";
+		NameMessage->SetActive(true);
 	}
+	boxName->SetActive(GratsMessage->isActive());
 	LBComp->GenerateTextEntries(prefabs.find("LeaderboardEntry")->second);
-	LBComp->SaveScores();
 
 
 

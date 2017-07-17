@@ -3,6 +3,8 @@
 #include "Component.h"
 #include "Game.h"
 #include "PlayerKnight.h"
+#include "LeaderBoard.h"
+#include "InputBox.h"
 enum E_GAME_STATE
 {
 	GAME_PLAYING,
@@ -18,7 +20,6 @@ public:
 	void Init();
 	void Update();
 	void SetUpMenu();
-	void SetUpMainGame();
 	void SetUpActive();
 	void SetUpScoreboard();
 	void ActivatePlayer2();
@@ -26,6 +27,8 @@ public:
 	Game *game;
 	E_GAME_STATE state;
 	std::vector<PlayerKnight*> players;
+	LeaderBoard* activeLB;
+	bool initDone;
 
 
 
