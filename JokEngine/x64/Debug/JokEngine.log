@@ -1,0 +1,212 @@
+﻿  Texture.cpp
+  TextUI.cpp
+  TextRenderer.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\textrenderer.cpp(81): warning C4838: conversion from 'FT_Pos' to 'GLuint' requires a narrowing conversion
+  SpriteSheet.cpp
+  SpriteRenderer.cpp
+  SpriteDrawable.cpp
+  SpriteAnimator.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\spriteanimator.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Sprite.cpp
+  Source.cpp
+  Shader.cpp
+  Resource_Manager.cpp
+  RaycastListener.cpp
+  RaycastHit.cpp
+  RaycastAllListener.cpp
+  PhysicsDebug.cpp
+  Physics.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\physics.cpp(9): warning C4305: 'argument': truncation from 'double' to 'float32'
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\physics.cpp(16): warning C4244: 'argument': conversion from 'double' to 'uint16', possible loss of data
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\physics.cpp(56): warning C4305: 'argument': truncation from 'double' to 'float32'
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\physics.cpp(66): warning C4244: '=': conversion from 'GLint' to 'float32', possible loss of data
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\physics.cpp(80): warning C4800: 'GLboolean': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\physics.cpp(95): warning C4800: 'GLboolean': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\physics.cpp(109): warning C4305: '=': truncation from 'double' to 'float32'
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\physics.cpp(185): warning C4800: 'Collider *': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\physics.cpp(193): warning C4800: 'Collider *': forcing value to bool 'true' or 'false' (performance warning)
+  PhysicBody.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\physicbody.cpp(57): warning C4244: 'argument': conversion from 'GLfloat' to 'GLint', possible loss of data
+  PhysicLayer.cpp
+  WingsDownCommand.cpp
+  StopWalkingCommand.cpp
+  Generating Code...
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\resource_manager.cpp(144): warning C4715: 'ResourceManager::LoadAudioFromFile': not all control paths return a value
+  Compiling...
+  ScoreText.cpp
+  ScoreBoard.cpp
+  PlayerKnight.cpp
+  MoveRightCommand.cpp
+  MoveLeftCommand.cpp
+  LeaderBoard.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\joustexample\leaderboard.cpp(64): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\joustexample\leaderboard.cpp(81): warning C4018: '>': signed/unsigned mismatch
+  KnightAI.cpp
+  Knight.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\joustexample\knight.cpp(132): warning C4305: '=': truncation from 'double' to 'float'
+  JumpCommand.cpp
+  Joust.cpp
+  InputHandler.cpp
+  GameManager.cpp
+  FadeOutHelper.cpp
+  EnemyManager.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\joustexample\enemymanager.cpp(48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\joustexample\enemymanager.cpp(71): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\joustexample\enemymanager.cpp(89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  EnemyKnight.cpp
+  EnemyEgg.cpp
+  BlinkingObject.cpp
+  JObject.cpp
+  InputReader.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\inputreader.cpp(59): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\inputreader.cpp(60): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\inputreader.cpp(61): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\inputreader.cpp(62): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+  InputBox.cpp
+  Generating Code...
+  Compiling...
+  GameRoom.cpp
+  GameObject.cpp
+  Game.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\game.cpp(19): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\game.cpp(132): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  ContactListener.cpp
+  Component.cpp
+  Collision.cpp
+  Collider.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\collider.cpp(10): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  Clock.cpp
+  CircleCollider.cpp
+  CharacterController.cpp
+  CameraHandler.cpp
+  Camera.cpp
+  BoxCollider.cpp
+  AudioSource.cpp
+  AudioFile.cpp
+  Audio.cpp
+  AnimationFrame.cpp
+  Animation.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\animation.cpp(23): warning C4018: '<=': signed/unsigned mismatch
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\animation.cpp(45): warning C4244: '=': conversion from '__int64' to 'GLint', possible loss of data
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\animation.cpp(49): warning C4244: '=': conversion from '__int64' to 'GLint', possible loss of data
+  Generating Code...
+Audio.obj : error LNK2019: unresolved external symbol __imp_alGenSources referenced in function "public: virtual unsigned int __cdecl Audio::RegisterSource(void)" (?RegisterSource@Audio@@UEAAIXZ)
+Audio.obj : error LNK2019: unresolved external symbol __imp_alSourcePlay referenced in function "public: virtual void __cdecl Audio::PlaySound(unsigned int)" (?PlaySound@Audio@@UEAAXI@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcef referenced in function "public: void __cdecl AudioSource::SetGain(float)" (?SetGain@AudioSource@@QEAAXM@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSource3f referenced in function "public: virtual void __cdecl AudioSource::Init(void)" (?Init@AudioSource@@UEAAXXZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcei referenced in function "public: virtual void __cdecl AudioSource::Init(void)" (?Init@AudioSource@@UEAAXXZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alGetSourcef referenced in function "public: float __cdecl AudioSource::GetGain(void)" (?GetGain@AudioSource@@QEAAMXZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alGetSourcei referenced in function "public: void __cdecl AudioSource::Update(void)" (?Update@AudioSource@@QEAAXXZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourceRewind referenced in function "public: void __cdecl AudioSource::Update(void)" (?Update@AudioSource@@QEAAXXZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcePause referenced in function "public: void __cdecl AudioSource::PauseSound(void)" (?PauseSound@AudioSource@@QEAAXXZ)
+Collider.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2Body::DestroyFixture(class b2Fixture *)" (?DestroyFixture@b2Body@@QEAAXPEAVb2Fixture@@@Z) referenced in function "public: virtual __cdecl Collider::~Collider(void)" (??1Collider@@UEAA@XZ)
+ContactListener.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2WorldManifold::Initialize(struct b2Manifold const *,struct b2Transform const &,float,struct b2Transform const &,float)" (?Initialize@b2WorldManifold@@QEAAXPEBUb2Manifold@@AEBUb2Transform@@M1M@Z) referenced in function "public: void __cdecl b2Contact::GetWorldManifold(struct b2WorldManifold *)const " (?GetWorldManifold@b2Contact@@QEBAXPEAUb2WorldManifold@@@Z)
+Game.obj : error LNK2019: unresolved external symbol glewInit referenced in function "private: __cdecl Game::Game(unsigned int,unsigned int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (??0Game@@AEAA@IIAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: unresolved external symbol glfwInit referenced in function "private: __cdecl Game::Game(unsigned int,unsigned int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (??0Game@@AEAA@IIAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: unresolved external symbol glfwWindowHint referenced in function "private: __cdecl Game::Game(unsigned int,unsigned int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (??0Game@@AEAA@IIAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function "private: __cdecl Game::Game(unsigned int,unsigned int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (??0Game@@AEAA@IIAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function "public: void __cdecl Game::Loop(void)" (?Loop@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function "public: void __cdecl Game::Loop(void)" (?Loop@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol glfwSetKeyCallback referenced in function "public: void __cdecl Game::Init(void)" (?Init@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol glfwSetCharModsCallback referenced in function "public: void __cdecl Game::Init(void)" (?Init@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol glfwSetMouseButtonCallback referenced in function "public: void __cdecl Game::Init(void)" (?Init@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol glfwGetTime referenced in function "public: void __cdecl Game::Loop(void)" (?Loop@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function "private: __cdecl Game::Game(unsigned int,unsigned int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (??0Game@@AEAA@IIAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function "public: void __cdecl Game::Loop(void)" (?Loop@Game@@QEAAXXZ)
+Game.obj : error LNK2019: unresolved external symbol __imp_alcCreateContext referenced in function "private: __cdecl Game::Game(unsigned int,unsigned int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (??0Game@@AEAA@IIAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: unresolved external symbol __imp_alcMakeContextCurrent referenced in function "private: __cdecl Game::Game(unsigned int,unsigned int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (??0Game@@AEAA@IIAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2019: unresolved external symbol __imp_alcOpenDevice referenced in function "private: __cdecl Game::Game(unsigned int,unsigned int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (??0Game@@AEAA@IIAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Game.obj : error LNK2001: unresolved external symbol glewExperimental
+PhysicBody.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2Body::SetTransform(struct b2Vec2 const &,float)" (?SetTransform@b2Body@@QEAAXAEBUb2Vec2@@M@Z) referenced in function "public: virtual void __cdecl PhysicBody::Update(void)" (?Update@PhysicBody@@UEAAXXZ)
+PhysicBody.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2Body::SetMassData(struct b2MassData const *)" (?SetMassData@b2Body@@QEAAXPEBUb2MassData@@@Z) referenced in function "public: void __cdecl PhysicBody::SetMass(float)" (?SetMass@PhysicBody@@QEAAXM@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: void __cdecl b2Body::SetMassData(struct b2MassData const *)" (?SetMassData@b2Body@@QEAAXPEBUb2MassData@@@Z)
+PhysicBody.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2Body::SetType(enum b2BodyType)" (?SetType@b2Body@@QEAAXW4b2BodyType@@@Z) referenced in function "public: void __cdecl PhysicBody::SetKinematic(unsigned char)" (?SetKinematic@PhysicBody@@QEAAXE@Z)
+PhysicBody.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2Body::SetActive(bool)" (?SetActive@b2Body@@QEAAX_N@Z) referenced in function "public: virtual void __cdecl PhysicBody::FixedUpdate(void)" (?FixedUpdate@PhysicBody@@UEAAXXZ)
+PhysicBody.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2Body::SetFixedRotation(bool)" (?SetFixedRotation@b2Body@@QEAAX_N@Z) referenced in function "public: void __cdecl PhysicBody::SetFreezeRotation(unsigned char)" (?SetFreezeRotation@PhysicBody@@QEAAXE@Z)
+PhysicBody.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2World::DestroyBody(class b2Body *)" (?DestroyBody@b2World@@QEAAXPEAVb2Body@@@Z) referenced in function "public: virtual __cdecl PhysicBody::~PhysicBody(void)" (??1PhysicBody@@UEAA@XZ)
+Physics.obj : error LNK2019: unresolved external symbol "public: class b2Fixture * __cdecl b2Body::CreateFixture(struct b2FixtureDef const *)" (?CreateFixture@b2Body@@QEAAPEAVb2Fixture@@PEBUb2FixtureDef@@@Z) referenced in function "public: virtual class b2Body * __cdecl Physics::RegisterBody(class PhysicBody *,struct glm::tvec2<float,0>,unsigned char,unsigned char,float,float,float,int,unsigned char)" (?RegisterBody@Physics@@UEAAPEAVb2Body@@PEAVPhysicBody@@U?$tvec2@M$0A@@glm@@EEMMMHE@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual class b2Shape * __cdecl b2CircleShape::Clone(class b2BlockAllocator *)const " (?Clone@b2CircleShape@@UEBAPEAVb2Shape@@PEAVb2BlockAllocator@@@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual int __cdecl b2CircleShape::GetChildCount(void)const " (?GetChildCount@b2CircleShape@@UEBAHXZ)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual bool __cdecl b2CircleShape::TestPoint(struct b2Transform const &,struct b2Vec2 const &)const " (?TestPoint@b2CircleShape@@UEBA_NAEBUb2Transform@@AEBUb2Vec2@@@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual bool __cdecl b2CircleShape::RayCast(struct b2RayCastOutput *,struct b2RayCastInput const &,struct b2Transform const &,int)const " (?RayCast@b2CircleShape@@UEBA_NPEAUb2RayCastOutput@@AEBUb2RayCastInput@@AEBUb2Transform@@H@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual void __cdecl b2CircleShape::ComputeAABB(struct b2AABB *,struct b2Transform const &,int)const " (?ComputeAABB@b2CircleShape@@UEBAXPEAUb2AABB@@AEBUb2Transform@@H@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual void __cdecl b2CircleShape::ComputeMass(struct b2MassData *,float)const " (?ComputeMass@b2CircleShape@@UEBAXPEAUb2MassData@@M@Z)
+Physics.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2EdgeShape::Set(struct b2Vec2 const &,struct b2Vec2 const &)" (?Set@b2EdgeShape@@QEAAXAEBUb2Vec2@@0@Z) referenced in function "public: virtual class b2Fixture * __cdecl Physics::RegisterFixtureEdge(class b2Body *,class Collider *,struct glm::tvec2<float,0>,struct glm::tvec2<float,0>,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?RegisterFixtureEdge@Physics@@UEAAPEAVb2Fixture@@PEAVb2Body@@PEAVCollider@@U?$tvec2@M$0A@@glm@@2V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual class b2Shape * __cdecl b2EdgeShape::Clone(class b2BlockAllocator *)const " (?Clone@b2EdgeShape@@UEBAPEAVb2Shape@@PEAVb2BlockAllocator@@@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual int __cdecl b2EdgeShape::GetChildCount(void)const " (?GetChildCount@b2EdgeShape@@UEBAHXZ)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual bool __cdecl b2EdgeShape::TestPoint(struct b2Transform const &,struct b2Vec2 const &)const " (?TestPoint@b2EdgeShape@@UEBA_NAEBUb2Transform@@AEBUb2Vec2@@@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual bool __cdecl b2EdgeShape::RayCast(struct b2RayCastOutput *,struct b2RayCastInput const &,struct b2Transform const &,int)const " (?RayCast@b2EdgeShape@@UEBA_NPEAUb2RayCastOutput@@AEBUb2RayCastInput@@AEBUb2Transform@@H@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual void __cdecl b2EdgeShape::ComputeAABB(struct b2AABB *,struct b2Transform const &,int)const " (?ComputeAABB@b2EdgeShape@@UEBAXPEAUb2AABB@@AEBUb2Transform@@H@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual void __cdecl b2EdgeShape::ComputeMass(struct b2MassData *,float)const " (?ComputeMass@b2EdgeShape@@UEBAXPEAUb2MassData@@M@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual class b2Shape * __cdecl b2PolygonShape::Clone(class b2BlockAllocator *)const " (?Clone@b2PolygonShape@@UEBAPEAVb2Shape@@PEAVb2BlockAllocator@@@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual int __cdecl b2PolygonShape::GetChildCount(void)const " (?GetChildCount@b2PolygonShape@@UEBAHXZ)
+Physics.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2PolygonShape::SetAsBox(float,float)" (?SetAsBox@b2PolygonShape@@QEAAXMM@Z) referenced in function "public: virtual class b2Body * __cdecl Physics::RegisterBody(class PhysicBody *,struct glm::tvec2<float,0>,unsigned char,unsigned char,float,float,float,int,unsigned char)" (?RegisterBody@Physics@@UEAAPEAVb2Body@@PEAVPhysicBody@@U?$tvec2@M$0A@@glm@@EEMMMHE@Z)
+Physics.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2PolygonShape::SetAsBox(float,float,struct b2Vec2 const &,float)" (?SetAsBox@b2PolygonShape@@QEAAXMMAEBUb2Vec2@@M@Z) referenced in function "public: virtual class b2Fixture * __cdecl Physics::RegisterFixtureBox(class b2Body *,class Collider *,struct glm::tvec2<float,0>,unsigned char,struct glm::tvec2<float,0>,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?RegisterFixtureBox@Physics@@UEAAPEAVb2Fixture@@PEAVb2Body@@PEAVCollider@@U?$tvec2@M$0A@@glm@@E2V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual bool __cdecl b2PolygonShape::TestPoint(struct b2Transform const &,struct b2Vec2 const &)const " (?TestPoint@b2PolygonShape@@UEBA_NAEBUb2Transform@@AEBUb2Vec2@@@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual bool __cdecl b2PolygonShape::RayCast(struct b2RayCastOutput *,struct b2RayCastInput const &,struct b2Transform const &,int)const " (?RayCast@b2PolygonShape@@UEBA_NPEAUb2RayCastOutput@@AEBUb2RayCastInput@@AEBUb2Transform@@H@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual void __cdecl b2PolygonShape::ComputeAABB(struct b2AABB *,struct b2Transform const &,int)const " (?ComputeAABB@b2PolygonShape@@UEBAXPEAUb2AABB@@AEBUb2Transform@@H@Z)
+Physics.obj : error LNK2001: unresolved external symbol "public: virtual void __cdecl b2PolygonShape::ComputeMass(struct b2MassData *,float)const " (?ComputeMass@b2PolygonShape@@UEBAXPEAUb2MassData@@M@Z)
+Physics.obj : error LNK2019: unresolved external symbol "public: __cdecl b2World::b2World(struct b2Vec2 const &)" (??0b2World@@QEAA@AEBUb2Vec2@@@Z) referenced in function "public: __cdecl Physics::Physics(void)" (??0Physics@@QEAA@XZ)
+Physics.obj : error LNK2019: unresolved external symbol "public: __cdecl b2World::~b2World(void)" (??1b2World@@QEAA@XZ) referenced in function "public: void * __cdecl b2World::`scalar deleting destructor'(unsigned int)" (??_Gb2World@@QEAAPEAXI@Z)
+Physics.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2World::SetContactListener(class b2ContactListener *)" (?SetContactListener@b2World@@QEAAXPEAVb2ContactListener@@@Z) referenced in function "public: __cdecl Physics::Physics(void)" (??0Physics@@QEAA@XZ)
+Physics.obj : error LNK2019: unresolved external symbol "public: class b2Body * __cdecl b2World::CreateBody(struct b2BodyDef const *)" (?CreateBody@b2World@@QEAAPEAVb2Body@@PEBUb2BodyDef@@@Z) referenced in function "public: virtual class b2Body * __cdecl Physics::RegisterBody(class PhysicBody *,struct glm::tvec2<float,0>,unsigned char,unsigned char,float,float,float,int,unsigned char)" (?RegisterBody@Physics@@UEAAPEAVb2Body@@PEAVPhysicBody@@U?$tvec2@M$0A@@glm@@EEMMMHE@Z)
+Physics.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2World::Step(float,int,int)" (?Step@b2World@@QEAAXMHH@Z) referenced in function "public: virtual void __cdecl Physics::FixedUpdate(void)" (?FixedUpdate@Physics@@UEAAXXZ)
+Physics.obj : error LNK2019: unresolved external symbol "public: void __cdecl b2World::RayCast(class b2RayCastCallback *,struct b2Vec2 const &,struct b2Vec2 const &)const " (?RayCast@b2World@@QEBAXPEAVb2RayCastCallback@@AEBUb2Vec2@@1@Z) referenced in function "public: virtual unsigned char __cdecl Physics::Raycast(struct glm::tvec2<float,0>,struct glm::tvec2<float,0>,class RaycastHit &,float,unsigned short)" (?Raycast@Physics@@UEAAEU?$tvec2@M$0A@@glm@@0AEAVRaycastHit@@MG@Z)
+Resource_Manager.obj : error LNK2019: unresolved external symbol __imp_alGenBuffers referenced in function "private: static class AudioFile __cdecl ResourceManager::LoadAudioFromFile(char const *)" (?LoadAudioFromFile@ResourceManager@@CA?AVAudioFile@@PEBD@Z)
+Resource_Manager.obj : error LNK2019: unresolved external symbol __imp_alDeleteBuffers referenced in function "public: static void __cdecl ResourceManager::Clear(void)" (?Clear@ResourceManager@@SAXXZ)
+Resource_Manager.obj : error LNK2019: unresolved external symbol __imp_alBufferData referenced in function "private: static class AudioFile __cdecl ResourceManager::LoadAudioFromFile(char const *)" (?LoadAudioFromFile@ResourceManager@@CA?AVAudioFile@@PEBD@Z)
+Resource_Manager.obj : error LNK2019: unresolved external symbol SOIL_load_image referenced in function "private: static class Texture2D __cdecl ResourceManager::loadTextureFromFile(char const *,unsigned char)" (?loadTextureFromFile@ResourceManager@@CA?AVTexture2D@@PEBDE@Z)
+Resource_Manager.obj : error LNK2019: unresolved external symbol SOIL_free_image_data referenced in function "private: static class Texture2D __cdecl ResourceManager::loadTextureFromFile(char const *,unsigned char)" (?loadTextureFromFile@ResourceManager@@CA?AVTexture2D@@PEBDE@Z)
+Resource_Manager.obj : error LNK2019: unresolved external symbol __imp_alutLoadWAVFile referenced in function "private: static class AudioFile __cdecl ResourceManager::LoadAudioFromFile(char const *)" (?LoadAudioFromFile@ResourceManager@@CA?AVAudioFile@@PEBD@Z)
+Resource_Manager.obj : error LNK2001: unresolved external symbol __imp___glewDeleteProgram
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewAttachShader
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewCompileShader
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewCreateProgram
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewCreateShader
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewDeleteShader
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewGetProgramInfoLog
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewGetProgramiv
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewGetShaderInfoLog
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewGetShaderiv
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewGetUniformLocation
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewLinkProgram
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewShaderSource
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewUniform1f
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewUniform1i
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewUniform2f
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewUniform3f
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewUniform4f
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewUniformMatrix4fv
+Shader.obj : error LNK2001: unresolved external symbol __imp___glewUseProgram
+SpriteRenderer.obj : error LNK2001: unresolved external symbol __imp___glewActiveTexture
+TextRenderer.obj : error LNK2001: unresolved external symbol __imp___glewActiveTexture
+SpriteRenderer.obj : error LNK2001: unresolved external symbol __imp___glewBindBuffer
+TextRenderer.obj : error LNK2001: unresolved external symbol __imp___glewBindBuffer
+SpriteRenderer.obj : error LNK2001: unresolved external symbol __imp___glewBufferData
+TextRenderer.obj : error LNK2001: unresolved external symbol __imp___glewBufferData
+SpriteRenderer.obj : error LNK2001: unresolved external symbol __imp___glewGenBuffers
+TextRenderer.obj : error LNK2001: unresolved external symbol __imp___glewGenBuffers
+SpriteRenderer.obj : error LNK2001: unresolved external symbol __imp___glewEnableVertexAttribArray
+TextRenderer.obj : error LNK2001: unresolved external symbol __imp___glewEnableVertexAttribArray
+SpriteRenderer.obj : error LNK2001: unresolved external symbol __imp___glewVertexAttribPointer
+TextRenderer.obj : error LNK2001: unresolved external symbol __imp___glewVertexAttribPointer
+SpriteRenderer.obj : error LNK2001: unresolved external symbol __imp___glewBindVertexArray
+TextRenderer.obj : error LNK2001: unresolved external symbol __imp___glewBindVertexArray
+SpriteRenderer.obj : error LNK2001: unresolved external symbol __imp___glewDeleteVertexArrays
+SpriteRenderer.obj : error LNK2001: unresolved external symbol __imp___glewGenVertexArrays
+TextRenderer.obj : error LNK2001: unresolved external symbol __imp___glewGenVertexArrays
+TextRenderer.obj : error LNK2019: unresolved external symbol FT_Init_FreeType referenced in function "public: virtual void __cdecl TextRenderer::Load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned int)" (?Load@TextRenderer@@UEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z)
+TextRenderer.obj : error LNK2019: unresolved external symbol FT_Done_FreeType referenced in function "public: virtual void __cdecl TextRenderer::Load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned int)" (?Load@TextRenderer@@UEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z)
+TextRenderer.obj : error LNK2019: unresolved external symbol FT_New_Face referenced in function "public: virtual void __cdecl TextRenderer::Load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned int)" (?Load@TextRenderer@@UEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z)
+TextRenderer.obj : error LNK2019: unresolved external symbol FT_Done_Face referenced in function "public: virtual void __cdecl TextRenderer::Load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned int)" (?Load@TextRenderer@@UEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z)
+TextRenderer.obj : error LNK2019: unresolved external symbol FT_Set_Pixel_Sizes referenced in function "public: virtual void __cdecl TextRenderer::Load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned int)" (?Load@TextRenderer@@UEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z)
+TextRenderer.obj : error LNK2019: unresolved external symbol FT_Load_Char referenced in function "public: virtual void __cdecl TextRenderer::Load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned int)" (?Load@TextRenderer@@UEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z)
+TextRenderer.obj : error LNK2001: unresolved external symbol __imp___glewBufferSubData
+..\Dependencies\OpenGLWrappers\Libs\freetyped.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+..\Dependencies\OpenGLWrappers\Libs\alut.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+..\Dependencies\OpenGLWrappers\Libs\OpenAL32.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+..\Dependencies\OpenGLWrappers\Libs\Box2D.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+..\Dependencies\OpenGLWrappers\Libs\SOIL.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+..\Dependencies\OpenGLWrappers\Libs\glew32s.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+..\Dependencies\OpenGLWrappers\Libs\glfw3.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\x64\Debug\JokEngine.exe : fatal error LNK1120: 103 unresolved externals

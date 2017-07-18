@@ -1,0 +1,116 @@
+﻿  Animation.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  AnimationFrame.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Audio.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\AudioFile.h(3): fatal error C1083: Cannot open include file: 'AL\al.h': No such file or directory
+  AudioFile.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\AudioFile.h(3): fatal error C1083: Cannot open include file: 'AL\al.h': No such file or directory
+  AudioSource.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  BoxCollider.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\BoxCollider.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Camera.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  CameraHandler.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  CharacterController.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Game.h(5): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  CircleCollider.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Clock.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\TimeService.h(3): fatal error C1083: Cannot open include file: 'gl\glew.h': No such file or directory
+  Collider.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  Collision.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  Component.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  ContactListener.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  Game.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\game.h(5): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  GameObject.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\GameObject.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  GameRoom.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\GameObject.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  InputBox.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\TextRenderingService.h(4): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  InputReader.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\InputReader.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Compiling...
+  JObject.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  BlinkingObject.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  EnemyEgg.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  EnemyKnight.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  EnemyManager.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  FadeOutHelper.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  GameManager.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  InputHandler.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Joust.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Game.h(5): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  JumpCommand.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Knight.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  KnightAI.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  LeaderBoard.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  MoveLeftCommand.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  MoveRightCommand.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  PlayerKnight.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  ScoreBoard.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  ScoreText.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  StopWalkingCommand.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  WingsDownCommand.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Compiling...
+  PhysicLayer.cpp
+  PhysicBody.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\PhysicBody.h(3): fatal error C1083: Cannot open include file: 'glm\glm.hpp': No such file or directory
+  Physics.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\PhysicsService.h(3): fatal error C1083: Cannot open include file: 'gl\glew.h': No such file or directory
+  PhysicsDebug.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\PhysicsService.h(3): fatal error C1083: Cannot open include file: 'gl\glew.h': No such file or directory
+  RaycastAllListener.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  RaycastHit.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  RaycastListener.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  Resource_Manager.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\resource_manager.h(7): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Shader.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\shader.h(6): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Source.cpp
+  Sprite.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  SpriteAnimator.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  SpriteDrawable.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  SpriteRenderer.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\SpriteRenderer.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  SpriteSheet.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  TextRenderer.cpp
+TextRenderer.cpp(3): fatal error C1083: Cannot open include file: 'glm/gtc/matrix_transform.hpp': No such file or directory
+  TextUI.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\TextRenderingService.h(4): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+  Texture.cpp
+c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
