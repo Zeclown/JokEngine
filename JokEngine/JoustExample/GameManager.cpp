@@ -338,8 +338,12 @@ void GameManager::SetUpMenu()
 	state = E_GAME_STATE::GAME_MENU;
 	game->ClearRoom();
 	game->Instantiate(prefabs.find("TitleScreen")->second);
-	if(!initDone)
-		game->Instantiate(prefabs.find("MusicBox")->second)->GetComponent<AudioSource>()->PlaySound("MainTheme");
+	if (!initDone)
+	{
+		GameObject* SoundBox = game->Instantiate(prefabs.find("MusicBox")->second);
+		SoundBox->GetComponent<AudioSource>()->looping = true;
+		SoundBox->GetComponent<AudioSource>()->PlaySound("MainTheme");
+	}
 	game->Instantiate(prefabs.find("StartUI")->second);
 	initDone=true;
 }
