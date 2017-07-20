@@ -8,6 +8,7 @@
 #include "InputHandler.h"
 #include "PlayerKnight.h"
 #include "BoxCollider.h"
+#include "Lava.h"
 #include "SpriteAnimator.h"
 #include "EnemyManager.h"
 #include "KnightAI.h"
@@ -26,10 +27,14 @@ void GameManager::Init()
 
 	//Creating physics layers
 	game->GetPhysicsService().RegisterPhysicLayer("Ground", 0);
+	game->GetPhysicsService().RegisterPhysicLayer("Lava", 0);
 	game->GetPhysicsService().RegisterPhysicLayer("Player", 0);
 	game->GetPhysicsService().RegisterPhysicLayer("Lance", 0);
 	game->GetPhysicsService().RegisterPhysicLayer("Egg", 0);
 	game->GetPhysicsService().RegisterPhysicLayer("EnemyLance", 0);
+	game->GetPhysicsService().SetMaskBits("Egg", "Lava", true);
+	game->GetPhysicsService().SetMaskBits("Player", "Lava", true);
+	game->GetPhysicsService().SetMaskBits("EnemyLance", "Lava", true);
 	game->GetPhysicsService().SetMaskBits("Egg", "Lance", true);
 	game->GetPhysicsService().SetMaskBits("Egg", "Ground", true);
 	game->GetPhysicsService().SetMaskBits("Lance", "Lance", true);
@@ -126,17 +131,20 @@ void GameManager::Init()
 	bc->isSolid = false;
 	player.AddComponent<PlayerKnight>();
 	player.AddComponent<InputHandler>();
-	player.AddComponent<SpriteDrawable>()->sprite = ResourceManager::GetSpritesheet("Knight3").sprites[1];
+	player.AddComponent<SpriteDrawable>()->sprite = ResourceManager::GetSpritesheet("Knight3").sprites[9];
 	player.GetComponent<SpriteDrawable>()->drawOrder = 1;
 	Animation anim1Player1 = Animation(ResourceManager::GetSpritesheet("Knight3"),0,1);
 	anim1Player1.wrapMode = E_ANIMATION_WRAPMODE::LOOP;
-	player.AddComponent<SpriteAnimator>()->AddAnimation(anim1Player1,"Idle");
 	Animation anim2Player1 = Animation(ResourceManager::GetSpritesheet("Knight3"), 2, 5,0.1f);
 	Animation anim3Player1 = Animation(ResourceManager::GetSpritesheet("Knight3"), 6, 6, 0.1f);
 	Animation anim4Player1 = Animation(ResourceManager::GetSpritesheet("Knight3"), 7, 7, 0.1f);
+	Animation anim5Player1 = Animation(ResourceManager::GetSpritesheet("Knight3"), 9, 14, 0.1f);
+	anim5Player1.wrapMode = E_ANIMATION_WRAPMODE::CLAMP;
+	player.AddComponent<SpriteAnimator>()->AddAnimation(anim1Player1, "Idle");
 	player.GetComponent<SpriteAnimator>()->AddAnimation(anim2Player1, "Running");
 	player.GetComponent<SpriteAnimator>()->AddAnimation(anim3Player1, "Flying");
 	player.GetComponent<SpriteAnimator>()->AddAnimation(anim4Player1, "Jumping");
+	player.GetComponent<SpriteAnimator>()->AddAnimation(anim5Player1, "Spawning");
 	player.size = glm::vec2(4, 4);
 	prefabs.insert(std::map< std::string, GameObject >::value_type("Player1", player));
 
@@ -154,7 +162,7 @@ void GameManager::Init()
 	player2.GetComponent<InputHandler>()->button_LEFT = GLFW_KEY_LEFT;
 	player2.GetComponent<InputHandler>()->button_RIGHT = GLFW_KEY_RIGHT;
 	player2.GetComponent<InputHandler>()->button_UP = GLFW_KEY_UP;
-	player2.AddComponent<SpriteDrawable>()->sprite = ResourceManager::GetSpritesheet("Knight1").sprites[1];
+	player2.AddComponent<SpriteDrawable>()->sprite = ResourceManager::GetSpritesheet("Knight1").sprites[9];
 	player2.GetComponent<SpriteDrawable>()->drawOrder = 1;
 	Animation animPlayer2 = Animation(ResourceManager::GetSpritesheet("Knight1"), 0, 1);
 	animPlayer2.wrapMode = E_ANIMATION_WRAPMODE::LOOP;
@@ -162,9 +170,12 @@ void GameManager::Init()
 	Animation anim2Player2 = Animation(ResourceManager::GetSpritesheet("Knight1"), 2, 5, 0.1f);
 	Animation anim3Player2 = Animation(ResourceManager::GetSpritesheet("Knight1"), 6, 6, 0.1f);
 	Animation anim4Player2 = Animation(ResourceManager::GetSpritesheet("Knight1"), 7, 7, 0.1f);
+	Animation anim5Player2 = Animation(ResourceManager::GetSpritesheet("Knight1"), 9, 14, 0.1f);
+	anim5Player2.wrapMode = E_ANIMATION_WRAPMODE::CLAMP;
 	player2.GetComponent<SpriteAnimator>()->AddAnimation(anim2Player2, "Running");
 	player2.GetComponent<SpriteAnimator>()->AddAnimation(anim3Player2, "Flying");
 	player2.GetComponent<SpriteAnimator>()->AddAnimation(anim4Player2, "Jumping");
+	player2.GetComponent<SpriteAnimator>()->AddAnimation(anim5Player2, "Spawning");
 	player2.size = glm::vec2(4, 4);
 	prefabs.insert(std::map< std::string, GameObject >::value_type("Player2", player2));
 
@@ -201,6 +212,16 @@ void GameManager::Init()
 	Platform3.GetComponent<BoxCollider>()->physicLayer = "Ground";
 	prefabs.insert(std::map< std::string, GameObject >::value_type("Platform3", Platform3));
 
+	GameObject lava = GameObject("Lava");
+	lava.AddComponent<Lava>();
+	lava.AddComponent<PhysicBody>()->SetKinematic(true);
+	sd = lava.AddComponent<SpriteDrawable>();
+	sd->sprite = ResourceManager::GetSprite("Lava");
+	lava.AddComponent<BoxCollider>();
+	lava.GetComponent<BoxCollider>()->isSolid = false;
+	lava.GetComponent<BoxCollider>()->physicLayer = "Lava";
+	lava.size = glm::vec2(100, 5);
+	prefabs.insert(std::map< std::string, GameObject >::value_type("Lava", lava));
 
 	GameObject enemy1 = GameObject("OnionKnight");
 	Animation animEnemy = Animation(ResourceManager::GetSpritesheet("Knight2"), 0, 1);
@@ -209,6 +230,8 @@ void GameManager::Init()
 	Animation anim2Enemy = Animation(ResourceManager::GetSpritesheet("Knight2"), 2, 5, 0.1f);
 	Animation anim3Enemy = Animation(ResourceManager::GetSpritesheet("Knight2"), 6, 6, 0.1f);
 	Animation anim4Enemy = Animation(ResourceManager::GetSpritesheet("Knight2"), 7, 7, 0.1f);
+	Animation anim5Enemy = Animation(ResourceManager::GetSpritesheet("Knight2"), 9, 15, 0.1f);
+	anim5Enemy.wrapMode = E_ANIMATION_WRAPMODE::CLAMP;
 	enemy1.AddComponent<KnightAI>()->type = E_AI_TYPE::NORMAL;
 	enemy1.AddComponent<EnemyKnight>();
 	enemy1.AddComponent<PhysicBody>()->SetDrag(0.5f);
@@ -219,12 +242,13 @@ void GameManager::Init()
 	bc->size = glm::vec2(0.6f, 0.5f);
 	bc->physicLayer = "EnemyLance";
 	bc->isSolid = false;
-	enemy1.AddComponent<SpriteDrawable>()->sprite = ResourceManager::GetSpritesheet("Knight2").sprites[1];
+	enemy1.AddComponent<SpriteDrawable>()->sprite = ResourceManager::GetSpritesheet("Knight2").sprites[9];
 	enemy1.GetComponent<SpriteDrawable>()->drawOrder = 1;
 	enemy1.AddComponent<SpriteAnimator>()->AddAnimation(animEnemy, "Idle");
 	enemy1.GetComponent<SpriteAnimator>()->AddAnimation(anim2Enemy, "Running");
 	enemy1.GetComponent<SpriteAnimator>()->AddAnimation(anim3Enemy, "Flying");
 	enemy1.GetComponent<SpriteAnimator>()->AddAnimation(anim4Enemy, "Jumping");
+	enemy1.GetComponent<SpriteAnimator>()->AddAnimation(anim5Enemy, "Spawning");
 	enemy1.size = glm::vec2(4, 4);
 	prefabs.insert(std::map< std::string, GameObject >::value_type("OnionKnight", enemy1));
 
@@ -232,7 +256,7 @@ void GameManager::Init()
 	GameObject enemyController = GameObject("Enemy Manager");
 	EnemyManager* em=enemyController.AddComponent<EnemyManager>();
 	em->enemyRatio = 2;
-	em->spawnPoints = {glm::vec2(0,3),glm::vec2(0,5),glm::vec2(0,8),glm::vec2(0,11),glm::vec2(-0,3),glm::vec2(-0,5),glm::vec2(-0,8),glm::vec2(-0,11) };
+	em->spawnPoints = { glm::vec2(-13, 13.5),glm::vec2(13, 13.5),glm::vec2(15, -3.9f), glm::vec2(-15, -3.9f) };
 	s_EnemyPrototype enemy1prot;
 	enemy1prot.protoype = &prefabs.find("OnionKnight")->second;
 	enemy1prot.rarity = 1;
@@ -341,6 +365,7 @@ void GameManager::SetUpActive()
 	game->Instantiate(prefabs.find("Platform")->second)->position = glm::vec2(0, 18);
 	game->Instantiate(prefabs.find("Platform2")->second)->position=glm::vec2(15,0);
 	game->Instantiate(prefabs.find("Platform3")->second)->position = glm::vec2(-15, 0);
+	game->Instantiate(prefabs.find("Lava")->second)->position = glm::vec2(0, 20);
 	//game->Instantiate(prefabs.find("Platform")->second)->position=glm::vec2(0,40);
 	GameObject *outsideTop=game->Instantiate(prefabs.find("Platform")->second);
 	outsideTop->position = glm::vec2(0, -73.0f);

@@ -35,26 +35,37 @@ void EnemyEgg::OnCollisionEnter(Collision col)
 {
 	if (col.sensor)
 	{
-		GameObject* go=Game::GetInstance().Instantiate(scoreNotification);
-		go->GetComponent<TextUI>()->position = owner->position;
-		int playerID= col.gameObject->GetComponent<PlayerKnight>()->playerNumber;
-		mngr->SignalDeath(enemyID, playerID);
-		if (playerID == 0)
-		{
-			go->GetComponent<TextUI>()->color = glm::vec3(0, 0, 255);
-		}
-		else
-		{
-			go->GetComponent<TextUI>()->color = glm::vec3(255, 0, 0);
-		}
-		Game::GetInstance().Destroy(*babyInside);
-		Game::GetInstance().Destroy(*owner);
+		Die(col.gameObject);
 	}
+}
+void EnemyEgg::Die(GameObject * Killer)
+{
+	GameObject* go = Game::GetInstance().Instantiate(scoreNotification);
+	go->GetComponent<TextUI>()->position = owner->position;
+	int playerID;
+	if (Killer == nullptr)
+		playerID = playerOwner->GetComponent<PlayerKnight>()->playerNumber;
+	else if (Killer->GetComponent<PlayerKnight>())
+		playerID = Killer->GetComponent<PlayerKnight>()->playerNumber;
+	else
+		playerID = -1;
+	mngr->SignalDeath(enemyID, playerID);
+	if (playerID == 0)
+	{
+		go->GetComponent<TextUI>()->color = glm::vec3(0, 0, 255);
+	}
+	else if (playerID == 1)
+	{
+		go->GetComponent<TextUI>()->color = glm::vec3(255, 0, 0);
+	}
+	Game::GetInstance().Destroy(*babyInside);
+	Game::GetInstance().Destroy(*owner);
 }
 void EnemyEgg::SpawnEnemy()
 {
+	babyInside->position = owner->position + glm::vec2(0, -0.7f);
 	babyInside->SetActive(true);
-	babyInside->position = owner->position;
+	babyInside->GetComponent<Knight>()->Spawn();
 	Game::GetInstance().Destroy(*owner);
 }
 

@@ -37,8 +37,10 @@ void EnemyKnight::Update()
 	}
 }
 
-void EnemyKnight::Die()
+void EnemyKnight::Die(GameObject* DamageCauser)
 {
 	owner->SetActive(false);
-	Game::GetInstance().Instantiate(egg)->position=owner->GetWorldPosition();
+	GameObject* newEgg = Game::GetInstance().Instantiate(egg);
+	newEgg->position = owner->GetWorldPosition();
+	newEgg->GetComponent<EnemyEgg>()->playerOwner = DamageCauser;
 }

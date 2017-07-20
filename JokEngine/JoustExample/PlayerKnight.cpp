@@ -26,7 +26,7 @@ void PlayerKnight::Update()
 	}
 }
 
-void PlayerKnight::Die()
+void PlayerKnight::Die(GameObject* DamageCauser)
 {
 	owner->AddComponent<FadeOutHelper>()->timeToFadeInSeconds=0.3f;
 }

@@ -5,7 +5,7 @@
 #include "SpriteAnimator.h"
 #include "Collision.h"
 #include "PhysicsService.h"
-enum E_KNIGHTSTATE{IDLE,RUNNING,FLYING,JUMPING};
+enum E_KNIGHTSTATE{IDLE,RUNNING,FLYING,JUMPING,SPAWNING};
 class Knight :public Component
 {
 public:
@@ -17,8 +17,9 @@ public:
 	virtual void KeepWingsDown();
 	virtual void StopWalking();
 	virtual void MoveLeft();
-	virtual void TakeDamage();
-	virtual void Die() = 0;
+	virtual void Spawn();
+	virtual void TakeDamage(GameObject* DamageCauser);
+	virtual void Die(GameObject* DamageCauser) = 0;
 	virtual void OnCollisionEnter(Collision col);
 
 	float speed;
@@ -27,6 +28,7 @@ public:
 	float healthPoints;
 	//The time in seconds it takes for the knight to become vulnerable again after losing one hp
 	float iFrameDuration;
+	float spawnDuration;
 	E_KNIGHTSTATE state;
 private:
 	PhysicBody* pb;

@@ -42,11 +42,11 @@ std::pair<AnimationFrame,GLboolean> Animation::GetNextFrame()
 				state=E_ANIMATION_STATE::PAUSED;
 				break;
 			case E_ANIMATION_WRAPMODE::PINGPONG :
-				frameIndex=frames.begin()-frames.end();
+				frameIndex= frames.size()-1;
 				state=E_ANIMATION_STATE::REVERSED;
 				break;
 			case E_ANIMATION_WRAPMODE::CLAMP : 
-				frameIndex=frames.begin()-frames.end();
+				frameIndex= frames.size() - 1;
 				state=E_ANIMATION_STATE::PAUSED;
 				break;
 				 

@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "BlinkingObject.h"
 Knight::Knight(GameObject * go)
-	:Component(go),speed(10),healthPoints(1),iFrameDuration(2), jumpSpeed(0.5f),grounded(false),wingsDowned(false), iFrameTimer(0),invulnerable(false), walkSpeed(20)
+	:Component(go), spawnDuration(1),speed(10),healthPoints(1),iFrameDuration(2), jumpSpeed(0.5f),grounded(false),wingsDowned(false), iFrameTimer(0),invulnerable(false), walkSpeed(20)
 {
 }
 
@@ -15,6 +15,7 @@ void Knight::Init()
 	sa = GetOwner()->GetActiveComponent<SpriteAnimator>();
 	physics = &Game::GetInstance().GetPhysicsService();
 	state = E_KNIGHTSTATE::IDLE;
+	Spawn();
 }
 
 
@@ -23,7 +24,12 @@ void Knight::Update()
 	if (invulnerable && iFrameTimer < 0)
 	{
 		invulnerable = false;
-		Game::GetInstance().Destroy(*owner->GetComponent<BlinkingObject>());
+		if(owner->GetComponent<BlinkingObject>())
+			Game::GetInstance().Destroy(*owner->GetComponent<BlinkingObject>());
+		if (state == E_KNIGHTSTATE::SPAWNING)
+			state = E_KNIGHTSTATE::IDLE;
+		if(healthPoints >= 0)
+			owner->GetComponent<SpriteDrawable>()->enabled = true;
 	}
 	if (owner->GetWorldPosition().x > 34)
 	{
@@ -38,15 +44,15 @@ void Knight::Update()
 	else
 		grounded = false;
 
-	if (!grounded && wingsDowned)
+	if (!grounded && wingsDowned && state != E_KNIGHTSTATE::SPAWNING )
 	{
 		state = E_KNIGHTSTATE::JUMPING;
 	}
-	else if (!grounded && !wingsDowned)
+	else if (!grounded && !wingsDowned && state != E_KNIGHTSTATE::SPAWNING)
 	{
 		state = E_KNIGHTSTATE::FLYING;
 	}
-	else if (state != E_KNIGHTSTATE::RUNNING)
+	else if (state != E_KNIGHTSTATE::RUNNING && state != E_KNIGHTSTATE::SPAWNING)
 	{
 		state = E_KNIGHTSTATE::IDLE;
 	}
@@ -64,6 +70,9 @@ void Knight::Update()
 	case E_KNIGHTSTATE::FLYING:
 		sa->PlayAnimation("Flying");
 		break;
+	case E_KNIGHTSTATE::SPAWNING:
+		sa->PlayAnimation("Spawning");
+		break;
 	}
 	wingsDowned = false;
 	iFrameTimer-=Game::GetInstance().GetTimeService().GetDeltaTime();
@@ -71,10 +80,14 @@ void Knight::Update()
 }
 void Knight::Jump()
 {
+	if (state == E_KNIGHTSTATE::SPAWNING)
+		return;
 	pb->AddForce(glm::vec2(0, -1)*jumpSpeed, E_FORCE_TYPE::IMPULSE);
 }
 void Knight::MoveRight()
 {
+	if (state == E_KNIGHTSTATE::SPAWNING)
+		return;
 	if (grounded) 
 	{
 		state = E_KNIGHTSTATE::RUNNING;	
@@ -89,10 +102,14 @@ void Knight::MoveRight()
 }
 void Knight::KeepWingsDown()
 {
+	if (state == E_KNIGHTSTATE::SPAWNING)
+		return;
 	wingsDowned = true;
 }
 void Knight::StopWalking()
 {
+	if (state == E_KNIGHTSTATE::SPAWNING)
+		return;
 	if(grounded)
 		state = E_KNIGHTSTATE::IDLE;
 	/*if(grounded)
@@ -104,6 +121,8 @@ void Knight::MoveLeft()
 	//{
 	//	pb->SetVelocity(glm::vec2(0, pb->GetVelocity().y));
 	//}
+	if (state == E_KNIGHTSTATE::SPAWNING)
+		return;
 	if (grounded)
 	{
 		state = E_KNIGHTSTATE::RUNNING;
@@ -117,12 +136,20 @@ void Knight::MoveLeft()
 	
 }
 
-void Knight::TakeDamage()
+void Knight::Spawn()
+{
+	iFrameTimer = spawnDuration;
+	invulnerable = true;
+	state = E_KNIGHTSTATE::SPAWNING;
+	sa->PlayAnimation("Spawning");
+}
+
+void Knight::TakeDamage(GameObject* DamageCauser)
 {
 	healthPoints--;
 	if (healthPoints <= 0)
 	{
-		Die();
+		Die(DamageCauser);
 	}
 	else
 	{
@@ -135,13 +162,13 @@ void Knight::TakeDamage()
 
 void Knight::OnCollisionEnter(Collision col)
 {
-	if (col.sensor && !invulnerable&& col.colliderOther->physicLayer != "Egg" && !col.gameObject->GetComponent<Knight>()->invulnerable )//knight collision
+	if (col.sensor && !invulnerable&& col.colliderOther->physicLayer != "Egg" && col.gameObject->GetComponent<Knight>() && !col.gameObject->GetComponent<Knight>()->invulnerable )//knight collision
 	{
-		if (col.gameObject->GetWorldPosition().y - owner->GetWorldPosition().y<-0.2f) //we lose
+		if (col.gameObject->GetWorldPosition().y - owner->GetWorldPosition().y<-0.3f) //we lose
 		{
-			TakeDamage();
+			TakeDamage(col.gameObject);
 		}
-		else if (abs(col.gameObject->GetWorldPosition().y - owner->GetWorldPosition().y) < 0.2f)
+		else if (abs(col.gameObject->GetWorldPosition().y - owner->GetWorldPosition().y) < 0.3f)
 		{
 			glm::vec2 impulseB = col.gameObject->GetWorldPosition() - owner->GetWorldPosition();
 			impulseB /= impulseB.length();

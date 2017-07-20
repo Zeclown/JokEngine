@@ -170,6 +170,7 @@
     <ClInclude Include="JoustExample\JumpCommand.h" />
     <ClInclude Include="JoustExample\Knight.h" />
     <ClInclude Include="JoustExample\KnightAI.h" />
+    <ClInclude Include="JoustExample\Lava.h" />
     <ClInclude Include="JoustExample\LeaderBoard.h" />
     <ClInclude Include="JoustExample\MoveLeftCommand.h" />
     <ClInclude Include="JoustExample\MoveRightCommand.h" />
@@ -233,6 +234,7 @@
     <ClCompile Include="JoustExample\JumpCommand.cpp" />
     <ClCompile Include="JoustExample\Knight.cpp" />
     <ClCompile Include="JoustExample\KnightAI.cpp" />
+    <ClCompile Include="JoustExample\Lava.cpp" />
     <ClCompile Include="JoustExample\LeaderBoard.cpp" />
     <ClCompile Include="JoustExample\MoveLeftCommand.cpp" />
     <ClCompile Include="JoustExample\MoveRightCommand.cpp" />

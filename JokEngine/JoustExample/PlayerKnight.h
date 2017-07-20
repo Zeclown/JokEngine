@@ -7,7 +7,7 @@ public:
 	PlayerKnight(GameObject* go);
 	virtual void Init();
 	virtual void Update();
-	virtual void Die();
+	virtual void Die(GameObject* DamageCauser);
 	int playerNumber;
 	int score;
 private:

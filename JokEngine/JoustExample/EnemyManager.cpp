@@ -53,13 +53,16 @@ void EnemyManager::Update()
 
 void EnemyManager::SignalDeath(int id, int playerID)
 {
-	for (int i = 0; i < enemies.size(); i++)
+	if (playerID != -1)
 	{
-		if (enemies.at(i)->GetComponent<EnemyKnight>()->enemyID == id)
+		for (int i = 0; i < enemies.size(); i++)
 		{
-			players.at(playerID)->score += enemies.at(i)->GetComponent<EnemyKnight>()->value;
-			enemies.erase(enemies.begin() + i);
-			return;
+			if (enemies.at(i)->GetComponent<EnemyKnight>()->enemyID == id)
+			{
+				players.at(playerID)->score += enemies.at(i)->GetComponent<EnemyKnight>()->value;
+				enemies.erase(enemies.begin() + i);
+				return;
+			}
 		}
 	}
 }

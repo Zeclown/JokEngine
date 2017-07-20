@@ -213,6 +213,9 @@
     <ClInclude Include="InputBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JoustExample\Lava.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -388,6 +391,9 @@
     </ClCompile>
     <ClCompile Include="InputBox.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\Lava.cpp">
+      <Filter>Source Files\Joust</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

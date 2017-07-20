@@ -11,9 +11,12 @@ public:
 	virtual void Init();
 	virtual void Update();
 	virtual void OnCollisionEnter(Collision col);
+	virtual void Die(GameObject* Killer=nullptr);
+
 	float timeToRez;
 	GameObject* babyInside;
 	EnemyManager* mngr;
+	GameObject* playerOwner;
 	int enemyID;
 private:
 	void SpawnEnemy();
