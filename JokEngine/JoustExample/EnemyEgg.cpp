@@ -43,7 +43,7 @@ void EnemyEgg::Die(GameObject * Killer)
 	GameObject* go = Game::GetInstance().Instantiate(scoreNotification);
 	go->GetComponent<TextUI>()->position = owner->position;
 	int playerID;
-	if (Killer == nullptr)
+	if (Killer == nullptr || Killer->GetComponent<PlayerKnight>() == nullptr)
 		playerID = playerOwner->GetComponent<PlayerKnight>()->playerNumber;
 	else if (Killer->GetComponent<PlayerKnight>())
 		playerID = Killer->GetComponent<PlayerKnight>()->playerNumber;
