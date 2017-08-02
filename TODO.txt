@@ -42,3 +42,7 @@ GetVelocity on physicbodies is not working :Done!
 If you move a GameObject with a physicbody attached, the physic body position is not updated :Done!
 
 TextRendering didnt take color into account :Done!
+
+COMMON SENSE:
+
+Reorganise the game project out of the engine project :

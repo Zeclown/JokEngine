@@ -1,116 +1,175 @@
 ﻿  Animation.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+Animation.cpp(10): warning C4018: '<': signed/unsigned mismatch
+Animation.cpp(23): warning C4018: '<=': signed/unsigned mismatch
+Animation.cpp(31): warning C4018: '>=': signed/unsigned mismatch
   AnimationFrame.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   Audio.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\AudioFile.h(3): fatal error C1083: Cannot open include file: 'AL\al.h': No such file or directory
   AudioFile.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\AudioFile.h(3): fatal error C1083: Cannot open include file: 'AL\al.h': No such file or directory
   AudioSource.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   BoxCollider.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\BoxCollider.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   Camera.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   CameraHandler.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   CharacterController.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Game.h(5): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   CircleCollider.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   Clock.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\TimeService.h(3): fatal error C1083: Cannot open include file: 'gl\glew.h': No such file or directory
   Collider.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+Collider.cpp(10): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
   Collision.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   Component.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+Component.cpp(10): warning C4018: '<': signed/unsigned mismatch
   ContactListener.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+ContactListener.cpp(45): warning C4018: '<': signed/unsigned mismatch
+ContactListener.cpp(50): warning C4018: '<': signed/unsigned mismatch
   Game.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\game.h(5): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+Game.cpp(19): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+Game.cpp(132): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+Game.cpp(298): warning C4018: '<': signed/unsigned mismatch
+Game.cpp(332): warning C4018: '<': signed/unsigned mismatch
   GameObject.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\GameObject.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+GameObject.cpp(34): warning C4018: '<': signed/unsigned mismatch
+GameObject.cpp(89): warning C4018: '<': signed/unsigned mismatch
   GameRoom.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\GameObject.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+GameRoom.cpp(44): warning C4018: '<': signed/unsigned mismatch
+GameRoom.cpp(80): warning C4018: '<': signed/unsigned mismatch
   InputBox.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\TextRenderingService.h(4): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
+InputBox.cpp(13): warning C4018: '<=': signed/unsigned mismatch
+InputBox.cpp(17): warning C4018: '>': signed/unsigned mismatch
   InputReader.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\InputReader.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+InputReader.cpp(59): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+InputReader.cpp(60): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+InputReader.cpp(61): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+InputReader.cpp(62): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
   Compiling...
   JObject.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   BlinkingObject.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   EnemyEgg.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   EnemyKnight.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+JoustExample\EnemyKnight.cpp(34): warning C4018: '<': signed/unsigned mismatch
   EnemyManager.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+JoustExample\EnemyManager.cpp(48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+JoustExample\EnemyManager.cpp(58): warning C4018: '<': signed/unsigned mismatch
+JoustExample\EnemyManager.cpp(74): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+JoustExample\EnemyManager.cpp(77): warning C4018: '<': signed/unsigned mismatch
+JoustExample\EnemyManager.cpp(92): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+JoustExample\EnemyManager.cpp(102): warning C4018: '<': signed/unsigned mismatch
+JoustExample\EnemyManager.cpp(110): warning C4018: '<': signed/unsigned mismatch
   FadeOutHelper.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   GameManager.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   InputHandler.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   Joust.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Game.h(5): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   JumpCommand.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   Knight.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+JoustExample\Knight.cpp(159): warning C4305: '=': truncation from 'double' to 'float'
   KnightAI.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Lava.cpp
   LeaderBoard.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+JoustExample\LeaderBoard.cpp(81): warning C4018: '>': signed/unsigned mismatch
   MoveLeftCommand.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   MoveRightCommand.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   PlayerKnight.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+JoustExample\PlayerKnight.cpp(23): warning C4018: '<': signed/unsigned mismatch
   ScoreBoard.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   ScoreText.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   StopWalkingCommand.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
-  WingsDownCommand.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\JObject.h(3): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   Compiling...
+  WingsDownCommand.cpp
   PhysicLayer.cpp
   PhysicBody.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\PhysicBody.h(3): fatal error C1083: Cannot open include file: 'glm\glm.hpp': No such file or directory
+PhysicBody.cpp(57): warning C4244: 'argument': conversion from 'GLfloat' to 'GLint', possible loss of data
   Physics.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\PhysicsService.h(3): fatal error C1083: Cannot open include file: 'gl\glew.h': No such file or directory
+Physics.cpp(9): warning C4305: 'argument': truncation from 'double' to 'float32'
+Physics.cpp(16): warning C4244: 'argument': conversion from 'double' to 'uint16', possible loss of data
+Physics.cpp(56): warning C4305: 'argument': truncation from 'double' to 'float32'
+Physics.cpp(66): warning C4244: '=': conversion from 'GLint' to 'float32', possible loss of data
+Physics.cpp(80): warning C4800: 'GLboolean': forcing value to bool 'true' or 'false' (performance warning)
+Physics.cpp(95): warning C4800: 'GLboolean': forcing value to bool 'true' or 'false' (performance warning)
+Physics.cpp(109): warning C4305: '=': truncation from 'double' to 'float32'
+Physics.cpp(142): warning C4018: '<': signed/unsigned mismatch
+Physics.cpp(169): warning C4018: '<': signed/unsigned mismatch
+Physics.cpp(185): warning C4800: 'Collider *': forcing value to bool 'true' or 'false' (performance warning)
+Physics.cpp(193): warning C4800: 'Collider *': forcing value to bool 'true' or 'false' (performance warning)
   PhysicsDebug.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\PhysicsService.h(3): fatal error C1083: Cannot open include file: 'gl\glew.h': No such file or directory
   RaycastAllListener.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   RaycastHit.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   RaycastListener.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Collider.h(3): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   Resource_Manager.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\resource_manager.h(7): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   Shader.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\shader.h(6): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   Source.cpp
   Sprite.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   SpriteAnimator.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+SpriteAnimator.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   SpriteDrawable.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   SpriteRenderer.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\SpriteRenderer.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   SpriteSheet.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\Texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
   TextRenderer.cpp
-TextRenderer.cpp(3): fatal error C1083: Cannot open include file: 'glm/gtc/matrix_transform.hpp': No such file or directory
+TextRenderer.cpp(81): warning C4838: conversion from 'FT_Pos' to 'GLuint' requires a narrowing conversion
   TextUI.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\TextRenderingService.h(4): fatal error C1083: Cannot open include file: 'GL\glew.h': No such file or directory
   Texture.cpp
-c:\users\pierre-olivier\documents\jokengine\jokengine\jokengine\texture.h(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+Box2D.lib(b2Body.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2Body.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2World.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2World.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2PolygonShape.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2PolygonShape.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2EdgeShape.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2EdgeShape.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2CircleShape.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2CircleShape.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2Fixture.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2Fixture.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2BroadPhase.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2BroadPhase.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2ContactManager.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2ContactManager.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2Island.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2Island.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2Joint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2Joint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2PulleyJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2PulleyJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2Contact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2Contact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2WorldCallbacks.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2WorldCallbacks.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2ContactSolver.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2ContactSolver.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2DistanceJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2DistanceJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2WheelJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2WheelJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2MouseJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2MouseJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2RevoluteJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2RevoluteJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2PrismaticJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2PrismaticJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2GearJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2GearJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2WeldJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2WeldJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2FrictionJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2FrictionJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2RopeJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2RopeJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2MotorJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2MotorJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2CircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2CircleContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2PolygonAndCircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2PolygonAndCircleContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2PolygonContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2PolygonContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2EdgeAndCircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2EdgeAndCircleContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2EdgeAndPolygonContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2EdgeAndPolygonContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2ChainAndCircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2ChainAndCircleContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2ChainAndPolygonContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2ChainAndPolygonContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+Box2D.lib(b2ChainShape.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
+Box2D.lib(b2ChainShape.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
+SOIL.lib(SOIL.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
+LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\Jokeng.exe : fatal error LNK1319: 64 mismatches detected
