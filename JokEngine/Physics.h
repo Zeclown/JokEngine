@@ -17,7 +17,7 @@ public:
 	~Physics();
 	glm::vec2 GetGravity();
 	void SetGravity(glm::vec2 gravity);
-	b2Body* RegisterBody(PhysicBody *pb,glm::vec2 position,GLboolean isKinematic,GLboolean isGravity,GLfloat rotation,GLfloat angularDrag,GLfloat drag,GLint mass);
+	b2Body* RegisterBody(PhysicBody *pb,glm::vec2 position,GLboolean isKinematic,GLboolean isGravity,GLfloat rotation,GLfloat angularDrag,GLfloat drag,GLint mass,GLboolean isRotation);
 	b2Fixture* RegisterFixtureBox(b2Body *body, Collider* col, glm::vec2 size = glm::vec2(1, 1),GLboolean sensor=false, glm::vec2 offset = glm::vec2(0, 0), std::string layerName = "default");
 	b2Fixture* RegisterFixtureCircle(b2Body *body, Collider* col, GLfloat radius = 1,GLboolean sensor=false, glm::vec2 offset = glm::vec2(0, 0), std::string layerName = "default");
 	b2Fixture* RegisterFixtureEdge(b2Body *body, Collider* col, glm::vec2 pointA, glm::vec2 pointB, std::string layerName = "default");

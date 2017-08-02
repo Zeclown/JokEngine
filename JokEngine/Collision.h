@@ -17,6 +17,7 @@ public:
 	GameObject *gameObject;
 	std::vector<glm::vec2> contacts;
 	GLboolean sensor;
+	int objID;
 };
 
 #endif // !COLLISION_H

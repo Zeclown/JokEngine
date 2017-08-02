@@ -55,22 +55,6 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\OpenGL.props" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\OpenGL.props" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\OpenGL.props" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\OpenGL.props" />
-  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>Jokeng</TargetName>
@@ -89,11 +73,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ShowIncludes>false</ShowIncludes>
-      <AdditionalIncludeDirectories>C:\Users\Pierre-Olivier\Documents\Visual Studio 2015\Projects\JokEngine\JokEngine\Dependencies\Includes;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Dependencies\OpenGLWrappers\Includes;..\Dependencies\Includes;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>freetyped.lib;alut.lib;OpenAL32.lib;Box2D.lib;SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>..\Dependencies\OpenGLWrappers\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
@@ -104,9 +90,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>./;..\Dependencies\OpenGLWrappers\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996 ;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\Dependencies\OpenGLWrappers\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>freetyped.lib;alut.lib;OpenAL32.lib;Box2D.lib;SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -118,13 +108,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ShowIncludes>false</ShowIncludes>
-      <AdditionalIncludeDirectories>C:\Users\Pierre-Olivier\Documents\Visual Studio 2015\Projects\JokEngine\JokEngine\Dependencies\Includes;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Dependencies\OpenGLWrappers\Includes;..\Dependencies\Includes;./;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>freetyped.lib;alut.lib;OpenAL32.lib;Box2D.lib;SOIL.lib;glew32s.lib;glfw3.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Dependencies\OpenGLWrappers\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
@@ -165,9 +156,30 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameRoom.h" />
+    <ClInclude Include="InputBox.h" />
     <ClInclude Include="InputReader.h" />
     <ClInclude Include="JObject.h" />
     <ClInclude Include="JokEngine.h" />
+    <ClInclude Include="JoustExample\BlinkingObject.h" />
+    <ClInclude Include="JoustExample\Command.h" />
+    <ClInclude Include="JoustExample\EnemyEgg.h" />
+    <ClInclude Include="JoustExample\EnemyKnight.h" />
+    <ClInclude Include="JoustExample\EnemyManager.h" />
+    <ClInclude Include="JoustExample\FadeOutHelper.h" />
+    <ClInclude Include="JoustExample\GameManager.h" />
+    <ClInclude Include="JoustExample\InputHandler.h" />
+    <ClInclude Include="JoustExample\JumpCommand.h" />
+    <ClInclude Include="JoustExample\Knight.h" />
+    <ClInclude Include="JoustExample\KnightAI.h" />
+    <ClInclude Include="JoustExample\Lava.h" />
+    <ClInclude Include="JoustExample\LeaderBoard.h" />
+    <ClInclude Include="JoustExample\MoveLeftCommand.h" />
+    <ClInclude Include="JoustExample\MoveRightCommand.h" />
+    <ClInclude Include="JoustExample\PlayerKnight.h" />
+    <ClInclude Include="JoustExample\ScoreBoard.h" />
+    <ClInclude Include="JoustExample\ScoreText.h" />
+    <ClInclude Include="JoustExample\StopWalkingCommand.h" />
+    <ClInclude Include="JoustExample\WingsDownCommand.h" />
     <ClInclude Include="PhysicLayer.h" />
     <ClInclude Include="PhysicBody.h" />
     <ClInclude Include="Physics.h" />
@@ -186,6 +198,7 @@
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="TextRenderer.h" />
     <ClInclude Include="TextRenderingService.h" />
+    <ClInclude Include="TextUI.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeService.h" />
   </ItemGroup>
@@ -208,8 +221,29 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameRoom.cpp" />
+    <ClCompile Include="InputBox.cpp" />
     <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="JObject.cpp" />
+    <ClCompile Include="JoustExample\BlinkingObject.cpp" />
+    <ClCompile Include="JoustExample\EnemyEgg.cpp" />
+    <ClCompile Include="JoustExample\EnemyKnight.cpp" />
+    <ClCompile Include="JoustExample\EnemyManager.cpp" />
+    <ClCompile Include="JoustExample\FadeOutHelper.cpp" />
+    <ClCompile Include="JoustExample\GameManager.cpp" />
+    <ClCompile Include="JoustExample\InputHandler.cpp" />
+    <ClCompile Include="JoustExample\Joust.cpp" />
+    <ClCompile Include="JoustExample\JumpCommand.cpp" />
+    <ClCompile Include="JoustExample\Knight.cpp" />
+    <ClCompile Include="JoustExample\KnightAI.cpp" />
+    <ClCompile Include="JoustExample\Lava.cpp" />
+    <ClCompile Include="JoustExample\LeaderBoard.cpp" />
+    <ClCompile Include="JoustExample\MoveLeftCommand.cpp" />
+    <ClCompile Include="JoustExample\MoveRightCommand.cpp" />
+    <ClCompile Include="JoustExample\PlayerKnight.cpp" />
+    <ClCompile Include="JoustExample\ScoreBoard.cpp" />
+    <ClCompile Include="JoustExample\ScoreText.cpp" />
+    <ClCompile Include="JoustExample\StopWalkingCommand.cpp" />
+    <ClCompile Include="JoustExample\WingsDownCommand.cpp" />
     <ClCompile Include="PhysicLayer.cpp" />
     <ClCompile Include="PhysicBody.cpp" />
     <ClCompile Include="Physics.cpp" />
@@ -226,6 +260,7 @@
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="TextRenderer.cpp" />
+    <ClCompile Include="TextUI.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>

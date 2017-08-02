@@ -13,10 +13,16 @@ PhysicBody::PhysicBody(PhysicBody const & pb)
 {
 
 }
+PhysicBody::~PhysicBody()
+{
+	if(rBody)
+		rBody->GetWorld()->DestroyBody(rBody);
+}
 void PhysicBody::Init()
 {
 	if (!rBody)
 		MakeBody();
+	owner->Update.connect(boost::bind(&PhysicBody::Update, this));
 }
 b2Body* PhysicBody::GetB2body()
 {
@@ -26,15 +32,29 @@ b2Body* PhysicBody::GetB2body()
 }
 void PhysicBody::FixedUpdate()
 {
-	lastRot = GetOwner()->rotation;
-	lastPos = GetOwner()->position;
-	GetOwner()->position = glm::vec2(rBody->GetPosition().x,rBody->GetPosition().y)*Game::GetInstance().BOX2D_TO_WORLD;
-	GetOwner()->rotation = rBody->GetAngle();
-		
-	
+	if (owner->isActive())
+	{
+		rBody->SetActive(true);
+		lastRot = GetOwner()->rotation;
+		lastPos = GetOwner()->position;
+		GetOwner()->position = glm::vec2(rBody->GetPosition().x, rBody->GetPosition().y)*Game::GetInstance().BOX2D_TO_WORLD;
+		GetOwner()->rotation = rBody->GetAngle();
+	}
+	else
+	{
+		rBody->SetActive(false);
+	}
+}
+void PhysicBody::Update()
+{
+	if (rBody)
+	{
+		glm::vec2 updatedPosition = owner->GetWorldPosition();
+		rBody->SetTransform(b2Vec2(updatedPosition.x*Game::GetInstance().WORLD_TO_BOX2D, updatedPosition.y*Game::GetInstance().WORLD_TO_BOX2D), owner->GetWorldRotation());
+	}
 }
 void PhysicBody::MakeBody()
-{	rBody = Game::GetInstance().GetPhysicsService().RegisterBody(this,glm::vec2(owner->position.x, owner->position.y),kinematic,gravity,GetOwner()->rotation,angularDrag,drag, mass);
+{	rBody = Game::GetInstance().GetPhysicsService().RegisterBody(this,glm::vec2(owner->position.x, owner->position.y),kinematic,gravity,GetOwner()->rotation,angularDrag,drag, mass,!freezeRotation);
 }
 void PhysicBody::AddForce(glm::vec2 force, E_FORCE_TYPE forceType)
 {
@@ -46,7 +66,7 @@ void PhysicBody::AddForce(glm::vec2 force, E_FORCE_TYPE forceType)
 
 glm::vec2 PhysicBody::GetVelocity()
 {
-	return velocity;
+	return glm::vec2(rBody->GetLinearVelocity().x, rBody->GetLinearVelocity().y);
 }
 
 void PhysicBody::SetVelocity(glm::vec2 vlcy)
@@ -104,7 +124,7 @@ void PhysicBody::SetFreezeRotation(GLboolean freeze)
 {
 	freezeRotation = freeze;
 	if (rBody)
-		rBody->SetFixedRotation(freeze);
+		rBody->SetFixedRotation(!freeze);
 }
 
 GLboolean PhysicBody::IsGravity()

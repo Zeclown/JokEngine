@@ -6,18 +6,18 @@ CameraHandler::CameraHandler()
 }
 void CameraHandler::RegisterCamera(Camera &cam)
 {
-	mainCamera.reset(&cam);
+	mainCamera=&cam;
 }
 void CameraHandler::RegisterUICamera(Camera &cam)
 {
-	uiCamera.reset(&cam);
+	uiCamera=&cam;
 }
-std::shared_ptr<Camera> CameraHandler::GetMainCamera()
+Camera* CameraHandler::GetMainCamera()
 {
 	return mainCamera;
 }
 
-std::shared_ptr<Camera> CameraHandler::GetUICamera()
+Camera* CameraHandler::GetUICamera()
 {
 	return uiCamera;
 }

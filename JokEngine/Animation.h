@@ -29,6 +29,7 @@ class Animation
 		Animation();
 		Animation(std::vector<Sprite> sp,GLfloat frameDuration=0.5f);
 		Animation(SpriteSheet sp, GLfloat frameDuration = 0.5f);
+		Animation(SpriteSheet sp, GLuint firstFrame, GLuint lastFrame,GLfloat frameDuration = 0.5f);
 		//a speed modifier for the animation default = 1f
 		GLfloat animationSpeed;
 		//The animation wrapmode

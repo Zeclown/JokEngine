@@ -30,6 +30,7 @@ public:
 private:
 	SpriteDrawable *spriteDraw;
 	GLboolean replaying;
+	GLboolean bFirstPlay;
 	GLfloat timer;
 	std::pair<AnimationFrame,GLboolean> currentFrame;
 	std::vector<std::pair<std::string,Animation>> animationQueue;

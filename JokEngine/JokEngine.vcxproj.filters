@@ -150,6 +150,72 @@
     <ClInclude Include="CharacterController.h">
       <Filter>Header Files\Joust</Filter>
     </ClInclude>
+    <ClInclude Include="JoustExample\InputHandler.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\GameManager.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\BlinkingObject.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="TextUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\FadeOutHelper.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\Command.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\JumpCommand.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\Knight.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\PlayerKnight.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\MoveRightCommand.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\MoveLeftCommand.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\KnightAI.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\WingsDownCommand.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\StopWalkingCommand.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\EnemyManager.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\EnemyKnight.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\ScoreBoard.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\EnemyEgg.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\ScoreText.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\LeaderBoard.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
+    <ClInclude Include="InputBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JoustExample\Lava.h">
+      <Filter>Header Files\Joust</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -261,6 +327,72 @@
       <Filter>Source Files\Joust</Filter>
     </ClCompile>
     <ClCompile Include="CharacterController.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\Joust.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\GameManager.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\BlinkingObject.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="TextUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\FadeOutHelper.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\JumpCommand.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\PlayerKnight.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\InputHandler.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\MoveRightCommand.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\MoveLeftCommand.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\Knight.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\KnightAI.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\WingsDownCommand.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\StopWalkingCommand.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\EnemyManager.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\EnemyKnight.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\ScoreBoard.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\EnemyEgg.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\ScoreText.cpp">
+      <Filter>Source Files\Joust</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\LeaderBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JoustExample\Lava.cpp">
       <Filter>Source Files\Joust</Filter>
     </ClCompile>
   </ItemGroup>

@@ -16,7 +16,9 @@ class SpriteDrawable :public ComponentCloneable<Component,SpriteDrawable> {
 public:
 	SpriteDrawable(GameObject* gameObject);
 	Sprite sprite;
-	glm::vec3   color;
+	GLuint drawOrder;
+	glm::vec4   color;
+	GLboolean flipped;
 	// Draw sprite
 	virtual void Draw(SpriteRenderingService &renderer,glm::vec2 intrapolation);
 

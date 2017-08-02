@@ -12,7 +12,7 @@ RaycastListener::RaycastListener(RaycastHit *result)
 {
 	if (!result)
 	{
-		result = new RaycastHit();
+		this->result = new RaycastHit();
 		resultOwner = true;
 	}
 }

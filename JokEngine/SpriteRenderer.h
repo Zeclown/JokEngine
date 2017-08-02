@@ -18,10 +18,10 @@ public:
 	void DrawSquare(glm::vec2 center, glm::vec2 size, GLfloat angle, glm::vec3 RGBcolor=glm::vec3(1.0f,1.0f,1.0f));
 	void DrawSprite(Sprite &sprite, glm::vec2 position,
 		glm::vec2 size = glm::vec2(10, 10), GLfloat rotate = 0.0f,
-		glm::vec3 color = glm::vec3(1.0f));
+		glm::vec4 color = glm::vec4(1.0f));
 private:
 	Shader shader;
-	GLuint quadVAO;
+	GLuint quadVAO, quadInvertedVAO;
 	void initRenderData();
 };
 

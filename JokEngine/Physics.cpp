@@ -29,7 +29,7 @@ void Physics::SetGravity(glm::vec2 gravity)
 {
 	physicWorld->SetGravity(b2Vec2(gravity.x, gravity.y));
 }
-b2Body* Physics::RegisterBody(PhysicBody *pb, glm::vec2 position,GLboolean isKinematic, GLboolean isGravity,GLfloat rotation, GLfloat angularDrag, GLfloat drag,GLint mass)
+b2Body* Physics::RegisterBody(PhysicBody *pb, glm::vec2 position,GLboolean isKinematic, GLboolean isGravity,GLfloat rotation, GLfloat angularDrag, GLfloat drag,GLint mass, GLboolean isRotation)
 {
 	b2BodyDef bodyDef;
 	bodyDef.position.Set(position.x*Game::GetInstance().WORLD_TO_BOX2D,position.y*Game::GetInstance().WORLD_TO_BOX2D);
@@ -45,6 +45,8 @@ b2Body* Physics::RegisterBody(PhysicBody *pb, glm::vec2 position,GLboolean isKin
 	{
 		bodyDef.gravityScale = 1;
 	}
+
+	bodyDef.fixedRotation = !isRotation;
 	bodyDef.angle = rotation;
 	bodyDef.angularDamping = angularDrag;
 	bodyDef.linearDamping = drag;
@@ -69,8 +71,9 @@ b2Fixture* Physics::RegisterFixtureBox(b2Body *body,Collider *col,glm::vec2 size
 {
 
 	b2PolygonShape baseFixture;
-	baseFixture.SetAsBox(size.x/2*Game::GetInstance().WORLD_TO_BOX2D, size.y/2*Game::GetInstance().WORLD_TO_BOX2D);
-	baseFixture.m_centroid.Set(offset.x*Game::GetInstance().WORLD_TO_BOX2D, offset.y*Game::GetInstance().WORLD_TO_BOX2D);
+	size *= Game::GetInstance().WORLD_TO_BOX2D;
+	offset*= Game::GetInstance().WORLD_TO_BOX2D;
+	baseFixture.SetAsBox(size.x/2, size.y/2,b2Vec2(offset.x, offset.y),0);
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &baseFixture;
 	boxFixtureDef.density = 0;
@@ -84,7 +87,7 @@ b2Fixture* Physics::RegisterFixtureBox(b2Body *body,Collider *col,glm::vec2 size
 b2Fixture* Physics::RegisterFixtureCircle(b2Body *body, Collider *col, GLfloat radius, GLboolean sensor,glm::vec2 offset,std::string layerName)
 {
 	b2CircleShape baseFixture;
-	baseFixture.m_radius=radius*Game::GetInstance().WORLD_TO_BOX2D;
+	baseFixture.m_radius=radius*Game::GetInstance().WORLD_TO_BOX2D ;
 	baseFixture.m_p.Set(offset.x*Game::GetInstance().WORLD_TO_BOX2D, offset.y*Game::GetInstance().WORLD_TO_BOX2D);
 	b2FixtureDef circleFixtureDef;
 	circleFixtureDef.shape = &baseFixture;
@@ -174,10 +177,12 @@ uint16 Physics::GetMaskBits(std::vector<std::string> layerNames,GLboolean isColl
 GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance, uint16 physicMask)
 {
 	RaycastListener rayListener;
+	origin *= Game::GetInstance().WORLD_TO_BOX2D;
+	maxDistance *= Game::GetInstance().WORLD_TO_BOX2D;
 	b2Vec2 pointA=b2Vec2(origin.x,origin.y);
 	b2Vec2 pointB=b2Vec2(origin.x+glm::normalize(direction).x*maxDistance,origin.y+glm::normalize(direction).y*maxDistance);
 	physicWorld->RayCast(&rayListener,pointA,pointB);
-	return (bool)rayListener.result;
+	return (bool)rayListener.result->collider;
 }
 GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &output, GLfloat maxDistance, uint16 physicMask)
 {
@@ -185,7 +190,7 @@ GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &ou
 	b2Vec2 pointA=b2Vec2(origin.x,origin.y);
 	b2Vec2 pointB=b2Vec2(origin.x+glm::normalize(direction).x*maxDistance,origin.y+glm::normalize(direction).y*maxDistance);
 	physicWorld->RayCast(&rayListener,pointA,pointB);
-	return (bool)*(rayListener.result);
+	return (bool)rayListener.result->collider;
 }
 std::vector<RaycastHit> Physics::RaycastAll(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance, uint16 physicMask)
 {
@@ -198,4 +203,5 @@ std::vector<RaycastHit> Physics::RaycastAll(glm::vec2 origin, glm::vec2 directio
 void Physics::FixedUpdate()
 {
 	physicWorld->Step(Game::GetInstance().fixedRefreshTime,velocityIteration,positionIteration);
+	contactListener->SendCollisionsCalls();
 }

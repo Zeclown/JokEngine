@@ -15,6 +15,7 @@ class Camera :public ComponentCloneable<Component, Camera>
 {
 public:
 	Camera(GameObject* gameObject);
+
 	GLfloat zoom;
 	glm::vec2 frustum;
 	GLfloat farPlane;

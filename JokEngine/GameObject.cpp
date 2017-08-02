@@ -10,12 +10,12 @@ GameObject::GameObject()
 
 }	
 GameObject::GameObject(std::string name)
-	: position(glm::vec2(0, 0)), size(glm::vec2(1, 1)), rotation(0), name(name), tag(E_JTAG::Default),parent(nullptr),active(true)
+	: position(glm::vec2(0, 0)), size(glm::vec2(1, 1)), rotation(0), name(name), tag(E_JTAG::Default),parent(nullptr),active(true),dontDestroyOnClean(false), idCount(0)
 {
 		
 }
 GameObject::GameObject(const GameObject &gameObject)
-	: position(gameObject.position), size(gameObject.size), rotation(gameObject.rotation), name(gameObject.name), tag(gameObject.tag), parent(nullptr), active(true)
+	: position(gameObject.position), size(gameObject.size), rotation(gameObject.rotation), name(gameObject.name), tag(gameObject.tag), parent(nullptr), active(true), dontDestroyOnClean(false), idCount(0)
 {
 
 	for (size_t i = 0; i < gameObject.components.size(); i++)
@@ -31,8 +31,16 @@ GameObject::GameObject(const GameObject &gameObject)
 }
 GameObject::~GameObject()
 {
-for(int i =0;i<components.size();++i)
-	delete components[i];
+	for (int i = 0; i < components.size(); ++i)
+	{
+		delete components[i];
+		components.erase(components.begin()+i);
+		i--;
+	}
+}
+int GameObject::GetObjectID()
+{
+	return objectID;
 }
 void GameObject::SetActive(GLboolean activeState)
 {

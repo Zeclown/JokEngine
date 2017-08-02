@@ -12,7 +12,7 @@ Camera::Camera(GameObject* gameObject)
 glm::mat4 Camera::GetViewMatrix()
 {
 	glm::vec2 worldPos = owner->GetWorldPosition();
-	glm::mat4 view = glm::ortho(0-frustum.x  / 2 , frustum.x / 2 , frustum.y / 2 , 0-frustum.y / 2 );
+	glm::mat4 view = glm::ortho(0-frustum.x  / 2 , frustum.x / 2 , frustum.y / 2 , 0-frustum.y / 2, -1.0f, 1.0f);
 		
 	return glm::translate(view,glm::vec3(worldPos.x,worldPos.y,0));
 }

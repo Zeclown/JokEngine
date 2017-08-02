@@ -23,7 +23,7 @@ class PhysicsService
 		//Set the gravity used by the physic engine
 		virtual void SetGravity(glm::vec2 gravity) = 0;
 		//Registers a new body in the physic engine (Used internally by Physicbody)
-		virtual b2Body* RegisterBody(PhysicBody *pb, glm::vec2 position, GLboolean isKinematic, GLboolean isGravity, GLfloat rotation, GLfloat angularDrag, GLfloat drag, GLint mass)=0;
+		virtual b2Body* RegisterBody(PhysicBody *pb, glm::vec2 position, GLboolean isKinematic, GLboolean isGravity, GLfloat rotation, GLfloat angularDrag, GLfloat drag, GLint mass, GLboolean isRotation)=0;
 		//Registers a new Box Collider
 		virtual b2Fixture* RegisterFixtureBox(b2Body *body, Collider* col, glm::vec2 size = glm::vec2(1, 1),GLboolean sensor=false, glm::vec2 offset = glm::vec2(0, 0), std::string layerName = "default")=0;
 		//Registers a new Circle Collider

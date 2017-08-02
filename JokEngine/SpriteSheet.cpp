@@ -4,10 +4,10 @@
 SpriteSheet::SpriteSheet(Texture2D* texture,glm::vec2 frameSize)
 {
 		
-	GLint columns=floor(texture->Width/frameSize.x);
-	GLint rows=floor(texture->Height/frameSize.y);
-	GLfloat incrementCol=frameSize.x/texture->Width;
-	GLfloat incrementRow=frameSize.y/texture->Height;
+	GLint columns=(GLint)floor(texture->Width/frameSize.x);
+	GLint rows= (GLint)floor(texture->Height/frameSize.y);
+	GLfloat incrementCol= frameSize.x/texture->Width;
+	GLfloat incrementRow= frameSize.y/texture->Height;
 	GLint frameCount=0;
 	for(int i =0;i<rows;i++)
 		for(int j=0;j<columns;j++)

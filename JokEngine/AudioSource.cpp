@@ -32,7 +32,6 @@ void AudioSource::Update()
 			if (looping)
 			{
 				alSourceRewind(source);
-				Game::GetInstance().GetAudioService().PlaySound(source);
 			}
 			else
 			{
