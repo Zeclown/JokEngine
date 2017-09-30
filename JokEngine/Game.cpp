@@ -15,7 +15,7 @@
 
 Game *Game::instance = 0;
 Game::Game(GLuint width, GLuint height, const std::string &gameName)
-	: width(width), height(height), gameroom(GameRoom::instance()), gameName(gameName), fixedRefreshTime(0.03), fixedUpdateTimer(0),BOX2D_TO_WORLD(15),WORLD_TO_BOX2D(1/BOX2D_TO_WORLD)
+	: width(width), height(height), gameroom(GameRoom::instance()), gameName(gameName), fixedRefreshTime(0.03f), fixedUpdateTimer(0.0f),BOX2D_TO_WORLD(15.0f),WORLD_TO_BOX2D(1.0f/BOX2D_TO_WORLD)
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -129,7 +129,7 @@ void Game::Loop()
 	while (!glfwWindowShouldClose(window))
 	{
 		initSignal();
-		time->UpdateTime(glfwGetTime());
+		time->UpdateTime((float)glfwGetTime());
 		fixedUpdateTimer += time->GetDeltaTime();
 		glfwPollEvents();		
 		ProcessInput();
@@ -295,7 +295,7 @@ void Game::Render()
 		}
 	}
 	//Go through the sprite render queue
-	for (int i = 0; i < drawIndexOrdered.size(); i++)
+	for (size_t i = 0; i < drawIndexOrdered.size(); i++)
 	{
 		GLuint keyIndex = drawIndexOrdered[i];
 		auto range = renderQueue.equal_range(keyIndex);
@@ -329,7 +329,7 @@ void Game::Render()
 		}
 	}
 	//Go through the UI render queue
-	for (int i = 0; i < drawIndexOrdered.size(); i++)
+	for (size_t i = 0; i < drawIndexOrdered.size(); i++)
 	{
 		GLuint keyIndex = drawIndexOrdered[i];
 		auto range = renderQueueUI.equal_range(keyIndex);
