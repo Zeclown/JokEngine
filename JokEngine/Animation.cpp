@@ -7,7 +7,7 @@ Animation::Animation()
 Animation::Animation(std::vector<Sprite> sp, GLfloat frameDuration)
 	: Animation()
 {
-	for (int i = 0; i < sp.size(); i++)
+	for (size_t i = 0; i < sp.size(); i++)
 	{
 		frames.push_back(AnimationFrame(sp[i], frameDuration));
 	}
@@ -20,7 +20,7 @@ Animation::Animation(SpriteSheet sp, GLfloat frameDuration)
 Animation::Animation(SpriteSheet sp, GLuint firstFrame, GLuint lastFrame, GLfloat frameDuration)
 	:Animation()
 {
-	for (int i = firstFrame; i <= lastFrame; i++)
+	for (size_t i = firstFrame; i <= lastFrame; i++)
 	{
 		frames.push_back(AnimationFrame(sp.sprites[i], frameDuration));
 	}

@@ -37,7 +37,7 @@ class Animation
 		//ask the animation for the next frame and change the animation's state accordingly
 		std::pair<AnimationFrame,GLboolean> GetNextFrame();
 	private:
-		GLint frameIndex;
+		GLuint frameIndex;
 		E_ANIMATION_STATE state;
 		//is it currently wrapping?
 		GLboolean wrapping;			
