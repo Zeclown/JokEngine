@@ -6,14 +6,14 @@
 #include "RaycastAllListener.h"
 
 Physics::Physics()
-	:physicWorld(new b2World(b2Vec2(0, 0.981))), velocityIteration(7), positionIteration(3), layerCount(1), layers({}), contactListener(new ContactListener)
+	:physicWorld(new b2World(b2Vec2(0.0f, 0.981f))), velocityIteration(7), positionIteration(3), layerCount(1), layers({}), contactListener(new ContactListener)
 {
 	physicWorld->SetContactListener(contactListener);
 	layers[0]=PhysicLayer(0x0001);
 	layers[0].name = "default";
 	for(int i=1;i<16;i++)
 	{
-		layers[i]=PhysicLayer(pow(2,i));
+		layers[i]=PhysicLayer((uint16)pow(2,i));
 	}
 }
 Physics::~Physics()
@@ -53,7 +53,7 @@ b2Body* Physics::RegisterBody(PhysicBody *pb, glm::vec2 position,GLboolean isKin
 	b2Body *body = physicWorld->CreateBody(&bodyDef);
 	body->SetUserData(pb);
 	b2PolygonShape baseFixture;
-	baseFixture.SetAsBox(0.1,0.1);
+	baseFixture.SetAsBox(0.1f,0.1f);
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &baseFixture;
 	boxFixtureDef.density = 2;
@@ -63,7 +63,7 @@ b2Body* Physics::RegisterBody(PhysicBody *pb, glm::vec2 position,GLboolean isKin
 
 	b2MassData mData;
 	body->GetMassData(&mData);
-	mData.mass = mass;
+	mData.mass = (float32)mass;
 	body->SetMassData(&mData);
 	return body;
 }
@@ -77,7 +77,7 @@ b2Fixture* Physics::RegisterFixtureBox(b2Body *body,Collider *col,glm::vec2 size
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &baseFixture;
 	boxFixtureDef.density = 0;
-	boxFixtureDef.isSensor = sensor;
+	boxFixtureDef.isSensor = sensor!=0;
 	boxFixtureDef.filter.categoryBits=Game::GetInstance().GetPhysicsService().GetCategoryBits(layerName);
 	boxFixtureDef.filter.maskBits=Game::GetInstance().GetPhysicsService().GetMaskBits(layerName);
 	b2Fixture* fixture = body->CreateFixture(&boxFixtureDef);
@@ -92,7 +92,7 @@ b2Fixture* Physics::RegisterFixtureCircle(b2Body *body, Collider *col, GLfloat r
 	b2FixtureDef circleFixtureDef;
 	circleFixtureDef.shape = &baseFixture;
 	circleFixtureDef.density = 0;
-	circleFixtureDef.isSensor = sensor;
+	circleFixtureDef.isSensor = sensor!=0;
 	circleFixtureDef.filter.categoryBits= Game::GetInstance().GetPhysicsService().GetCategoryBits(layerName);
 	circleFixtureDef.filter.maskBits=Game::GetInstance().GetPhysicsService().GetMaskBits(layerName);
 	b2Fixture* fixture = body->CreateFixture(&circleFixtureDef);
@@ -106,7 +106,7 @@ b2Fixture* Physics::RegisterFixtureEdge(b2Body *body, Collider *col, glm::vec2 p
 	es.Set(b2Vec2(pointA.x*Game::GetInstance().WORLD_TO_BOX2D, pointA.y*Game::GetInstance().WORLD_TO_BOX2D), b2Vec2(pointB.x*Game::GetInstance().WORLD_TO_BOX2D, pointB.y*Game::GetInstance().WORLD_TO_BOX2D));
 	b2FixtureDef edgeFixtureDef;
 	edgeFixtureDef.shape = &es;
-	edgeFixtureDef.density = 0.2;
+	edgeFixtureDef.density = 0.2f;
 	b2Fixture* fixture = body->CreateFixture(&edgeFixtureDef);
 	fixture->SetUserData(col);
 	return fixture;
@@ -139,7 +139,7 @@ uint16 Physics::GetCategoryBits(std::string layerName)
 }
 void Physics::SetMaskBits(std::string layerName,std::vector<std::string> otherLayers,GLboolean isColliding)
 {
-	for (int i = 0; i < otherLayers.size(); i++)
+	for (size_t i = 0; i < otherLayers.size(); i++)
 	{
 		SetMaskBits(layerName,otherLayers[i],isColliding);
 	}
@@ -166,7 +166,7 @@ uint16 Physics::GetMaskBits(std::string layerName,GLboolean isColliding)
 uint16 Physics::GetMaskBits(std::vector<std::string> layerNames,GLboolean isColliding)
 {
 	uint16 mask=0;
-	for(int i =0 ;i<layerNames.size();++i)
+	for(size_t i =0 ;i<layerNames.size();++i)
 	{
 			mask |=GetMaskBits(layerNames[i],isColliding);
 	}
@@ -182,7 +182,7 @@ GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, GLfloat maxDis
 	b2Vec2 pointA=b2Vec2(origin.x,origin.y);
 	b2Vec2 pointB=b2Vec2(origin.x+glm::normalize(direction).x*maxDistance,origin.y+glm::normalize(direction).y*maxDistance);
 	physicWorld->RayCast(&rayListener,pointA,pointB);
-	return (bool)rayListener.result->collider;
+	return rayListener.result->collider !=nullptr;
 }
 GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &output, GLfloat maxDistance, uint16 physicMask)
 {
@@ -190,7 +190,7 @@ GLboolean Physics::Raycast(glm::vec2 origin, glm::vec2 direction, RaycastHit &ou
 	b2Vec2 pointA=b2Vec2(origin.x,origin.y);
 	b2Vec2 pointB=b2Vec2(origin.x+glm::normalize(direction).x*maxDistance,origin.y+glm::normalize(direction).y*maxDistance);
 	physicWorld->RayCast(&rayListener,pointA,pointB);
-	return (bool)rayListener.result->collider;
+	return rayListener.result->collider != nullptr;
 }
 std::vector<RaycastHit> Physics::RaycastAll(glm::vec2 origin, glm::vec2 direction, GLfloat maxDistance, uint16 physicMask)
 {

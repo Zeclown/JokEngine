@@ -78,7 +78,7 @@ void LeaderBoard::GenerateTextEntries(GameObject& TextPrototype)
 
 bool LeaderBoard::CheckScore(int score)
 {
-	return entries.size()<10 || score > entries.back().score;
+	return entries.size()<(size_t)10 || (size_t)score > entries.back().score;
 }
 
 void LeaderBoard::RegisterNewEntry(int score,InputBox* box)

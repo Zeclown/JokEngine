@@ -54,7 +54,7 @@ void PhysicBody::Update()
 	}
 }
 void PhysicBody::MakeBody()
-{	rBody = Game::GetInstance().GetPhysicsService().RegisterBody(this,glm::vec2(owner->position.x, owner->position.y),kinematic,gravity,GetOwner()->rotation,angularDrag,drag, mass,!freezeRotation);
+{	rBody = Game::GetInstance().GetPhysicsService().RegisterBody(this,glm::vec2(owner->position.x, owner->position.y),kinematic,gravity,GetOwner()->rotation,angularDrag,drag, (GLint)mass,!freezeRotation);
 }
 void PhysicBody::AddForce(glm::vec2 force, E_FORCE_TYPE forceType)
 {

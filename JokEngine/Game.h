@@ -2,6 +2,19 @@
 #ifndef GAME_H
 #define GAME_H
 #define GLEW_STATIC
+#ifdef _DEBUG
+#define debugBreak() __debugbreak()
+
+#define ASSERT(expr) \
+if(expr){} \
+else \
+{\
+debugBreak(); \
+}
+#else
+#define ASSERT(expr)
+#endif
+
 #include <GL\glew.h>
 #include <GLFW/glfw3.h>
 #include"GameRoom.h"

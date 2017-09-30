@@ -31,7 +31,7 @@ GameObject::GameObject(const GameObject &gameObject)
 }
 GameObject::~GameObject()
 {
-	for (int i = 0; i < components.size(); ++i)
+	for (size_t i = 0; i < components.size(); ++i)
 	{
 		delete components[i];
 		components.erase(components.begin()+i);
@@ -86,7 +86,7 @@ void GameObject::SetParent(GameObject * go)
 {
 	if (parent)//remove itself from the children of the old parent
 	{
-		for (int i = 0; i < parent->children.size(); i++)
+		for (size_t i = 0; i < parent->children.size(); i++)
 		{
 			if (parent->children[i]->objectID == objectID)
 			{

@@ -31,7 +31,7 @@ void EnemyKnight::Update()
 {
 	Knight::Update();
 	std::vector<Command*> commands = ai->ProcessAI();
-	for (int i = 0; i < commands.size(); i++)
+	for (size_t i = 0; i < commands.size(); i++)
 	{
 		commands.at(i)->Execute(*this);
 	}

@@ -156,7 +156,7 @@ void Knight::TakeDamage(GameObject* DamageCauser)
 		iFrameTimer = iFrameDuration;
 		invulnerable = true;
 		owner->AddComponent<BlinkingObject>()->ui=false;
-		owner->GetComponent<BlinkingObject>()->secondsBeforeBlinks = 0.1;
+		owner->GetComponent<BlinkingObject>()->secondsBeforeBlinks = 0.1f;
 	}
 }
 

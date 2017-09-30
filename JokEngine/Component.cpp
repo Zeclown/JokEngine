@@ -7,7 +7,7 @@ Component::Component(GameObject* gameObject)
 }
 Component::~Component()
 {
-	for (int i = 0; i < signalConnections.size(); i++)
+	for (size_t i = 0; i < signalConnections.size(); i++)
 	{
 		signalConnections.at(i).disconnect();
 	}

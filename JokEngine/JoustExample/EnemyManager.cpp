@@ -45,7 +45,7 @@ void EnemyManager::Update()
 		{
 			state = E_EManager_STATE::SPAWNING_WAVE;
 			wave++;
-			enemyLeftToSpawn = (wave+(int)(wave*0.5f))*enemyRatio;
+			enemyLeftToSpawn = (float)(wave+(int)(wave*0.5f))*enemyRatio;
 		}
 		break;
 	}
@@ -55,7 +55,7 @@ void EnemyManager::SignalDeath(int id, int playerID)
 {
 	if (playerID != -1)
 	{
-		for (int i = 0; i < enemies.size(); i++)
+		for (size_t i = 0; i < enemies.size(); i++)
 		{
 			if (enemies.at(i)->GetComponent<EnemyKnight>()->enemyID == id)
 			{
@@ -71,10 +71,10 @@ void EnemyManager::SignalDeath(int id, int playerID)
 
 void EnemyManager::SpawnEnemy(std::vector<std::pair<GameObject*, float>> validPrototypes)
 {
-	float numberProtypePicked = rand() % 100;
+	float numberProtypePicked = (float)(rand() % 100);
 	glm::vec2 spawnPicked = spawnPoints.at(rand() % spawnPoints.size());
 	GameObject* prototypePicked=nullptr;
-	for (int i = 0; i < validPrototypes.size(); i++)
+	for (size_t i = 0; i < validPrototypes.size(); i++)
 	{
 		numberProtypePicked -= validPrototypes.at(i).second;
 		if (numberProtypePicked <= 0)
@@ -89,7 +89,7 @@ void EnemyManager::SpawnEnemy(std::vector<std::pair<GameObject*, float>> validPr
 
 		newEnemy->GetComponent<KnightAI>()->mngr = this;
 		newEnemy->position = spawnPicked;
-		newEnemy->GetComponent<EnemyKnight>()->enemyID = enemyLeftToSpawn;
+		newEnemy->GetComponent<EnemyKnight>()->enemyID = (int)enemyLeftToSpawn;
 		enemies.push_back(newEnemy);
 	}
 }
@@ -99,7 +99,7 @@ std::vector<std::pair<GameObject*, float>> EnemyManager::GeneratePrototypeList()
 	std::vector<s_EnemyPrototype> validPrototypes;
 	std::vector<std::pair<GameObject*, float>> toReturn;
 	float totalRarity=0;
-	for (int i = 0; i < enemiesPrototypes.size(); i++)
+	for (size_t i = 0; i < enemiesPrototypes.size(); i++)
 	{
 		if (enemiesPrototypes.at(i).startingWave <= wave)
 		{
@@ -107,7 +107,7 @@ std::vector<std::pair<GameObject*, float>> EnemyManager::GeneratePrototypeList()
 			validPrototypes.push_back(enemiesPrototypes.at(i));
 		}
 	}
-	for (int i = 0; i < validPrototypes.size(); i++)
+	for (size_t i = 0; i < validPrototypes.size(); i++)
 	{
 		toReturn.push_back(std::pair<GameObject*, float>(validPrototypes.at(i).protoype, (validPrototypes.at(i).rarity / totalRarity) * 100));
 	}
