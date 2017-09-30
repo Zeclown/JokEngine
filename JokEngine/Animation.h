@@ -1,7 +1,6 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
 #include "AnimationFrame.h"
-#include <GL\glew.h>
 #include <vector>
 #include "SpriteSheet.h"
 

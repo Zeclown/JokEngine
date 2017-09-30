@@ -1,175 +1,80 @@
-﻿  Animation.cpp
-Animation.cpp(10): warning C4018: '<': signed/unsigned mismatch
-Animation.cpp(23): warning C4018: '<=': signed/unsigned mismatch
-Animation.cpp(31): warning C4018: '>=': signed/unsigned mismatch
-  AnimationFrame.cpp
-  Audio.cpp
-  AudioFile.cpp
-  AudioSource.cpp
-  BoxCollider.cpp
-  Camera.cpp
-  CameraHandler.cpp
-  CharacterController.cpp
-  CircleCollider.cpp
-  Clock.cpp
-  Collider.cpp
-Collider.cpp(10): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-  Collision.cpp
-  Component.cpp
-Component.cpp(10): warning C4018: '<': signed/unsigned mismatch
-  ContactListener.cpp
-ContactListener.cpp(45): warning C4018: '<': signed/unsigned mismatch
-ContactListener.cpp(50): warning C4018: '<': signed/unsigned mismatch
-  Game.cpp
-Game.cpp(19): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-Game.cpp(132): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-Game.cpp(298): warning C4018: '<': signed/unsigned mismatch
-Game.cpp(332): warning C4018: '<': signed/unsigned mismatch
-  GameObject.cpp
-GameObject.cpp(34): warning C4018: '<': signed/unsigned mismatch
-GameObject.cpp(89): warning C4018: '<': signed/unsigned mismatch
-  GameRoom.cpp
-GameRoom.cpp(44): warning C4018: '<': signed/unsigned mismatch
-GameRoom.cpp(80): warning C4018: '<': signed/unsigned mismatch
-  InputBox.cpp
-InputBox.cpp(13): warning C4018: '<=': signed/unsigned mismatch
-InputBox.cpp(17): warning C4018: '>': signed/unsigned mismatch
-  InputReader.cpp
-InputReader.cpp(59): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-InputReader.cpp(60): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-InputReader.cpp(61): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-InputReader.cpp(62): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-  Compiling...
-  JObject.cpp
-  BlinkingObject.cpp
-  EnemyEgg.cpp
-  EnemyKnight.cpp
-JoustExample\EnemyKnight.cpp(34): warning C4018: '<': signed/unsigned mismatch
-  EnemyManager.cpp
-JoustExample\EnemyManager.cpp(48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-JoustExample\EnemyManager.cpp(58): warning C4018: '<': signed/unsigned mismatch
-JoustExample\EnemyManager.cpp(74): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-JoustExample\EnemyManager.cpp(77): warning C4018: '<': signed/unsigned mismatch
-JoustExample\EnemyManager.cpp(92): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-JoustExample\EnemyManager.cpp(102): warning C4018: '<': signed/unsigned mismatch
-JoustExample\EnemyManager.cpp(110): warning C4018: '<': signed/unsigned mismatch
-  FadeOutHelper.cpp
-  GameManager.cpp
-  InputHandler.cpp
-  Joust.cpp
-  JumpCommand.cpp
-  Knight.cpp
-JoustExample\Knight.cpp(159): warning C4305: '=': truncation from 'double' to 'float'
-  KnightAI.cpp
-  Lava.cpp
-  LeaderBoard.cpp
-JoustExample\LeaderBoard.cpp(81): warning C4018: '>': signed/unsigned mismatch
-  MoveLeftCommand.cpp
-  MoveRightCommand.cpp
-  PlayerKnight.cpp
-JoustExample\PlayerKnight.cpp(23): warning C4018: '<': signed/unsigned mismatch
-  ScoreBoard.cpp
-  ScoreText.cpp
-  StopWalkingCommand.cpp
-  Compiling...
-  WingsDownCommand.cpp
-  PhysicLayer.cpp
-  PhysicBody.cpp
-PhysicBody.cpp(57): warning C4244: 'argument': conversion from 'GLfloat' to 'GLint', possible loss of data
-  Physics.cpp
-Physics.cpp(9): warning C4305: 'argument': truncation from 'double' to 'float32'
-Physics.cpp(16): warning C4244: 'argument': conversion from 'double' to 'uint16', possible loss of data
-Physics.cpp(56): warning C4305: 'argument': truncation from 'double' to 'float32'
-Physics.cpp(66): warning C4244: '=': conversion from 'GLint' to 'float32', possible loss of data
-Physics.cpp(80): warning C4800: 'GLboolean': forcing value to bool 'true' or 'false' (performance warning)
-Physics.cpp(95): warning C4800: 'GLboolean': forcing value to bool 'true' or 'false' (performance warning)
-Physics.cpp(109): warning C4305: '=': truncation from 'double' to 'float32'
-Physics.cpp(142): warning C4018: '<': signed/unsigned mismatch
-Physics.cpp(169): warning C4018: '<': signed/unsigned mismatch
-Physics.cpp(185): warning C4800: 'Collider *': forcing value to bool 'true' or 'false' (performance warning)
-Physics.cpp(193): warning C4800: 'Collider *': forcing value to bool 'true' or 'false' (performance warning)
-  PhysicsDebug.cpp
-  RaycastAllListener.cpp
-  RaycastHit.cpp
-  RaycastListener.cpp
-  Resource_Manager.cpp
-  Shader.cpp
-  Source.cpp
-  Sprite.cpp
-  SpriteAnimator.cpp
-SpriteAnimator.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  SpriteDrawable.cpp
-  SpriteRenderer.cpp
-  SpriteSheet.cpp
-  TextRenderer.cpp
-TextRenderer.cpp(81): warning C4838: conversion from 'FT_Pos' to 'GLuint' requires a narrowing conversion
-  TextUI.cpp
-  Texture.cpp
-Box2D.lib(b2Body.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2Body.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2World.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2World.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2PolygonShape.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2PolygonShape.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2EdgeShape.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2EdgeShape.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2CircleShape.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2CircleShape.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2Fixture.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2Fixture.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2BroadPhase.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2BroadPhase.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2ContactManager.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2ContactManager.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2Island.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2Island.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2Joint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2Joint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2PulleyJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2PulleyJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2Contact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2Contact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2WorldCallbacks.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2WorldCallbacks.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2ContactSolver.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2ContactSolver.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2DistanceJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2DistanceJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2WheelJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2WheelJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2MouseJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2MouseJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2RevoluteJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2RevoluteJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2PrismaticJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2PrismaticJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2GearJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2GearJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2WeldJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2WeldJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2FrictionJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2FrictionJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2RopeJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2RopeJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2MotorJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2MotorJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2CircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2CircleContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2PolygonAndCircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2PolygonAndCircleContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2PolygonContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2PolygonContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2EdgeAndCircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2EdgeAndCircleContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2EdgeAndPolygonContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2EdgeAndPolygonContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2ChainAndCircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2ChainAndCircleContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2ChainAndPolygonContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2ChainAndPolygonContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-Box2D.lib(b2ChainShape.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Animation.obj
-Box2D.lib(b2ChainShape.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in Animation.obj
-SOIL.lib(SOIL.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
+﻿SOIL.lib(SOIL.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
 LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
-C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\Jokeng.exe : fatal error LNK1319: 64 mismatches detected
+  Generating code
+  0 of 7959 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    55 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+Resource_Manager.obj : warning LNK4049: locally defined symbol ___glewDeleteProgram imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewUniform4f imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewLinkProgram imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewDeleteShader imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewUniform3f imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewGetProgramInfoLog imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewUniformMatrix4fv imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewShaderSource imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewAttachShader imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewGetUniformLocation imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewUniform1f imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewGetProgramiv imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewUniform2f imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewGetShaderInfoLog imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewUniform1i imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewCreateProgram imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewCreateShader imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewCompileShader imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewGetShaderiv imported
+Shader.obj : warning LNK4049: locally defined symbol ___glewUseProgram imported
+SpriteRenderer.obj : warning LNK4049: locally defined symbol ___glewGenBuffers imported
+SpriteRenderer.obj : warning LNK4049: locally defined symbol ___glewGenVertexArrays imported
+SpriteRenderer.obj : warning LNK4049: locally defined symbol ___glewActiveTexture imported
+SpriteRenderer.obj : warning LNK4049: locally defined symbol ___glewBufferData imported
+SpriteRenderer.obj : warning LNK4049: locally defined symbol ___glewDeleteVertexArrays imported
+SpriteRenderer.obj : warning LNK4049: locally defined symbol ___glewBindBuffer imported
+SpriteRenderer.obj : warning LNK4049: locally defined symbol ___glewVertexAttribPointer imported
+SpriteRenderer.obj : warning LNK4049: locally defined symbol ___glewBindVertexArray imported
+SpriteRenderer.obj : warning LNK4049: locally defined symbol ___glewEnableVertexAttribArray imported
+TextRenderer.obj : warning LNK4049: locally defined symbol ___glewBufferSubData imported
+freetyped.lib(autofit.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(autofit.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(bdf.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(bdf.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(cff.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(cff.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(ftbase.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(ftbase.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(ftbitmap.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(ftbitmap.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(ftdebug.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(ftdebug.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(ftgzip.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(ftgzip.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(ftinit.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(ftinit.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(ftlzw.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(ftlzw.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(ftsystem.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(ftsystem.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(smooth.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(smooth.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(pcf.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(pcf.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(pfr.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(pfr.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(psaux.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(psaux.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(pshinter.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(pshinter.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(psmodule.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(psmodule.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(raster.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(raster.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(sfnt.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(sfnt.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(truetype.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(truetype.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(type1.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(type1.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(type1cid.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(type1cid.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(type42.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(type42.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+freetyped.lib(winfnt.obj) : warning LNK4099: PDB 'freetype27d.pdb' was not found with 'freetyped.lib(winfnt.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\freetype27d.pdb'; linking object as if no debug info
+SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\SOIL.pdb'; linking object as if no debug info
+SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\SOIL.pdb'; linking object as if no debug info
+SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\SOIL.pdb'; linking object as if no debug info
+SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\SOIL.pdb'; linking object as if no debug info
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\vc120.pdb'; linking object as if no debug info
+glfw3.lib(context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(context.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(init.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(init.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(input.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(input.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(monitor.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(monitor.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(window.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_init.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_init.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_monitor.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_time.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_time.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_tls.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_tls.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_window.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(winmm_joystick.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(winmm_joystick.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+glfw3.lib(wgl_context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(wgl_context.obj)' or at 'C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\glfw.pdb'; linking object as if no debug info
+  JokEngine.vcxproj -> C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\Jokeng.exe
+  JokEngine.vcxproj -> C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Release\Jokeng.pdb (Full PDB)
