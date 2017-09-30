@@ -1,5 +1,5 @@
 #include "SpriteAnimator.h"
-#include "Game.h";
+#include "Game.h"
 
 SpriteAnimator::SpriteAnimator(GameObject * gameObject)
 	:ComponentCloneable(gameObject)

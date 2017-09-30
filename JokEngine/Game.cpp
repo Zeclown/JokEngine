@@ -46,7 +46,6 @@ Game::Game(GLuint width, GLuint height, const std::string &gameName)
 	if (!alcMakeContextCurrent(context))
 		std::cout << "Audio Initialisation error";
 		
-
 }
 
 Game::~Game()
@@ -326,7 +325,7 @@ void Game::Render()
 		{
 			std::swap(drawIndexOrdered[i], drawIndexOrdered[i + 1]);
 			i = -1;
-		}
+		}  
 	}
 	//Go through the UI render queue
 	for (size_t i = 0; i < drawIndexOrdered.size(); i++)

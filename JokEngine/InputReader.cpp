@@ -56,10 +56,10 @@ std::vector<GLfloat> InputReader::GetJoystickAxis(int joystick)
 }
 void InputReader::ProcessMouseMovement(GLFWwindow* window, double xpos, double ypos)
 {
-	GLfloat xoffset = xpos - lastXMouse;
-	GLfloat yoffset = lastYMouse - ypos; // Reversed since y-coordinates range from bottom to top
-	lastXMouse = xpos;
-	lastYMouse = ypos;
+	GLfloat xoffset =(float) (xpos - lastXMouse);
+	GLfloat yoffset = (float)(lastYMouse - ypos); // Reversed since y-coordinates range from bottom to top
+	lastXMouse = (float)xpos;
+	lastYMouse = (float)ypos;
 	deltaXMouse = xoffset*sensitivity;
 	deltaYMouse = yoffset*sensitivity;
 }

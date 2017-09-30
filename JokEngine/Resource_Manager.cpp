@@ -77,7 +77,6 @@ void ResourceManager::Clear()
 }
 AudioFile ResourceManager::LoadAudioFromFile(const GLchar *audioFilePath)
 {
-
 	try
 	{
 		ALuint buffer;
@@ -90,7 +89,6 @@ AudioFile ResourceManager::LoadAudioFromFile(const GLchar *audioFilePath)
 	#pragma warning(push)
 	#pragma warning(disable: 4996) //deprecated function (Sorry about that guys)
 		// deprecated code here
-
 		alutLoadWAVFile((ALbyte*)audioFilePath, &format, &data, &size, &freq, &loop);
 		//std::ifstream audioClipFile(audioFilePath, std::ios_base::binary);
 	#pragma warning(pop)
@@ -141,6 +139,7 @@ AudioFile ResourceManager::LoadAudioFromFile(const GLchar *audioFilePath)
 	{
 		std::cout << "ERROR::AUDIO: Failed to read audio files " << std::endl;
 	}
+	return AudioFile();
 }
 Shader ResourceManager::loadShaderFromFile(const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile)
 {

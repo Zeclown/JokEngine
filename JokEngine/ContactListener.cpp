@@ -42,12 +42,12 @@ void ContactListener::EndContact(b2Contact* contact)
 }
 void ContactListener::SendCollisionsCalls()
 {
-	for (int i = 0; i < collisionEnterList.size(); ++i)
+	for (size_t i = 0; i < collisionEnterList.size(); ++i)
 	{
 		if(Game::GetInstance().FindByID(collisionEnterList[i].objID))
 			collisionEnterList[i].colliderSelf->GetOwner()->OnCollisionEnter(collisionEnterList[i]);
 	}
-	for (int i = 0; i < collisionExitList.size(); ++i)
+	for (size_t i = 0; i < collisionExitList.size(); ++i)
 	{
 		if (Game::GetInstance().FindByID(collisionExitList[i].objID))
 			collisionExitList[i].colliderSelf->GetOwner()->OnCollisionExit(collisionExitList[i]);

@@ -41,7 +41,7 @@ void GameRoom::CleanUpResources()
 		}
 		else
 		{
-			for (int j = 0; j < iter->second->components.size(); j++)
+			for (size_t j = 0; j < iter->second->components.size(); j++)
 			{
 				if (iter->second->components[j]->CheckDestroy(Game::GetInstance().GetTimeService().GetDeltaTime()))
 				{
@@ -77,7 +77,7 @@ GameObject* GameRoom::FindByID(GLint id)
 }
 void GameRoom::DestroyObject(GameObject &toDestroy)
 {
-	for (int i = 0; i < toDestroy.children.size(); i++)//recursively destroys all the hierarchy beneath the object
+	for (size_t i = 0; i < toDestroy.children.size(); i++)//recursively destroys all the hierarchy beneath the object
 	{
 		DestroyObject(*toDestroy.children[i]);
 	}

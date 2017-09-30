@@ -6,7 +6,7 @@ Collider::~Collider() {
 		fixture->GetBody()->DestroyFixture(fixture);
 }
 Collider::Collider(GameObject* gameObject)
-	:Component(gameObject),offset(glm::vec2(0,0)),isSolid(true),physicLayer("default"),friction(0.1)
+	:Component(gameObject),offset(glm::vec2(0)),isSolid(true),physicLayer("default"),friction(0.1f)
 {
 
 }

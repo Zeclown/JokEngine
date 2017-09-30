@@ -1,11 +1,38 @@
-﻿  Game.cpp
+﻿  AudioSource.cpp
+  BoxCollider.cpp
+  Camera.cpp
+  CharacterController.cpp
+  CircleCollider.cpp
+  ContactListener.cpp
+  Game.cpp
+  GameObject.cpp
+  GameRoom.cpp
+  BlinkingObject.cpp
+  EnemyEgg.cpp
+  EnemyKnight.cpp
+  EnemyManager.cpp
+  FadeOutHelper.cpp
+  GameManager.cpp
+  Joust.cpp
+  Knight.cpp
+  KnightAI.cpp
+  LeaderBoard.cpp
+  PlayerKnight.cpp
+  Compiling...
+  ScoreBoard.cpp
+  ScoreText.cpp
+  PhysicBody.cpp
+  Physics.cpp
+  SpriteAnimator.cpp
+  SpriteRenderer.cpp
+  TextRenderer.cpp
 SOIL.lib(SOIL.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
 LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Generating code
-  1 of 7959 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  0 of 7959 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    34 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
 Resource_Manager.obj : warning LNK4049: locally defined symbol ___glewDeleteProgram imported
 Shader.obj : warning LNK4049: locally defined symbol ___glewLinkProgram imported
