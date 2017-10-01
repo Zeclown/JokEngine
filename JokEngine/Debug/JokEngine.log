@@ -1,34 +1,13 @@
-﻿  AudioSource.cpp
-  Generating Code...
-  Compiling...
-  TextRenderer.cpp
-  SpriteRenderer.cpp
-  SpriteAnimator.cpp
-  Physics.cpp
-  PhysicBody.cpp
-  ScoreText.cpp
-  ScoreBoard.cpp
-  PlayerKnight.cpp
-  LeaderBoard.cpp
-  KnightAI.cpp
-  Knight.cpp
-  Joust.cpp
-  GameManager.cpp
-  FadeOutHelper.cpp
-  EnemyManager.cpp
-  EnemyKnight.cpp
-  EnemyEgg.cpp
-  BlinkingObject.cpp
+﻿  InputBox.cpp
   GameRoom.cpp
   GameObject.cpp
-  Generating Code...
-  Compiling...
   Game.cpp
   ContactListener.cpp
+  Component.cpp
+  Collision.cpp
+  Collider.cpp
+  Clock.cpp
   CircleCollider.cpp
-  CharacterController.cpp
-  Camera.cpp
-  BoxCollider.cpp
   Generating Code...
-  JokEngine.vcxproj -> C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Debug\Jokeng.exe
-  JokEngine.vcxproj -> C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Debug\Jokeng.pdb (Full PDB)
+RaycastHit.obj : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
+  JokEngine.vcxproj -> C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Debug\JokEngine.lib

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JokEngine", "JokEngine\JokEngine.vcxproj", "{04189C8E-4BC6-4E7A-AF92-E473801CF140}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JoustGame", "JoustGame\JoustGame.vcxproj", "{EF2B255F-46CF-4AD9-991A-6A17A3061753}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,14 @@ Global
 		{04189C8E-4BC6-4E7A-AF92-E473801CF140}.Release|x64.Build.0 = Release|x64
 		{04189C8E-4BC6-4E7A-AF92-E473801CF140}.Release|x86.ActiveCfg = Release|Win32
 		{04189C8E-4BC6-4E7A-AF92-E473801CF140}.Release|x86.Build.0 = Release|Win32
+		{EF2B255F-46CF-4AD9-991A-6A17A3061753}.Debug|x64.ActiveCfg = Debug|x64
+		{EF2B255F-46CF-4AD9-991A-6A17A3061753}.Debug|x64.Build.0 = Debug|x64
+		{EF2B255F-46CF-4AD9-991A-6A17A3061753}.Debug|x86.ActiveCfg = Debug|Win32
+		{EF2B255F-46CF-4AD9-991A-6A17A3061753}.Debug|x86.Build.0 = Debug|Win32
+		{EF2B255F-46CF-4AD9-991A-6A17A3061753}.Release|x64.ActiveCfg = Release|x64
+		{EF2B255F-46CF-4AD9-991A-6A17A3061753}.Release|x64.Build.0 = Release|x64
+		{EF2B255F-46CF-4AD9-991A-6A17A3061753}.Release|x86.ActiveCfg = Release|Win32
+		{EF2B255F-46CF-4AD9-991A-6A17A3061753}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
