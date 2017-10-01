@@ -25,13 +25,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -57,12 +57,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetName>Jokeng</TargetName>
+    <TargetName>JokEngine</TargetName>
     <LibraryPath>C:\Users\Pierre-Olivier\Documents\Visual Studio 2015\Projects\JokEngine\JokEngine\Dependencies\Libs;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Users\Pierre-Olivier\Documents\Visual Studio 2015\Projects\JokEngine\JokEngine\Dependencies\Includes;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetName>Jokeng</TargetName>
+    <TargetName>JokEngine</TargetName>
     <LibraryPath>C:\Users\Pierre-Olivier\Documents\Visual Studio 2015\Projects\JokEngine\JokEngine\Dependencies\Libs;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Users\Pierre-Olivier\Documents\Visual Studio 2015\Projects\JokEngine\JokEngine\Dependencies\Includes;$(IncludePath)</IncludePath>
   </PropertyGroup>
@@ -147,7 +147,6 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraHandler.h" />
     <ClInclude Include="CameraService.h" />
-    <ClInclude Include="CharacterController.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Collider.h" />
@@ -161,26 +160,6 @@
     <ClInclude Include="InputReader.h" />
     <ClInclude Include="JObject.h" />
     <ClInclude Include="JokEngine.h" />
-    <ClInclude Include="JoustExample\BlinkingObject.h" />
-    <ClInclude Include="JoustExample\Command.h" />
-    <ClInclude Include="JoustExample\EnemyEgg.h" />
-    <ClInclude Include="JoustExample\EnemyKnight.h" />
-    <ClInclude Include="JoustExample\EnemyManager.h" />
-    <ClInclude Include="JoustExample\FadeOutHelper.h" />
-    <ClInclude Include="JoustExample\GameManager.h" />
-    <ClInclude Include="JoustExample\InputHandler.h" />
-    <ClInclude Include="JoustExample\JumpCommand.h" />
-    <ClInclude Include="JoustExample\Knight.h" />
-    <ClInclude Include="JoustExample\KnightAI.h" />
-    <ClInclude Include="JoustExample\Lava.h" />
-    <ClInclude Include="JoustExample\LeaderBoard.h" />
-    <ClInclude Include="JoustExample\MoveLeftCommand.h" />
-    <ClInclude Include="JoustExample\MoveRightCommand.h" />
-    <ClInclude Include="JoustExample\PlayerKnight.h" />
-    <ClInclude Include="JoustExample\ScoreBoard.h" />
-    <ClInclude Include="JoustExample\ScoreText.h" />
-    <ClInclude Include="JoustExample\StopWalkingCommand.h" />
-    <ClInclude Include="JoustExample\WingsDownCommand.h" />
     <ClInclude Include="PhysicLayer.h" />
     <ClInclude Include="PhysicBody.h" />
     <ClInclude Include="Physics.h" />
@@ -212,7 +191,6 @@
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraHandler.cpp" />
-    <ClCompile Include="CharacterController.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Collider.cpp" />
@@ -225,26 +203,6 @@
     <ClCompile Include="InputBox.cpp" />
     <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="JObject.cpp" />
-    <ClCompile Include="JoustExample\BlinkingObject.cpp" />
-    <ClCompile Include="JoustExample\EnemyEgg.cpp" />
-    <ClCompile Include="JoustExample\EnemyKnight.cpp" />
-    <ClCompile Include="JoustExample\EnemyManager.cpp" />
-    <ClCompile Include="JoustExample\FadeOutHelper.cpp" />
-    <ClCompile Include="JoustExample\GameManager.cpp" />
-    <ClCompile Include="JoustExample\InputHandler.cpp" />
-    <ClCompile Include="JoustExample\Joust.cpp" />
-    <ClCompile Include="JoustExample\JumpCommand.cpp" />
-    <ClCompile Include="JoustExample\Knight.cpp" />
-    <ClCompile Include="JoustExample\KnightAI.cpp" />
-    <ClCompile Include="JoustExample\Lava.cpp" />
-    <ClCompile Include="JoustExample\LeaderBoard.cpp" />
-    <ClCompile Include="JoustExample\MoveLeftCommand.cpp" />
-    <ClCompile Include="JoustExample\MoveRightCommand.cpp" />
-    <ClCompile Include="JoustExample\PlayerKnight.cpp" />
-    <ClCompile Include="JoustExample\ScoreBoard.cpp" />
-    <ClCompile Include="JoustExample\ScoreText.cpp" />
-    <ClCompile Include="JoustExample\StopWalkingCommand.cpp" />
-    <ClCompile Include="JoustExample\WingsDownCommand.cpp" />
     <ClCompile Include="PhysicLayer.cpp" />
     <ClCompile Include="PhysicBody.cpp" />
     <ClCompile Include="Physics.cpp" />
@@ -254,7 +212,6 @@
     <ClCompile Include="RaycastListener.cpp" />
     <ClCompile Include="Resource_Manager.cpp" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteAnimator.cpp" />
     <ClCompile Include="SpriteDrawable.cpp" />
