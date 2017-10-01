@@ -119,7 +119,12 @@ void Game::Init()
 		textService->Load("fonts/emulogic.TTF", 24);
 		RegisterTextRendererService(textService);
 	}
-
+	ASSERT(text);
+	ASSERT(audio);
+	ASSERT(cameras);
+	ASSERT(time);
+	ASSERT(physics);
+	ASSERT(renderer);
 }
 void Game::Loop()
 {

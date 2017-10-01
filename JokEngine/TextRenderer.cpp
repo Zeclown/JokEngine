@@ -34,11 +34,12 @@ void TextRenderer::Load(std::string font, GLuint fontSize)
 	FT_Library ft;
 	if (FT_Init_FreeType(&ft)) 
 		std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
+	return;
 	// Load font as face
 	FT_Face face;
 	if (FT_New_Face(ft, font.c_str(), 0, &face))
 		std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
-
+	return;
 	FT_Set_Pixel_Sizes(face, 0, fontSize);
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
