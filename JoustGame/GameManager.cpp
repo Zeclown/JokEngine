@@ -15,7 +15,7 @@
 #include "EnemyKnight.h"
 #include "ScoreBoard.h"
 #include "EnemyEgg.h"
-
+#include "Prototype_Manager.h"
 void GameManager::Init()
 {
 	signalConnections.push_back(owner->Update.connect(boost::bind(&GameManager::Update, this)));
@@ -46,13 +46,13 @@ void GameManager::Init()
 	GameObject titleScreen = GameObject("Title Screen");
 	titleScreen.AddComponent<SpriteDrawable>()->sprite = ResourceManager::GetSprite("TitleScreen");
 	titleScreen.size = glm::vec2(62, 34);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("TitleScreen", titleScreen));
+	PrototypeManager::AddPrototype("TitleScreen", titleScreen);
 
 	GameObject musicBox = GameObject("MusicBox");
 	AudioSource *as = musicBox.AddComponent<AudioSource>();
 	as->RegisterSound(ResourceManager::GetAudioFile("MainTheme"), "MainTheme");
 	as->looping = true;
-	prefabs.insert(std::map< std::string, GameObject >::value_type("MusicBox", musicBox));
+	PrototypeManager::AddPrototype("MusicBox", musicBox);
 
 	GameObject nameBox = GameObject("InputScore");
 	InputBox* inputComp = nameBox.AddComponent<InputBox>();
@@ -62,7 +62,7 @@ void GameManager::Init()
 	inputComp->scale = 1;
 	inputComp->isTruncating = true;
 	inputComp->color = glm::vec3(255, 255, 255);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("InputBoxLB", nameBox));
+	PrototypeManager::AddPrototype("InputBoxLB", nameBox);
 
 	GameObject highScoreCongrats = GameObject("CongratsUI");
 	TextUI* txtCongrats = highScoreCongrats.AddComponent<TextUI>();
@@ -71,7 +71,7 @@ void GameManager::Init()
 	txtCongrats->scale = 1;
 	txtCongrats->text = "New Highscore! Congrats ";
 	txtCongrats->color = glm::vec3(0, 255, 255);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("CongratsUI", highScoreCongrats));
+	PrototypeManager::AddPrototype("CongratsUI", highScoreCongrats);
 
 	GameObject highScore = GameObject("LeaderboardEntry");
 	TextUI* txtScoreEntry = highScore.AddComponent<TextUI>();
@@ -79,7 +79,7 @@ void GameManager::Init()
 	txtScoreEntry->justify = true;
 	txtScoreEntry->scale = 1;
 	txtScoreEntry->color = glm::vec3(255, 255, 255);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("LeaderboardEntry", highScore));
+	PrototypeManager::AddPrototype("LeaderboardEntry", highScore);
 
 	GameObject LeaderBoardHeader = GameObject("LeaderboardHeader");
 	TextUI* txtLBHeader = LeaderBoardHeader.AddComponent<TextUI>();
@@ -88,11 +88,11 @@ void GameManager::Init()
 	txtLBHeader->scale = 1;
 	txtLBHeader->text = "Rank\tScore\tName";
 	txtLBHeader->color = glm::vec3(255, 255, 255);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("LeaderboardHeader", LeaderBoardHeader));
+	PrototypeManager::AddPrototype("LeaderboardHeader", LeaderBoardHeader);
 
 	GameObject MainLeaderBoard = GameObject("Leaderboard");
 	MainLeaderBoard.AddComponent<LeaderBoard>();
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Leaderboard", MainLeaderBoard));
+	PrototypeManager::AddPrototype("Leaderboard", MainLeaderBoard);
 
 	GameObject startText = GameObject("StartUI");
 	BlinkingObject* blinking=startText.AddComponent<BlinkingObject>();
@@ -104,7 +104,7 @@ void GameManager::Init()
 	txt->scale = 1;
 	txt->text = "Press Any Key";
 	txt->color = glm::vec3(255 , 255, 255);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("StartUI", startText));
+	PrototypeManager::AddPrototype("StartUI", startText);
 
 	GameObject cover = GameObject("CoverScreenWhite");
 	SpriteDrawable* sd=cover.AddComponent<SpriteDrawable>();
@@ -113,7 +113,7 @@ void GameManager::Init()
 	cover.AddComponent<FadeOutHelper>();
 	cover.size = glm::vec2(500, 500);
 	cover.position = glm::vec2(0, 0);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("CoverScreenWhite", cover));
+	PrototypeManager::AddPrototype("CoverScreenWhite", cover);
 
 
 	
@@ -146,7 +146,7 @@ void GameManager::Init()
 	player.GetComponent<SpriteAnimator>()->AddAnimation(anim4Player1, "Jumping");
 	player.GetComponent<SpriteAnimator>()->AddAnimation(anim5Player1, "Spawning");
 	player.size = glm::vec2(4, 4);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Player1", player));
+	PrototypeManager::AddPrototype("Player1", player);
 
 	GameObject player2 = GameObject("Player2");
 	player2.AddComponent<PhysicBody>()->SetDrag(0.5f);
@@ -177,7 +177,7 @@ void GameManager::Init()
 	player2.GetComponent<SpriteAnimator>()->AddAnimation(anim4Player2, "Jumping");
 	player2.GetComponent<SpriteAnimator>()->AddAnimation(anim5Player2, "Spawning");
 	player2.size = glm::vec2(4, 4);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Player2", player2));
+	PrototypeManager::AddPrototype("Player2", player2);
 
 	GameObject Platform = GameObject("Platform");
 	Platform.AddComponent<PhysicBody>()->SetKinematic(true);
@@ -188,7 +188,7 @@ void GameManager::Init()
 	Platform.GetComponent<BoxCollider>()->offset.y = -3.3f;
 	Platform.GetComponent<BoxCollider>()->physicLayer = "Ground";
 	Platform.size = glm::vec2(35, 6);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Platform", Platform));
+	PrototypeManager::AddPrototype("Platform", Platform);
 
 	GameObject Platform2 = GameObject("Platform2");
 	Platform2.AddComponent<PhysicBody>()->SetKinematic(true);
@@ -199,7 +199,7 @@ void GameManager::Init()
 	Platform2.GetComponent<BoxCollider>()->offset.y = -2.4f;
 	Platform2.GetComponent<BoxCollider>()->physicLayer = "Ground";
 	Platform2.size = glm::vec2(14, 4);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Platform2", Platform2));
+	PrototypeManager::AddPrototype("Platform2", Platform2);
 
 	GameObject Platform3 = GameObject("Platform3");
 	Platform3.AddComponent<PhysicBody>()->SetKinematic(true);
@@ -210,7 +210,7 @@ void GameManager::Init()
 	Platform3.GetComponent<BoxCollider>()->offset.y = -2.4f;
 	Platform3.size = glm::vec2(14, 4);
 	Platform3.GetComponent<BoxCollider>()->physicLayer = "Ground";
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Platform3", Platform3));
+	PrototypeManager::AddPrototype("Platform3", Platform3);
 
 	GameObject lava = GameObject("Lava");
 	lava.AddComponent<Lava>();
@@ -221,7 +221,7 @@ void GameManager::Init()
 	lava.GetComponent<BoxCollider>()->isSolid = false;
 	lava.GetComponent<BoxCollider>()->physicLayer = "Lava";
 	lava.size = glm::vec2(100, 5);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Lava", lava));
+	PrototypeManager::AddPrototype("Lava", lava);
 
 	GameObject enemy1 = GameObject("OnionKnight");
 	Animation animEnemy = Animation(ResourceManager::GetSpritesheet("Knight2"), 0, 1);
@@ -250,7 +250,7 @@ void GameManager::Init()
 	enemy1.GetComponent<SpriteAnimator>()->AddAnimation(anim4Enemy, "Jumping");
 	enemy1.GetComponent<SpriteAnimator>()->AddAnimation(anim5Enemy, "Spawning");
 	enemy1.size = glm::vec2(4, 4);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("OnionKnight", enemy1));
+	PrototypeManager::AddPrototype("OnionKnight", enemy1);
 
 
 	GameObject enemyController = GameObject("Enemy Manager");
@@ -258,11 +258,11 @@ void GameManager::Init()
 	em->enemyRatio = 2;
 	em->spawnPoints = { glm::vec2(-13, 13.5),glm::vec2(13, 13.5),glm::vec2(15, -3.9f), glm::vec2(-15, -3.9f) };
 	s_EnemyPrototype enemy1prot;
-	enemy1prot.protoype = &prefabs.find("OnionKnight")->second;
+	enemy1prot.protoype = &PrototypeManager::GetPrototype("OnionKnight");
 	enemy1prot.rarity = 1;
 	enemy1prot.startingWave = 0;
 	em->enemiesPrototypes.push_back(enemy1prot);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("EnemyManager", enemyController));
+	PrototypeManager::AddPrototype("EnemyManager", enemyController);
 
 	GameObject player1EmptyLife = GameObject("Player1EmptyLife");
 	sd= player1EmptyLife.AddComponent<SpriteDrawable>();
@@ -270,14 +270,14 @@ void GameManager::Init()
 	player1EmptyLife.size = glm::vec2(2, 2);
 	sd->sprite = ResourceManager::GetSpritesheet("Knight3").sprites[8];
 	sd->drawOrder = 200;
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Player1EmptyLife", player1EmptyLife));
+	PrototypeManager::AddPrototype("Player1EmptyLife", player1EmptyLife);
 
 	GameObject player1Life = GameObject("Player1Life");
 	sd = player1Life.AddComponent<SpriteDrawable>();
 	player1Life.size = glm::vec2(2, 2);
 	sd->sprite = ResourceManager::GetSpritesheet("Knight3").sprites[7];
 	sd->drawOrder = 201;
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Player1Life", player1Life));
+	PrototypeManager::AddPrototype("Player1Life", player1Life);
 
 	GameObject player2EmptyLife = GameObject("Player2EmptyLife");
 	sd = player2EmptyLife.AddComponent<SpriteDrawable>();
@@ -286,7 +286,7 @@ void GameManager::Init()
 	player2EmptyLife.size = glm::vec2(2, 2);
 	sd->flipped = true;
 	sd->drawOrder = 200;
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Player2EmptyLife", player2EmptyLife));
+	PrototypeManager::AddPrototype("Player2EmptyLife", player2EmptyLife);
 
 	GameObject player2Life = GameObject("Player2Life");
 	player2Life.size = glm::vec2(2, 2);
@@ -294,16 +294,16 @@ void GameManager::Init()
 	sd->sprite = ResourceManager::GetSpritesheet("Knight1").sprites[7];
 	sd->drawOrder = 201;
 	sd->flipped = true;
-	prefabs.insert(std::map< std::string, GameObject >::value_type("Player2Life", player2Life));
+	PrototypeManager::AddPrototype("Player2Life", player2Life);
 
 	GameObject scoreBoard = GameObject("ScoreBoard");
 	ScoreBoard* sbComp=scoreBoard.AddComponent<ScoreBoard>();
-	sbComp->lifePrototypes.push_back(&prefabs.find("Player1Life")->second);
-	sbComp->lifePrototypes.push_back(&prefabs.find("Player2Life")->second);
-	sbComp->emptyPrototypes.push_back(&prefabs.find("Player1EmptyLife")->second);
-	sbComp->emptyPrototypes.push_back(&prefabs.find("Player2EmptyLife")->second);
-	prefabs.insert(std::map< std::string, GameObject >::value_type("ScoreBoard", scoreBoard));
-	prefabs.find("OnionKnight")->second.GetComponent<EnemyKnight>()->value = scoreBoard.GetComponent<ScoreBoard>()->ENEMY_VALUE;
+	sbComp->lifePrototypes.push_back(&PrototypeManager::GetPrototype("Player1Life"));
+	sbComp->lifePrototypes.push_back(&PrototypeManager::GetPrototype("Player2Life"));
+	sbComp->emptyPrototypes.push_back(&PrototypeManager::GetPrototype("Player1EmptyLife"));
+	sbComp->emptyPrototypes.push_back(&PrototypeManager::GetPrototype("Player2EmptyLife"));
+	PrototypeManager::AddPrototype("ScoreBoard", scoreBoard);
+	PrototypeManager::GetPrototype("OnionKnight").GetComponent<EnemyKnight>()->value = scoreBoard.GetComponent<ScoreBoard>()->ENEMY_VALUE;
 	//Start the menu
 	SetUpMenu();
 
@@ -337,14 +337,14 @@ void GameManager::SetUpMenu()
 {
 	state = E_GAME_STATE::GAME_MENU;
 	game->ClearRoom();
-	game->Instantiate(prefabs.find("TitleScreen")->second);
+	game->Instantiate(PrototypeManager::GetPrototype("TitleScreen"));
 	if (!initDone)
 	{
-		GameObject* SoundBox = game->Instantiate(prefabs.find("MusicBox")->second);
+		GameObject* SoundBox = game->Instantiate(PrototypeManager::GetPrototype("MusicBox"));
 		SoundBox->GetComponent<AudioSource>()->looping = true;
 		SoundBox->GetComponent<AudioSource>()->PlaySound("MainTheme");
 	}
-	game->Instantiate(prefabs.find("StartUI")->second);
+	game->Instantiate(PrototypeManager::GetPrototype("StartUI"));
 	initDone=true;
 }
 void GameManager::SetUpActive()
@@ -352,29 +352,28 @@ void GameManager::SetUpActive()
 	players.clear();
 	state = E_GAME_STATE::GAME_PLAYING;
 	game->ClearRoom();
-	GameObject *player1=game->Instantiate(prefabs.find("Player1")->second);
+	GameObject *player1=game->Instantiate(PrototypeManager::GetPrototype("Player1"));
 	player1->position = glm::vec2(0, 0);
 	players.push_back(player1->GetComponent<PlayerKnight>());
 
-	GameObject *player2 = game->Instantiate(prefabs.find("Player2")->second);	
+	GameObject *player2 = game->Instantiate(PrototypeManager::GetPrototype("Player2"));
 	player2->position = glm::vec2(0, 0);
 	players.push_back(player2->GetComponent<PlayerKnight>());
 	player2->GetComponent<PlayerKnight>()->playerNumber = 1;
 	player2->SetActive(false);
 
-	GameObject* em=game->Instantiate(prefabs.find("EnemyManager")->second);
+	GameObject* em=game->Instantiate(PrototypeManager::GetPrototype("EnemyManager"));
 	em->GetComponent<EnemyManager>()->players.push_back(player1->GetComponent<PlayerKnight>());
 	em->GetComponent<EnemyManager>()->players.push_back(player2->GetComponent<PlayerKnight>());
-	game->Instantiate(prefabs.find("CoverScreenWhite")->second);
-	game->Instantiate(prefabs.find("Platform")->second)->position = glm::vec2(0, 18);
-	game->Instantiate(prefabs.find("Platform2")->second)->position=glm::vec2(15,0);
-	game->Instantiate(prefabs.find("Platform3")->second)->position = glm::vec2(-15, 0);
-	game->Instantiate(prefabs.find("Lava")->second)->position = glm::vec2(0, 20);
-	//game->Instantiate(prefabs.find("Platform")->second)->position=glm::vec2(0,40);
-	GameObject *outsideTop=game->Instantiate(prefabs.find("Platform")->second);
+	game->Instantiate(PrototypeManager::GetPrototype("CoverScreenWhite"));
+	game->Instantiate(PrototypeManager::GetPrototype("Platform"))->position = glm::vec2(0, 18);
+	game->Instantiate(PrototypeManager::GetPrototype("Platform2"))->position=glm::vec2(15,0);
+	game->Instantiate(PrototypeManager::GetPrototype("Platform3"))->position = glm::vec2(-15, 0);
+	game->Instantiate(PrototypeManager::GetPrototype("Lava"))->position = glm::vec2(0, 20);
+	GameObject *outsideTop=game->Instantiate(PrototypeManager::GetPrototype("Platform"));
 	outsideTop->position = glm::vec2(0, -73.0f);
 	outsideTop->size = glm::vec2(outsideTop->size.x + 120, outsideTop->size.y);
-	GameObject *sb = game->Instantiate(prefabs.find("ScoreBoard")->second);
+	GameObject *sb = game->Instantiate(PrototypeManager::GetPrototype("ScoreBoard"));
 	sb->GetComponent<ScoreBoard>()->players.push_back(player1->GetComponent<PlayerKnight>());
 	sb->GetComponent<ScoreBoard>()->players.push_back(player2->GetComponent<PlayerKnight>());
 }
@@ -384,20 +383,20 @@ void GameManager::SetUpScoreboard()
 	int player1Score = players[0]->score, player2Score = players[1]->score;
 	game->ClearRoom();
 	state = E_GAME_STATE::GAME_SCOREBOARD;
-	GameObject* LBHeader = game->Instantiate(prefabs.find("LeaderboardHeader")->second);
-	GameObject* Leaderboard= game->Instantiate(prefabs.find("Leaderboard")->second);
+	GameObject* LBHeader = game->Instantiate(PrototypeManager::GetPrototype("LeaderboardHeader"));
+	GameObject* Leaderboard= game->Instantiate(PrototypeManager::GetPrototype("Leaderboard"));
 	LeaderBoard* LBComp = Leaderboard->GetComponent<LeaderBoard>();
 	activeLB = LBComp;
 	LBComp->FetchSavedEntries();
-	GameObject* GratsMessage = game->Instantiate(prefabs.find("CongratsUI")->second);
-	GameObject* NameMessage = game->Instantiate(prefabs.find("CongratsUI")->second);
-	GameObject* EnterMessage = game->Instantiate(prefabs.find("CongratsUI")->second);
+	GameObject* GratsMessage = game->Instantiate(PrototypeManager::GetPrototype("CongratsUI"));
+	GameObject* NameMessage = game->Instantiate(PrototypeManager::GetPrototype("CongratsUI"));
+	GameObject* EnterMessage = game->Instantiate(PrototypeManager::GetPrototype("CongratsUI"));
 	EnterMessage->GetComponent<TextUI>()->text = "Press Enter to Continue";
 	EnterMessage->GetComponent<TextUI>()->color = glm::vec3(255, 255, 255);
 	EnterMessage->GetComponent<TextUI>()->position.y += 100;
 	NameMessage->GetComponent<TextUI>()->position.y += 50;
 
-	GameObject* boxName = game->Instantiate(prefabs.find("InputBoxLB")->second);
+	GameObject* boxName = game->Instantiate(PrototypeManager::GetPrototype("InputBoxLB"));
 	GratsMessage->SetActive(false);
 	NameMessage->SetActive(false);
 	if (player1Score >= player2Score && LBComp->CheckScore(player1Score))
@@ -419,7 +418,7 @@ void GameManager::SetUpScoreboard()
 		NameMessage->SetActive(true);
 	}
 	boxName->SetActive(GratsMessage->isActive());
-	LBComp->GenerateTextEntries(prefabs.find("LeaderboardEntry")->second);
+	LBComp->GenerateTextEntries(PrototypeManager::GetPrototype("LeaderboardEntry"));
 
 
 

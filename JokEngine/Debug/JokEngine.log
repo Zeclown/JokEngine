@@ -1,13 +1,3 @@
-﻿  InputBox.cpp
-  GameRoom.cpp
-  GameObject.cpp
-  Game.cpp
-  ContactListener.cpp
-  Component.cpp
-  Collision.cpp
-  Collider.cpp
-  Clock.cpp
-  CircleCollider.cpp
-  Generating Code...
+﻿  TextRenderer.cpp
 RaycastHit.obj : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
   JokEngine.vcxproj -> C:\Users\Pierre-Olivier\Documents\JokEngine\JokEngine\Debug\JokEngine.lib
